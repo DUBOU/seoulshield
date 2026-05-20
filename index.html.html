@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SeoulShield — Premium Automotive Protection Film</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0a0a0a;
+  --bg-surface: #111111;
+  --bg-card: #161616;
+  --text: #f0ede6;
+  --text-muted: #8a8880;
+  --accent: #c8ff00;
+  --accent-dim: rgba(200,255,0,0.12);
+  --blue: #2d7aff;
+  --blue-dim: rgba(45,122,255,0.1);
+  --border: rgba(255,255,255,0.06);
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Outfit', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--font-body); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 20px 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(10,10,10,0.7);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: padding 0.3s;
+}
+nav.scrolled { padding: 14px 48px; }
+.logo {
+  font-family: var(--font-display); font-weight: 800; font-size: 22px;
+  letter-spacing: -0.02em;
+}
+.logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a {
+  color: var(--text-muted); text-decoration: none; font-size: 14px;
+  font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-cta {
+  background: var(--accent); color: #0a0a0a; border: none; padding: 10px 24px;
+  font-family: var(--font-body); font-size: 13px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.06em; cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.3s;
+}
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 24px rgba(200,255,0,0.25); }
+
+/* HERO */
+.hero {
+  height: 100vh; display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(200,255,0,0.04) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 70% 60%, rgba(45,122,255,0.03) 0%, transparent 60%);
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 70%);
+}
+.hero-content { position: relative; text-align: center; max-width: 900px; padding: 0 24px; }
+.hero-badge {
+  display: inline-block; padding: 6px 16px; border: 1px solid rgba(200,255,0,0.2);
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 32px;
+  animation: fadeUp 0.8s ease both;
+}
+.hero h1 {
+  font-family: var(--font-display); font-size: clamp(48px, 7vw, 88px);
+  font-weight: 800; line-height: 1.05; letter-spacing: -0.03em;
+  margin-bottom: 24px;
+  animation: fadeUp 0.8s ease 0.15s both;
+}
+.hero h1 em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--accent), #a0ff40);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero p {
+  font-size: 18px; color: var(--text-muted); line-height: 1.7;
+  max-width: 560px; margin: 0 auto 40px;
+  animation: fadeUp 0.8s ease 0.3s both;
+}
+.hero-actions {
+  display: flex; gap: 16px; justify-content: center;
+  animation: fadeUp 0.8s ease 0.45s both;
+}
+.btn-primary {
+  background: var(--accent); color: #0a0a0a; border: none;
+  padding: 14px 32px; font-family: var(--font-body); font-size: 14px;
+  font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+  cursor: pointer; transition: transform 0.2s, box-shadow 0.3s;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 30px rgba(200,255,0,0.3); }
+.btn-secondary {
+  background: transparent; color: var(--text); border: 1px solid rgba(255,255,255,0.15);
+  padding: 14px 32px; font-family: var(--font-body); font-size: 14px;
+  font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase;
+  cursor: pointer; transition: border-color 0.3s, background 0.3s;
+}
+.btn-secondary:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.04); }
+.hero-scroll {
+  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  color: var(--text-muted); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  animation: fadeUp 0.8s ease 0.6s both;
+}
+.scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--accent), transparent); animation: scrollPulse 2s ease infinite; }
+
+/* STATS BAR */
+.stats-bar {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.stat-item {
+  padding: 40px 32px; text-align: center;
+  border-right: 1px solid var(--border);
+}
+.stat-item:last-child { border-right: none; }
+.stat-number {
+  font-family: var(--font-display); font-size: 40px; font-weight: 700;
+  color: var(--accent); letter-spacing: -0.02em;
+}
+.stat-label { font-size: 13px; color: var(--text-muted); margin-top: 6px; text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* SECTIONS */
+section { padding: 120px 48px; }
+.section-label {
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 16px;
+}
+.section-title {
+  font-family: var(--font-display); font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 20px;
+}
+.section-desc {
+  font-size: 16px; color: var(--text-muted); line-height: 1.7;
+  max-width: 520px; margin-bottom: 56px;
+}
+
+/* PRODUCTS */
+.products { background: var(--bg); }
+.product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.product-card {
+  background: var(--bg-surface); padding: 48px 36px; position: relative;
+  overflow: hidden; cursor: pointer; transition: background 0.4s;
+  border: 1px solid var(--border);
+}
+.product-card:hover { background: var(--bg-card); }
+.product-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--accent); transform: scaleX(0); transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.product-card:hover::before { transform: scaleX(1); }
+.product-icon {
+  width: 56px; height: 56px; border: 1px solid rgba(200,255,0,0.15);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 28px; font-size: 20px; color: var(--accent);
+}
+.product-name {
+  font-family: var(--font-display); font-size: 24px; font-weight: 700;
+  margin-bottom: 12px; letter-spacing: -0.01em;
+}
+.product-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 24px; }
+.product-specs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+.spec-tag {
+  padding: 4px 10px; border: 1px solid rgba(255,255,255,0.08);
+  font-size: 11px; color: var(--text-muted); letter-spacing: 0.04em; text-transform: uppercase;
+}
+.product-link {
+  font-size: 13px; color: var(--accent); text-transform: uppercase;
+  letter-spacing: 0.08em; text-decoration: none; display: inline-flex;
+  align-items: center; gap: 6px; transition: gap 0.3s;
+}
+.product-card:hover .product-link { gap: 12px; }
+
+/* WHY SEOULSHIELD */
+.why-section { background: var(--bg-surface); }
+.why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
+.why-card {
+  padding: 48px 40px; background: var(--bg);
+  border: 1px solid var(--border); position: relative;
+}
+.why-number {
+  font-family: var(--font-display); font-size: 64px; font-weight: 800;
+  color: rgba(200,255,0,0.06); position: absolute; top: 20px; right: 28px;
+  line-height: 1;
+}
+.why-title {
+  font-size: 20px; font-weight: 600; margin-bottom: 12px; letter-spacing: -0.01em;
+}
+.why-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+/* TECHNOLOGY */
+.tech-section { background: var(--bg); position: relative; }
+.tech-visual {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+}
+.tech-layers { display: flex; flex-direction: column; gap: 4px; }
+.tech-layer {
+  display: flex; align-items: center; gap: 16px; padding: 20px 24px;
+  border: 1px solid var(--border); transition: border-color 0.3s, background 0.3s;
+  cursor: default;
+}
+.tech-layer:hover { border-color: rgba(200,255,0,0.2); background: var(--accent-dim); }
+.layer-color {
+  width: 4px; height: 36px; border-radius: 2px; flex-shrink: 0;
+}
+.layer-name { font-size: 14px; font-weight: 500; }
+.layer-desc { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+.tech-specs { display: flex; flex-direction: column; gap: 24px; }
+.tech-spec-item { display: flex; align-items: baseline; gap: 16px; }
+.tech-spec-value {
+  font-family: var(--font-display); font-size: 36px; font-weight: 700;
+  color: var(--accent); letter-spacing: -0.02em; min-width: 100px;
+}
+.tech-spec-label { font-size: 14px; color: var(--text-muted); }
+
+/* WARRANTY */
+.warranty-section {
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-surface) 100%);
+  text-align: center;
+}
+.warranty-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; max-width: 900px; margin: 0 auto; }
+.warranty-card {
+  padding: 40px 28px; background: var(--bg);
+  border: 1px solid var(--border);
+}
+.warranty-years {
+  font-family: var(--font-display); font-size: 48px; font-weight: 800;
+  color: var(--accent); line-height: 1;
+}
+.warranty-years span { font-size: 20px; color: var(--text-muted); }
+.warranty-product { font-size: 14px; margin-top: 12px; font-weight: 500; }
+.warranty-details { font-size: 12px; color: var(--text-muted); margin-top: 6px; line-height: 1.5; }
+
+/* DEALER CTA */
+.dealer-cta {
+  background: var(--bg); text-align: center;
+  border-top: 1px solid var(--border);
+}
+.dealer-cta .section-title { max-width: 600px; margin: 0 auto 20px; }
+.dealer-cta .section-desc { margin: 0 auto 40px; }
+
+/* CONTACT FORM */
+.contact-section { background: var(--bg-surface); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+.form-group { margin-bottom: 24px; }
+.form-group label {
+  display: block; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: 8px;
+}
+.form-group input, .form-group textarea, .form-group select {
+  width: 100%; background: var(--bg); border: 1px solid var(--border);
+  color: var(--text); padding: 14px 16px; font-family: var(--font-body);
+  font-size: 14px; outline: none; transition: border-color 0.3s;
+}
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+  border-color: var(--accent);
+}
+.form-group textarea { height: 120px; resize: vertical; }
+.form-group select { appearance: none; cursor: pointer; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.contact-info { display: flex; flex-direction: column; justify-content: center; }
+.contact-info h3 {
+  font-family: var(--font-display); font-size: 32px; font-weight: 700;
+  margin-bottom: 20px; letter-spacing: -0.02em;
+}
+.contact-info p { font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 32px; }
+.contact-detail { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; font-size: 14px; color: var(--text-muted); }
+.contact-detail strong { color: var(--text); }
+
+/* FOOTER */
+footer {
+  padding: 60px 48px 32px; border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: flex-end;
+}
+.footer-brand .logo { margin-bottom: 12px; }
+.footer-brand p { font-size: 13px; color: var(--text-muted); }
+.footer-links { display: flex; gap: 32px; }
+.footer-links a { font-size: 13px; color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+.footer-links a:hover { color: var(--text); }
+.footer-copy { font-size: 12px; color: var(--text-muted); }
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.2); }
+}
+
+/* SCROLL ANIMATIONS */
+.reveal {
+  opacity: 0; transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* MOBILE */
+@media (max-width: 768px) {
+  nav { padding: 16px 20px; }
+  .nav-links { display: none; }
+  section { padding: 80px 20px; }
+  .product-grid, .why-grid { grid-template-columns: 1fr; }
+  .stats-bar { grid-template-columns: repeat(2, 1fr); }
+  .tech-visual { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+  .warranty-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; align-items: flex-start; gap: 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="logo">SEOUL<span>SHIELD</span></div>
+  <ul class="nav-links">
+    <li><a href="#products">Products</a></li>
+    <li><a href="#technology">Technology</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#warranty">Warranty</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta">Become a Dealer</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Premium Automotive Protection Film</div>
+    <h1>Defend your finish.<br><em>Shield your investment.</em></h1>
+    <p>Advanced nano-ceramic protection technology engineered in Seoul. Self-healing PPF, precision window tint, and windshield film — trusted by professionals across 30+ countries.</p>
+    <div class="hero-actions">
+      <button class="btn-primary">Explore Products</button>
+      <button class="btn-secondary">Dealer Inquiry</button>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    scroll
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item reveal">
+    <div class="stat-number">30+</div>
+    <div class="stat-label">Countries</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-number">10yr</div>
+    <div class="stat-label">Max Warranty</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-number">99%</div>
+    <div class="stat-label">UV Rejection</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-number">TPU</div>
+    <div class="stat-label">Film Base</div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="section-label reveal">Product lineup</div>
+  <div class="section-title reveal">Three lines.<br>Total protection.</div>
+  <div class="section-desc reveal">From body panels to windshields — SeoulShield covers every surface that matters.</div>
+
+  <div class="product-grid">
+    <div class="product-card reveal">
+      <div class="product-icon">◇</div>
+      <div class="product-name">Paint Protection Film</div>
+      <div class="product-desc">Self-healing TPU film with hydrophobic nano-ceramic top coat. Crystal-clear protection against rock chips, scratches, and UV degradation.</div>
+      <div class="product-specs">
+        <span class="spec-tag">Self-healing</span>
+        <span class="spec-tag">Hydrophobic</span>
+        <span class="spec-tag">8 mil</span>
+        <span class="spec-tag">Gloss / Matte</span>
+      </div>
+      <a href="#" class="product-link">View specifications →</a>
+    </div>
+
+    <div class="product-card reveal">
+      <div class="product-icon">◈</div>
+      <div class="product-name">Window Tint Film</div>
+      <div class="product-desc">Multi-layer ceramic window film delivering superior heat rejection and optical clarity. No signal interference, no purple fading.</div>
+      <div class="product-specs">
+        <span class="spec-tag">Nano ceramic</span>
+        <span class="spec-tag">IRR 97%</span>
+        <span class="spec-tag">5%–70% VLT</span>
+        <span class="spec-tag">Signal-safe</span>
+      </div>
+      <a href="#" class="product-link">View specifications →</a>
+    </div>
+
+    <div class="product-card reveal">
+      <div class="product-icon">◆</div>
+      <div class="product-name">Windshield Protection</div>
+      <div class="product-desc">Optically clear shield with nanoceramic hardcoat surface. Absorbs impact energy from road debris while maintaining full ADAS compatibility.</div>
+      <div class="product-specs">
+        <span class="spec-tag">85% VLT</span>
+        <span class="spec-tag">Impact absorb</span>
+        <span class="spec-tag">ADAS safe</span>
+        <span class="spec-tag">7.5 mil</span>
+      </div>
+      <a href="#" class="product-link">View specifications →</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY SEOULSHIELD -->
+<section class="why-section" id="why">
+  <div class="section-label reveal">Why SeoulShield</div>
+  <div class="section-title reveal">Built different.</div>
+  <div class="section-desc reveal">We don't just sell film — we engineer partnerships that grow your business.</div>
+
+  <div class="why-grid">
+    <div class="why-card reveal">
+      <div class="why-number">01</div>
+      <div class="why-title">Korean engineering, global reach</div>
+      <div class="why-desc">Developed in Seoul's precision manufacturing ecosystem with raw materials sourced from top-tier Korean chemical suppliers. Distributed to 30+ countries worldwide.</div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-number">02</div>
+      <div class="why-title">Dealer-first business model</div>
+      <div class="why-desc">Exclusive territory protection, co-branded marketing assets, and dedicated technical training. We succeed only when our partners succeed.</div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-number">03</div>
+      <div class="why-title">Full product ecosystem</div>
+      <div class="why-desc">PPF, window tint, and windshield film under one brand umbrella. Simplify your inventory, streamline your workflow, unify your offering.</div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-number">04</div>
+      <div class="why-title">Rapid technical support</div>
+      <div class="why-desc">Dedicated support team with real installation experience. TDS documentation, installation guides, and troubleshooting — in your timezone.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNOLOGY -->
+<section class="tech-section" id="technology">
+  <div class="section-label reveal">Technology</div>
+  <div class="section-title reveal">Nano-ceramic architecture</div>
+  <div class="section-desc reveal">Five precision-engineered layers working in concert to deliver uncompromising protection.</div>
+
+  <div class="tech-visual reveal">
+    <div class="tech-layers">
+      <div class="tech-layer">
+        <div class="layer-color" style="background: var(--accent);"></div>
+        <div>
+          <div class="layer-name">Hydrophobic top coat</div>
+          <div class="layer-desc">Self-cleaning surface, water contact angle >110°</div>
+        </div>
+      </div>
+      <div class="tech-layer">
+        <div class="layer-color" style="background: #2d7aff;"></div>
+        <div>
+          <div class="layer-name">Self-healing clear coat</div>
+          <div class="layer-desc">Thermal activation restores surface at 60°C+</div>
+        </div>
+      </div>
+      <div class="tech-layer">
+        <div class="layer-color" style="background: #f0ede6;"></div>
+        <div>
+          <div class="layer-name">TPU core layer</div>
+          <div class="layer-desc">High-elongation elastomer, 180% stretch capacity</div>
+        </div>
+      </div>
+      <div class="tech-layer">
+        <div class="layer-color" style="background: #ff6b35;"></div>
+        <div>
+          <div class="layer-name">UV-blocking barrier</div>
+          <div class="layer-desc">99% UV-A/UV-B rejection, prevents yellowing</div>
+        </div>
+      </div>
+      <div class="tech-layer">
+        <div class="layer-color" style="background: #8a8880;"></div>
+        <div>
+          <div class="layer-name">Pressure-sensitive adhesive</div>
+          <div class="layer-desc">Repositionable during install, permanent bond after cure</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tech-specs">
+      <div class="tech-spec-item">
+        <div class="tech-spec-value">180%</div>
+        <div class="tech-spec-label">Elongation at break — conforms to any curve without lifting</div>
+      </div>
+      <div class="tech-spec-item">
+        <div class="tech-spec-value">99%</div>
+        <div class="tech-spec-label">UV rejection rate — protects paint and interior from degradation</div>
+      </div>
+      <div class="tech-spec-item">
+        <div class="tech-spec-value">60°C</div>
+        <div class="tech-spec-label">Self-healing activation — minor scratches vanish with heat</div>
+      </div>
+      <div class="tech-spec-item">
+        <div class="tech-spec-value">110°</div>
+        <div class="tech-spec-label">Water contact angle — extreme hydrophobic performance</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WARRANTY -->
+<section class="warranty-section" id="warranty">
+  <div class="section-label reveal">Warranty</div>
+  <div class="section-title reveal">We stand behind every roll.</div>
+  <div class="section-desc reveal" style="margin: 0 auto 56px;">Coverage against yellowing, cracking, peeling, bubbling, and delamination.</div>
+
+  <div class="warranty-grid">
+    <div class="warranty-card reveal">
+      <div class="warranty-years">10 <span>years</span></div>
+      <div class="warranty-product">Paint Protection Film</div>
+      <div class="warranty-details">Gloss &amp; matte PPF series</div>
+    </div>
+    <div class="warranty-card reveal">
+      <div class="warranty-years">7 <span>years</span></div>
+      <div class="warranty-product">Window Tint Film</div>
+      <div class="warranty-details">Full ceramic tint lineup</div>
+    </div>
+    <div class="warranty-card reveal">
+      <div class="warranty-years">3 <span>years</span></div>
+      <div class="warranty-product">Windshield Film</div>
+      <div class="warranty-details">Windshield protection film</div>
+    </div>
+  </div>
+</section>
+
+<!-- DEALER CTA -->
+<section class="dealer-cta">
+  <div class="section-label reveal">Partnership</div>
+  <div class="section-title reveal">Grow with SeoulShield.</div>
+  <div class="section-desc reveal">Join our global network of authorized dealers and installers. Exclusive territory, competitive margins, and full brand support.</div>
+  <button class="btn-primary reveal">Apply for Dealership</button>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <div class="section-label">Get in touch</div>
+      <h3>Ready to partner<br>with SeoulShield?</h3>
+      <p>Whether you're a distributor exploring a new brand or an installer looking for premium products — we'd love to hear from you.</p>
+      <div class="contact-detail"><strong>Email</strong> partners@seoulshield.com</div>
+      <div class="contact-detail"><strong>Phone</strong> +82-2-XXX-XXXX</div>
+      <div class="contact-detail"><strong>HQ</strong> Seoul, South Korea</div>
+    </div>
+    <div class="reveal">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your name</label>
+          <input type="text" placeholder="Full name">
+        </div>
+        <div class="form-group">
+          <label>Company</label>
+          <input type="text" placeholder="Company name">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Country</label>
+          <input type="text" placeholder="Your country">
+        </div>
+        <div class="form-group">
+          <label>Interest</label>
+          <select>
+            <option>Distributor inquiry</option>
+            <option>Dealer application</option>
+            <option>Technical support</option>
+            <option>General inquiry</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="Tell us about your business and what you're looking for..."></textarea>
+      </div>
+      <button class="btn-primary" style="width: 100%;">Send Inquiry</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="logo">SEOUL<span>SHIELD</span></div>
+    <p>Premium automotive protection film — engineered in Seoul.</p>
+  </div>
+  <div class="footer-links">
+    <a href="#products">Products</a>
+    <a href="#technology">Technology</a>
+    <a href="#why">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 SeoulShield. All rights reserved.</div>
+</footer>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
