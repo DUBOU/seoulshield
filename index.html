@@ -377,6 +377,21 @@ footer {
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
+/* SCROLL TO TOP */
+.scroll-top {
+  position: fixed; bottom: 32px; right: 32px; z-index: 99;
+  width: 48px; height: 48px; border-radius: 50%;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+  color: var(--text-muted); font-size: 20px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; opacity: 0; pointer-events: none;
+  transition: opacity 0.3s, background 0.3s, color 0.3s, border-color 0.3s;
+}
+.scroll-top.visible { opacity: 1; pointer-events: auto; }
+.scroll-top:hover {
+  background: var(--accent); color: #0a0a0a; border-color: var(--accent);
+}
+
 /* MOBILE */
 @media (max-width: 768px) {
   nav { padding: 16px 20px; }
@@ -685,11 +700,16 @@ footer {
   <div class="footer-copy">&copy; SEOULSHIELD 2026</div>
 </footer>
 
+<!-- SCROLL TO TOP -->
+<div class="scroll-top" id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
 <script>
-// Nav scroll effect
+// Nav scroll effect + scroll to top
 const nav = document.getElementById('nav');
+const scrollTop = document.getElementById('scroll-top');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 60);
+  scrollTop.classList.toggle('visible', window.scrollY > 400);
 });
 
 // Scroll reveal
