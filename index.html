@@ -634,7 +634,7 @@ footer {
       <div class="contact-detail"><strong>HQ</strong> Seoul, South Korea</div>
     </div>
     <div class="reveal">
-      <form action="https://formspree.io/f/mpqnpgdv" method="POST">
+      <form id="contact-form">
       <div class="form-row">
         <div class="form-group">
           <label>Your name</label>
@@ -670,6 +670,10 @@ footer {
       </div>
       <button type="submit" class="btn-primary" style="width: 100%;">Send Inquiry</button>
       </form>
+      <div id="form-success" style="display:none; text-align:center; padding:60px 0;">
+        <div style="font-family:var(--font-display); font-size:28px; font-weight:700; margin-bottom:12px;">Thank you!</div>
+        <p style="color:var(--text-muted); font-size:15px;">We'll be in touch shortly.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -707,6 +711,32 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.15 });
 reveals.forEach(el => observer.observe(el));
+
+// Contact form submission
+const form = document.getElementById('contact-form');
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = form.querySelector('button[type="submit"]');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  try {
+    const res = await fetch('https://formspree.io/f/mpqnpgdv', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      form.style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    } else {
+      btn.textContent = 'Error — try again';
+      btn.disabled = false;
+    }
+  } catch {
+    btn.textContent = 'Error — try again';
+    btn.disabled = false;
+  }
+});
 </script>
 
 </body>
