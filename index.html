@@ -111,7 +111,7 @@ nav.scrolled { padding: 14px 48px; }
   background: var(--accent); color: #0a0a0a; border: none; padding: 10px 24px;
   font-family: var(--font-body); font-size: 13px; font-weight: 600;
   text-transform: uppercase; letter-spacing: 0.06em; cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.3s;
+  transition: transform 0.2s, box-shadow 0.3s; text-decoration: none;
 }
 .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 24px rgba(200,255,0,0.25); }
 
@@ -166,14 +166,14 @@ nav.scrolled { padding: 14px 48px; }
   background: var(--accent); color: #0a0a0a; border: none;
   padding: 14px 32px; font-family: var(--font-body); font-size: 14px;
   font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
-  cursor: pointer; transition: transform 0.2s, box-shadow 0.3s;
+  cursor: pointer; transition: transform 0.2s, box-shadow 0.3s; text-decoration: none; display: inline-block;
 }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 30px rgba(200,255,0,0.3); }
 .btn-secondary {
   background: transparent; color: var(--text); border: 1px solid rgba(255,255,255,0.15);
   padding: 14px 32px; font-family: var(--font-body); font-size: 14px;
   font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase;
-  cursor: pointer; transition: border-color 0.3s, background 0.3s;
+  cursor: pointer; transition: border-color 0.3s, background 0.3s; text-decoration: none; display: inline-block;
 }
 .btn-secondary:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.04); }
 .hero-scroll {
@@ -403,7 +403,7 @@ footer {
     <li><a href="#warranty">Warranty</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <button class="nav-cta">Become a Dealer</button>
+  <a href="#contact" class="nav-cta">Become a Dealer</a>
 </nav>
 
 <!-- HERO -->
@@ -415,8 +415,8 @@ footer {
     <h1>Defend your finish.<br><em>Shield your investment.</em></h1>
     <p>Advanced nano-ceramic protection technology engineered in Seoul. Self-healing PPF, precision window tint, and windshield film — trusted by professionals across 30+ countries.</p>
     <div class="hero-actions">
-      <button class="btn-primary">Explore Products</button>
-      <button class="btn-secondary">Dealer Inquiry</button>
+      <a href="#products" class="btn-primary">Explore Products</a>
+      <a href="#contact" class="btn-secondary">Dealer Inquiry</a>
     </div>
   </div>
   <div class="hero-scroll">
@@ -619,7 +619,7 @@ footer {
   <div class="section-label reveal">Partnership</div>
   <div class="section-title reveal">Grow with SeoulShield.</div>
   <div class="section-desc reveal">Join our global network of authorized dealers and installers. Exclusive territory, competitive margins, and full brand support.</div>
-  <button class="btn-primary reveal">Apply for Dealership</button>
+  <a href="#contact" class="btn-primary reveal">Apply for Dealership</a>
 </section>
 
 <!-- CONTACT -->
