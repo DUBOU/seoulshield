@@ -176,13 +176,6 @@ nav.scrolled { padding: 14px 48px; }
   cursor: pointer; transition: border-color 0.3s, background 0.3s; text-decoration: none; display: inline-block;
 }
 .btn-secondary:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.04); }
-.hero-scroll {
-  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: 8px;
-  color: var(--text-muted); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
-  animation: fadeUp 0.8s ease 0.6s both;
-}
-.scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--accent), transparent); animation: scrollPulse 2s ease infinite; }
 
 /* STATS BAR */
 .stats-bar {
@@ -299,7 +292,7 @@ section { padding: 120px 48px; }
   background: linear-gradient(180deg, var(--bg) 0%, var(--bg-surface) 100%);
   text-align: center;
 }
-.warranty-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; max-width: 900px; margin: 0 auto; }
+.warranty-grid { display: grid; grid-template-columns: 1fr; gap: 2px; max-width: 560px; margin: 0 auto; }
 .warranty-card {
   padding: 40px 28px; background: var(--bg);
   border: 1px solid var(--border);
@@ -396,10 +389,6 @@ footer {
   from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: translateY(0); }
 }
-@keyframes scrollPulse {
-  0%, 100% { opacity: 0.3; transform: scaleY(1); }
-  50% { opacity: 1; transform: scaleY(1.2); }
-}
 
 /* SCROLL ANIMATIONS */
 .reveal {
@@ -461,6 +450,8 @@ footer {
   nav.scrolled { padding: 12px 32px; }
 }
 
+
+/* HERO SCROLL INDICATOR - hide on narrow or short screens to avoid overlapping hero content */
 /* MOBILE */
 @media (max-width: 768px) {
   nav {
@@ -582,23 +573,19 @@ footer {
   <div class="hero-content">
     <div class="hero-badge">Premium Automotive Protection Film</div>
     <h1>Defend your finish.<br><em>Shield your investment.</em></h1>
-    <p>SeoulShield is a Seoul-based paint protection film brand built for professional dealers, installers, and distributors seeking reliable PPF supply, clear product positioning, and long-term partnership.</p>
+    <p>Advanced nano-ceramic protection technology engineered in Seoul. Self-healing PPF, precision window tint, and windshield film — trusted by professionals across 30+ countries.</p>
     <div class="hero-actions">
       <a href="#products" class="btn-primary">Explore Products</a>
-      <a href="#contact" class="btn-secondary">Become a Dealer</a>
+      <a href="#contact" class="btn-secondary">Dealer Inquiry</a>
     </div>
-  </div>
-  <div class="hero-scroll">
-    <div class="scroll-line"></div>
-    scroll
   </div>
 </section>
 
 <!-- STATS -->
 <div class="stats-bar">
   <div class="stat-item reveal">
-    <div class="stat-number">5</div>
-    <div class="stat-label">PPF Lines</div>
+    <div class="stat-number">30+</div>
+    <div class="stat-label">Countries</div>
   </div>
   <div class="stat-item reveal">
     <div class="stat-number">10yr</div>
@@ -617,47 +604,68 @@ footer {
 <!-- PRODUCTS -->
 <section class="products" id="products">
   <div class="section-label reveal">Product lineup</div>
-  <div class="section-title reveal">Three lines.<br>Total protection.</div>
-  <div class="section-desc reveal">From body panels to windshields — SeoulShield covers every surface that matters.</div>
+  <div class="section-title reveal">Namsan Series.<br>Five PPF options.</div>
+  <div class="section-desc reveal">From flagship gloss to daily-use protection, the Namsan Series is designed to help dealers match the right PPF to each customer, vehicle, and installation need.</div>
 
   <div class="product-grid">
     <div class="product-card reveal">
       <div class="product-icon">◇</div>
-      <div class="product-name">Paint Protection Film</div>
-      <div class="product-desc">Self-healing TPU film with hydrophobic nano-ceramic top coat. Crystal-clear protection against rock chips, scratches, and UV degradation.</div>
+      <div class="product-name">Namsan Apex</div>
+      <div class="product-desc">Top-tier gloss PPF designed for premium installations requiring high clarity, deep gloss, and long-term durability.</div>
       <div class="product-specs">
-        <span class="spec-tag">Self-healing</span>
-        <span class="spec-tag">Hydrophobic</span>
-        <span class="spec-tag">8 mil</span>
-        <span class="spec-tag">Gloss / Matte</span>
+        <span class="spec-tag">Flagship</span>
+        <span class="spec-tag">High Gloss</span>
+        <span class="spec-tag">Long-Term</span>
       </div>
-      <a href="#contact" class="product-link">Request specifications →</a>
+      <a href="#contact" class="product-link">Request product details →</a>
     </div>
 
     <div class="product-card reveal">
       <div class="product-icon">◈</div>
-      <div class="product-name">Window Tint Film</div>
-      <div class="product-desc">Multi-layer ceramic window film delivering superior heat rejection and optical clarity. No signal interference, no purple fading.</div>
+      <div class="product-name">Namsan Prime</div>
+      <div class="product-desc">Premium gloss PPF built for professional dealers seeking optical clarity, reliable protection, and consistent installation performance.</div>
       <div class="product-specs">
-        <span class="spec-tag">Nano ceramic</span>
-        <span class="spec-tag">IRR 97%</span>
-        <span class="spec-tag">5%–70% VLT</span>
-        <span class="spec-tag">Signal-safe</span>
+        <span class="spec-tag">Premium</span>
+        <span class="spec-tag">Gloss</span>
+        <span class="spec-tag">Dealer-Ready</span>
       </div>
-      <a href="#contact" class="product-link">Request specifications →</a>
+      <a href="#contact" class="product-link">Request product details →</a>
     </div>
 
     <div class="product-card reveal">
       <div class="product-icon">◆</div>
-      <div class="product-name">Windshield Protection</div>
-      <div class="product-desc">Optically clear shield with nanoceramic hardcoat surface. Absorbs impact energy from road debris while maintaining full ADAS compatibility.</div>
+      <div class="product-name">Namsan Core</div>
+      <div class="product-desc">Balanced gloss PPF for stable handling, everyday protection, and volume-based installation needs.</div>
       <div class="product-specs">
-        <span class="spec-tag">85% VLT</span>
-        <span class="spec-tag">Impact absorb</span>
-        <span class="spec-tag">ADAS safe</span>
-        <span class="spec-tag">7.5 mil</span>
+        <span class="spec-tag">Balanced</span>
+        <span class="spec-tag">Stable</span>
+        <span class="spec-tag">Volume</span>
       </div>
-      <a href="#contact" class="product-link">Request specifications →</a>
+      <a href="#contact" class="product-link">Request product details →</a>
+    </div>
+
+    <div class="product-card reveal">
+      <div class="product-icon">◐</div>
+      <div class="product-name">Namsan Satin</div>
+      <div class="product-desc">Satin-finish PPF designed to protect painted surfaces while creating a refined matte appearance.</div>
+      <div class="product-specs">
+        <span class="spec-tag">Satin</span>
+        <span class="spec-tag">Matte Look</span>
+        <span class="spec-tag">Styling</span>
+      </div>
+      <a href="#contact" class="product-link">Request product details →</a>
+    </div>
+
+    <div class="product-card reveal">
+      <div class="product-icon">○</div>
+      <div class="product-name">Namsan Daily</div>
+      <div class="product-desc">Practical PPF for daily driving protection against road wear, light scratches, and everyday exposure.</div>
+      <div class="product-specs">
+        <span class="spec-tag">Daily</span>
+        <span class="spec-tag">Practical</span>
+        <span class="spec-tag">Entry</span>
+      </div>
+      <a href="#contact" class="product-link">Request product details →</a>
     </div>
   </div>
 </section>
@@ -666,28 +674,28 @@ footer {
 <section class="why-section" id="why">
   <div class="section-label reveal">Why SeoulShield</div>
   <div class="section-title reveal">Built different.</div>
-  <div class="section-desc reveal">We don't just sell film — we engineer partnerships that grow your business.</div>
+  <div class="section-desc reveal">We focus on PPF only — so every product, document, and partnership process is built around professional film businesses.</div>
 
   <div class="why-grid">
     <div class="why-card reveal">
       <div class="why-number">01</div>
-      <div class="why-title">Korean engineering, global reach</div>
-      <div class="why-desc">Developed in Seoul's precision manufacturing ecosystem with raw materials sourced from top-tier Korean chemical suppliers. Distributed to 30+ countries worldwide.</div>
+      <div class="why-title">PPF-focused brand</div>
+      <div class="why-desc">SeoulShield is built around paint protection film, not a mixed catalog of unrelated automotive films.</div>
     </div>
     <div class="why-card reveal">
       <div class="why-number">02</div>
-      <div class="why-title">Dealer-first business model</div>
-      <div class="why-desc">Exclusive territory protection, co-branded marketing assets, and dedicated technical training. We succeed only when our partners succeed.</div>
+      <div class="why-title">Clear product hierarchy</div>
+      <div class="why-desc">The Namsan Series helps dealers present each PPF option by grade, finish, and installation need.</div>
     </div>
     <div class="why-card reveal">
       <div class="why-number">03</div>
-      <div class="why-title">Full product ecosystem</div>
-      <div class="why-desc">PPF, window tint, and windshield film under one brand umbrella. Simplify your inventory, streamline your workflow, unify your offering.</div>
+      <div class="why-title">Built for distributors</div>
+      <div class="why-desc">Our lineup, documents, and inquiry process are designed for B2B partners managing real sales conversations.</div>
     </div>
     <div class="why-card reveal">
       <div class="why-number">04</div>
-      <div class="why-title">Rapid technical support</div>
-      <div class="why-desc">Dedicated support team with real installation experience. TDS documentation, installation guides, and troubleshooting — in your timezone.</div>
+      <div class="why-title">Long-term partnership</div>
+      <div class="why-desc">We work with dealers who value consistent supply, transparent communication, and sustainable growth.</div>
     </div>
   </div>
 </section>
@@ -696,23 +704,13 @@ footer {
 <section class="warranty-section" id="warranty">
   <div class="section-label reveal">Warranty</div>
   <div class="section-title reveal">We stand behind every roll.</div>
-  <div class="section-desc reveal" style="margin: 0 auto 56px;">Coverage against yellowing, cracking, peeling, bubbling, and delamination.</div>
+  <div class="section-desc reveal" style="margin: 0 auto 56px;">Coverage may include yellowing, cracking, peeling, bubbling, and delamination, depending on product type and warranty terms.</div>
 
   <div class="warranty-grid">
     <div class="warranty-card reveal">
       <div class="warranty-years">10 <span>years</span></div>
-      <div class="warranty-product">Paint Protection Film</div>
-      <div class="warranty-details">Gloss &amp; matte PPF series</div>
-    </div>
-    <div class="warranty-card reveal">
-      <div class="warranty-years">7 <span>years</span></div>
-      <div class="warranty-product">Window Tint Film</div>
-      <div class="warranty-details">Full ceramic tint lineup</div>
-    </div>
-    <div class="warranty-card reveal">
-      <div class="warranty-years">3 <span>years</span></div>
-      <div class="warranty-product">Windshield Film</div>
-      <div class="warranty-details">Windshield protection film</div>
+      <div class="warranty-product">Maximum PPF Warranty</div>
+      <div class="warranty-details">Selected Namsan Series products</div>
     </div>
   </div>
 </section>
@@ -721,8 +719,8 @@ footer {
 <section class="dealer-cta">
   <div class="section-label reveal">Partnership</div>
   <div class="section-title reveal">Grow with SeoulShield.</div>
-  <div class="section-desc reveal">Join our global network of authorized dealers and installers. Exclusive territory, competitive margins, and full brand support.</div>
-  <a href="#contact" class="btn-primary reveal">Apply for Dealership</a>
+  <div class="section-desc reveal">A focused PPF brand is entering the market with a clear lineup, dealer-ready positioning, and room for early partners to grow with us from the start. If you’re looking for a new protection film brand to build in your market, this is the moment to start the conversation.</div>
+  <a href="#contact" class="btn-primary reveal">Start Dealer Inquiry</a>
 </section>
 
 <!-- CONTACT -->
