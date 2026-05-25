@@ -51,7 +51,7 @@
   "description": "Performance-driven automotive protection film engineered in Seoul.",
   "contactPoint": {
     "@type": "ContactPoint",
-    "email": "info@seoulshield.com@seoulshield.com",
+    "email": "info@seoulshield.com",
     "contactType": "sales"
   },
   "address": {
@@ -350,11 +350,61 @@ section { padding: 120px 48px; }
 
 /* FOOTER */
 footer {
-  padding: 60px 48px 32px; border-top: 1px solid var(--border);
-  display: flex; flex-direction: column; align-items: flex-start; gap: 12px;
+  padding: 48px 48px 32px;
+  border-top: 1px solid var(--border);
 }
-.footer-brand .logo { margin-bottom: 0; }
-.footer-copy { font-size: 12px; color: var(--text-muted); }
+.footer-upper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 24px;
+}
+.footer-upper .logo {
+  font-size: 17.6px;
+  color: #f0ede6;
+}
+.footer-upper .logo span {
+  color: #f0ede6;
+}
+.footer-links {
+  display: flex;
+  gap: 28px;
+}
+.footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.footer-links a:hover {
+  color: var(--text);
+}
+.footer-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255,255,255,0.12);
+}
+.footer-lower {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 20px;
+}
+.footer-copy {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.footer-privacy {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-privacy:hover {
+  color: var(--accent);
+}
 
 /* ANIMATIONS */
 @keyframes fadeUp {
@@ -398,7 +448,9 @@ footer {
   .tech-visual { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; gap: 48px; }
   .warranty-grid { grid-template-columns: 1fr; }
-  footer { flex-direction: column; align-items: flex-start; gap: 24px; }
+  footer { padding: 36px 20px 24px; }
+  .footer-upper { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .footer-lower { flex-direction: column; align-items: flex-start; gap: 8px; }
 }
 </style>
 </head>
@@ -678,10 +730,10 @@ footer {
         <label>Message</label>
         <textarea name="message" placeholder="Tell us about your business and what you're looking for..."></textarea>
       </div>
-        <div class="form-group" style="display:flex; align-items:flex-start; gap:10px;">
-  <input type="checkbox" id="privacy-agree" required style="width:16px; height:16px; margin-top:2px; accent-color:var(--accent); cursor:pointer;">
-  <label for="privacy-agree" style="font-size:12px; text-transform:none; letter-spacing:0; color:var(--text-muted); line-height:1.5; cursor:pointer;">I agree to the <a href="privacy.html" style="color:var(--accent); text-decoration:underline;">Privacy Policy</a> and consent to the processing of my personal data.</label>
-</div>
+      <div class="form-group" style="display:flex; align-items:flex-start; gap:10px;">
+        <input type="checkbox" id="privacy-agree" required style="width:16px; height:16px; margin-top:2px; accent-color:var(--accent); cursor:pointer;">
+        <label for="privacy-agree" style="font-size:12px; text-transform:none; letter-spacing:0; color:var(--text-muted); line-height:1.5; cursor:pointer;">I agree to the <a href="privacy.html" style="color:var(--accent); text-decoration:underline;">Privacy Policy</a> and consent to the processing of my personal data.</label>
+      </div>
       <button type="submit" class="btn-primary" style="width: 100%;">Send Inquiry</button>
       </form>
       <div id="form-success" style="display:none; text-align:center; padding:60px 0;">
@@ -694,10 +746,14 @@ footer {
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-brand">
+  <div class="footer-upper">
     <div class="logo">SEOUL<span>SHIELD</span></div>
   </div>
-  <div class="footer-copy">&copy; SEOULSHIELD 2026 &nbsp;·&nbsp; <a href="privacy.html" style="color:var(--text-muted); text-decoration:none; transition:color 0.3s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-muted)'">Privacy Policy</a></div>
+  <div class="footer-divider"></div>
+  <div class="footer-lower">
+    <div class="footer-copy">&copy; SEOULSHIELD 2026. All rights reserved.</div>
+    <a href="privacy.html" class="footer-privacy">Privacy Policy</a>
+  </div>
 </footer>
 
 <!-- SCROLL TO TOP -->
