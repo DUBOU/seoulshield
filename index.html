@@ -423,6 +423,44 @@ footer {
   background: var(--accent); color: #0a0a0a; border-color: var(--accent);
 }
 
+
+/* TABLET / NARROW DESKTOP */
+@media (max-width: 1180px) {
+  nav {
+    padding: 18px 32px;
+    gap: 24px;
+  }
+  nav.scrolled { padding: 13px 32px; }
+  .logo {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  .nav-links {
+    gap: 24px;
+    flex-shrink: 1;
+  }
+  .nav-links a {
+    font-size: 12px;
+    letter-spacing: 0.06em;
+  }
+  .nav-cta {
+    padding: 10px 18px;
+    font-size: 12px;
+    line-height: 1.2;
+    text-align: center;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .nav-links { display: none; }
+  nav {
+    padding: 16px 32px;
+  }
+  nav.scrolled { padding: 12px 32px; }
+}
+
 /* MOBILE */
 @media (max-width: 768px) {
   nav {
@@ -509,7 +547,6 @@ footer {
   <div class="logo">SEOUL<span>SHIELD</span></div>
   <ul class="nav-links">
     <li><a href="#products">Products</a></li>
-    <li><a href="#technology">Technology</a></li>
     <li><a href="#why">Why Us</a></li>
     <li><a href="#warranty">Warranty</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -630,72 +667,6 @@ footer {
       <div class="why-number">04</div>
       <div class="why-title">Rapid technical support</div>
       <div class="why-desc">Dedicated support team with real installation experience. TDS documentation, installation guides, and troubleshooting — in your timezone.</div>
-    </div>
-  </div>
-</section>
-
-<!-- TECHNOLOGY -->
-<section class="tech-section" id="technology">
-  <div class="section-label reveal">Technology</div>
-  <div class="section-title reveal">Nano-ceramic architecture</div>
-  <div class="section-desc reveal">Five precision-engineered layers working in concert to deliver uncompromising protection.</div>
-
-  <div class="tech-visual reveal">
-    <div class="tech-layers">
-      <div class="tech-layer">
-        <div class="layer-color" style="background: var(--accent);"></div>
-        <div>
-          <div class="layer-name">Hydrophobic top coat</div>
-          <div class="layer-desc">Self-cleaning surface, water contact angle >110°</div>
-        </div>
-      </div>
-      <div class="tech-layer">
-        <div class="layer-color" style="background: #2d7aff;"></div>
-        <div>
-          <div class="layer-name">Self-healing clear coat</div>
-          <div class="layer-desc">Thermal activation restores surface at 60°C+</div>
-        </div>
-      </div>
-      <div class="tech-layer">
-        <div class="layer-color" style="background: #f0ede6;"></div>
-        <div>
-          <div class="layer-name">TPU core layer</div>
-          <div class="layer-desc">High-elongation elastomer, 180% stretch capacity</div>
-        </div>
-      </div>
-      <div class="tech-layer">
-        <div class="layer-color" style="background: #ff6b35;"></div>
-        <div>
-          <div class="layer-name">UV-blocking barrier</div>
-          <div class="layer-desc">99% UV-A/UV-B rejection, prevents yellowing</div>
-        </div>
-      </div>
-      <div class="tech-layer">
-        <div class="layer-color" style="background: #8a8880;"></div>
-        <div>
-          <div class="layer-name">Pressure-sensitive adhesive</div>
-          <div class="layer-desc">Repositionable during install, permanent bond after cure</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="tech-specs">
-      <div class="tech-spec-item">
-        <div class="tech-spec-value">180%</div>
-        <div class="tech-spec-label">Elongation at break — conforms to any curve without lifting</div>
-      </div>
-      <div class="tech-spec-item">
-        <div class="tech-spec-value">99%</div>
-        <div class="tech-spec-label">UV rejection rate — protects paint and interior from degradation</div>
-      </div>
-      <div class="tech-spec-item">
-        <div class="tech-spec-value">60°C</div>
-        <div class="tech-spec-label">Self-healing activation — minor scratches vanish with heat</div>
-      </div>
-      <div class="tech-spec-item">
-        <div class="tech-spec-value">110°</div>
-        <div class="tech-spec-label">Water contact angle — extreme hydrophobic performance</div>
-      </div>
     </div>
   </div>
 </section>
