@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — SeoulShield</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+
+  :root {
+    --bg: #0a0a0a;
+    --bg-surface: #111111;
+    --text: #e8e8e8;
+    --text-muted: #888888;
+    --accent: #ffffff;
+    --border: #222222;
+    --font: 'DM Sans', -apple-system, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .policy-container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 80px 24px 120px;
+  }
+
+  .policy-header {
+    margin-bottom: 60px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .policy-header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    color: var(--accent);
+  }
+
+  .policy-header .effective-date {
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+  }
+
+  .policy-nav {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    padding: 28px 32px;
+    margin-bottom: 48px;
+  }
+
+  .policy-nav p {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+
+  .policy-nav ol {
+    list-style: none;
+    counter-reset: nav-counter;
+    columns: 2;
+    column-gap: 32px;
+  }
+
+  .policy-nav ol li {
+    counter-increment: nav-counter;
+    margin-bottom: 8px;
+    font-size: 13px;
+  }
+
+  .policy-nav ol li::before {
+    content: counter(nav-counter, decimal-leading-zero) " ";
+    color: var(--text-muted);
+    font-size: 11px;
+    margin-right: 6px;
+  }
+
+  .policy-nav ol li a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .policy-nav ol li a:hover {
+    color: var(--accent);
+  }
+
+  .section {
+    margin-bottom: 48px;
+  }
+
+  .section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--accent);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section h2 span.num {
+    color: var(--text-muted);
+    font-weight: 400;
+    font-size: 13px;
+    margin-right: 10px;
+    letter-spacing: 0.02em;
+  }
+
+  .section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .section ul {
+    list-style: none;
+    margin: 12px 0 16px 0;
+  }
+
+  .section ul li {
+    position: relative;
+    padding-left: 18px;
+    margin-bottom: 8px;
+    color: var(--text);
+    font-size: 14px;
+  }
+
+  .section ul li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--text-muted);
+  }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 20px;
+    font-size: 13px;
+  }
+
+  .data-table th,
+  .data-table td {
+    text-align: left;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+  }
+
+  .data-table th {
+    background: var(--bg-surface);
+    color: var(--text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+
+  .data-table td {
+    color: var(--text);
+  }
+
+  .placeholder {
+    color: #cc8800;
+    font-style: italic;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 64px 0;
+  }
+
+  .cookie-section {
+    margin-top: 0;
+  }
+
+  .cookie-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 20px;
+    font-size: 13px;
+  }
+
+  .cookie-table th,
+  .cookie-table td {
+    text-align: left;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+  }
+
+  .cookie-table th {
+    background: var(--bg-surface);
+    color: var(--text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+
+  .footer-note {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+  }
+
+  @media (max-width: 600px) {
+    .policy-container { padding: 48px 20px 80px; }
+    .policy-header h1 { font-size: 24px; }
+    .policy-nav ol { columns: 1; }
+    .data-table, .cookie-table { font-size: 12px; }
+    .data-table th, .data-table td,
+    .cookie-table th, .cookie-table td { padding: 10px 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="policy-container">
+
+  <!-- HEADER -->
+  <div class="policy-header">
+    <h1>Privacy Policy</h1>
+    <div class="effective-date">Effective Date: <span class="placeholder">[Date — to be set at launch]</span></div>
+  </div>
+
+  <!-- TABLE OF CONTENTS -->
+  <nav class="policy-nav">
+    <p>Contents</p>
+    <ol>
+      <li><a href="#who">Who We Are</a></li>
+      <li><a href="#collect">Information We Collect</a></li>
+      <li><a href="#why">Why We Collect It</a></li>
+      <li><a href="#how">How We Collect It</a></li>
+      <li><a href="#third">Third-Party Services</a></li>
+      <li><a href="#cookies">Cookies &amp; Tracking</a></li>
+      <li><a href="#retention">Data Retention</a></li>
+      <li><a href="#rights">Your Rights</a></li>
+      <li><a href="#security">Data Security</a></li>
+      <li><a href="#changes">Changes to This Policy</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1. WHO WE ARE -->
+  <div class="section" id="who">
+    <h2><span class="num">01</span>Who We Are</h2>
+    <p>SeoulShield is a premium automotive protection film brand based in Seoul, South Korea. We manufacture and supply Paint Protection Film (PPF) and Window Film products to distributors, dealers, and installation professionals worldwide.</p>
+    <p>
+      <strong>Company:</strong> <span class="placeholder">[Company legal name — to be updated after business registration]</span><br>
+      <strong>Address:</strong> <span class="placeholder">[Registered address — to be updated]</span><br>
+      <strong>Representative:</strong> <span class="placeholder">[Representative name — to be updated]</span><br>
+      <strong>Email:</strong> info@seoulshield.com
+    </p>
+  </div>
+
+  <!-- 2. INFORMATION WE COLLECT -->
+  <div class="section" id="collect">
+    <h2><span class="num">02</span>Information We Collect</h2>
+    <p>When you submit an inquiry through our contact form, we collect the following personal information:</p>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Data Field</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Name</td><td>Your full name</td></tr>
+        <tr><td>Company</td><td>Your company or business name</td></tr>
+        <tr><td>Email</td><td>Your business email address</td></tr>
+        <tr><td>Country</td><td>Your country of residence or business</td></tr>
+        <tr><td>Interest</td><td>Type of inquiry (Distributor, Dealer, Technical, General)</td></tr>
+        <tr><td>Message</td><td>Free-text message you provide</td></tr>
+      </tbody>
+    </table>
+    <p>We also automatically collect certain technical data through cookies and analytics tools, as described in <a href="#cookies" style="color: #aaa;">Section 06</a>.</p>
+  </div>
+
+  <!-- 3. WHY WE COLLECT IT -->
+  <div class="section" id="why">
+    <h2><span class="num">03</span>Why We Collect It</h2>
+    <p>We use the information you provide for the following purposes:</p>
+    <ul>
+      <li>To respond to your inquiry and provide relevant product or partnership information</li>
+      <li>To evaluate potential distributor or dealer partnerships</li>
+      <li>To send follow-up communications related to your inquiry</li>
+      <li>To improve our website and services based on aggregated, non-identifiable usage data</li>
+    </ul>
+    <p>We do not sell, rent, or share your personal data with third parties for marketing purposes.</p>
+  </div>
+
+  <!-- 4. HOW WE COLLECT IT -->
+  <div class="section" id="how">
+    <h2><span class="num">04</span>How We Collect It</h2>
+    <p>Personal information is collected when you voluntarily submit the contact form on our website. Form submissions are processed through Formspree, a third-party form handling service, and delivered to our business email.</p>
+    <p>Technical data (such as IP address, browser type, pages visited) is collected automatically through cookies and analytics scripts when you browse our website.</p>
+  </div>
+
+  <!-- 5. THIRD-PARTY SERVICES -->
+  <div class="section" id="third">
+    <h2><span class="num">05</span>Third-Party Services</h2>
+    <p>We use the following third-party services that may process your data:</p>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Service</th>
+          <th>Purpose</th>
+          <th>Data Processed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Formspree</td>
+          <td>Contact form submission handling</td>
+          <td>Name, Company, Email, Country, Interest, Message</td>
+        </tr>
+        <tr>
+          <td>Google Analytics (GA4)</td>
+          <td>Website traffic analysis</td>
+          <td>IP address (anonymized), pages visited, session data, device info</td>
+        </tr>
+        <tr>
+          <td>Google Search Console</td>
+          <td>Search performance monitoring</td>
+          <td>Search queries, click-through data (aggregated)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Each service operates under its own privacy policy. We recommend reviewing their policies for further details:</p>
+    <ul>
+      <li>Formspree: <a href="https://formspree.io/legal/privacy-policy" style="color:#aaa;" target="_blank">formspree.io/legal/privacy-policy</a></li>
+      <li>Google Privacy: <a href="https://policies.google.com/privacy" style="color:#aaa;" target="_blank">policies.google.com/privacy</a></li>
+    </ul>
+  </div>
+
+  <!-- 6. COOKIES & TRACKING -->
+  <div class="section" id="cookies">
+    <h2><span class="num">06</span>Cookies &amp; Tracking</h2>
+    <p>Our website uses cookies and similar tracking technologies to analyze site traffic and understand how visitors interact with our content.</p>
+
+    <table class="cookie-table">
+      <thead>
+        <tr>
+          <th>Cookie / Tool</th>
+          <th>Type</th>
+          <th>Purpose</th>
+          <th>Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>_ga</td>
+          <td>Analytics</td>
+          <td>Distinguishes unique visitors (Google Analytics)</td>
+          <td>2 years</td>
+        </tr>
+        <tr>
+          <td>_ga_*</td>
+          <td>Analytics</td>
+          <td>Maintains session state (Google Analytics)</td>
+          <td>2 years</td>
+        </tr>
+        <tr>
+          <td>_gid</td>
+          <td>Analytics</td>
+          <td>Distinguishes users for 24-hour reporting</td>
+          <td>24 hours</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>How to manage cookies:</strong> You can disable or delete cookies through your browser settings at any time. Please note that disabling cookies may affect certain features of the website. You can also opt out of Google Analytics tracking by installing the <a href="https://tools.google.com/dlpage/gaoptout" style="color:#aaa;" target="_blank">Google Analytics Opt-out Browser Add-on</a>.</p>
+  </div>
+
+  <!-- 7. DATA RETENTION -->
+  <div class="section" id="retention">
+    <h2><span class="num">07</span>Data Retention</h2>
+    <p>We retain personal data submitted through the contact form for a period of <strong>five (5) years</strong> from the date of submission, after which it is securely deleted.</p>
+    <p>Analytics data collected by Google Analytics is retained according to Google's default retention settings (currently 14 months for user-level data).</p>
+    <p>If you request deletion of your data before the retention period ends, we will process your request within 30 days.</p>
+  </div>
+
+  <!-- 8. YOUR RIGHTS -->
+  <div class="section" id="rights">
+    <h2><span class="num">08</span>Your Rights</h2>
+    <p>Depending on your jurisdiction, you may have the following rights regarding your personal data:</p>
+    <ul>
+      <li><strong>Access</strong> — Request a copy of the personal data we hold about you</li>
+      <li><strong>Rectification</strong> — Request correction of inaccurate or incomplete data</li>
+      <li><strong>Erasure</strong> — Request deletion of your personal data</li>
+      <li><strong>Restriction</strong> — Request that we limit the processing of your data</li>
+      <li><strong>Portability</strong> — Request your data in a structured, machine-readable format</li>
+      <li><strong>Objection</strong> — Object to processing of your data for certain purposes</li>
+    </ul>
+    <p>To exercise any of these rights, please contact us at <strong>info@seoulshield.com</strong>. We will respond to your request within 30 days.</p>
+    <p>If you believe your data protection rights have been violated, you have the right to lodge a complaint with a supervisory authority in your jurisdiction.</p>
+  </div>
+
+  <!-- 9. DATA SECURITY -->
+  <div class="section" id="security">
+    <h2><span class="num">09</span>Data Security</h2>
+    <p>We take reasonable technical and organizational measures to protect your personal data against unauthorized access, alteration, disclosure, or destruction. These include:</p>
+    <ul>
+      <li>SSL/TLS encryption for all data transmitted through our website</li>
+      <li>Access controls limiting data access to authorized personnel only</li>
+      <li>Secure third-party service providers with their own data protection measures</li>
+    </ul>
+    <p>While we strive to protect your data, no method of transmission over the Internet is 100% secure. We cannot guarantee absolute security of your information.</p>
+  </div>
+
+  <!-- 10. CHANGES TO THIS POLICY -->
+  <div class="section" id="changes">
+    <h2><span class="num">10</span>Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. When we make changes, we will update the "Effective Date" at the top of this page.</p>
+    <p>We encourage you to review this page periodically for the latest information on our privacy practices.</p>
+  </div>
+
+  <!-- 11. CONTACT US -->
+  <div class="section" id="contact">
+    <h2><span class="num">11</span>Contact Us</h2>
+    <p>If you have questions about this Privacy Policy or wish to exercise your data rights, please contact us:</p>
+    <p>
+      <strong>Email:</strong> info@seoulshield.com<br>
+      <strong>Website:</strong> <a href="https://seoulshield.com" style="color:#aaa;">seoulshield.com</a>
+    </p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer-note">
+    &copy; 2026 SeoulShield. All rights reserved.
+  </div>
+
+</div>
+
+</body>
+</html>
