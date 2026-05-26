@@ -219,6 +219,7 @@ section { padding: 120px max(48px, calc((100vw - var(--content-max)) / 2)); }
   background: var(--bg-surface); padding: 48px 36px; position: relative;
   overflow: hidden; cursor: pointer; transition: background 0.4s;
   border: 1px solid var(--border);
+  text-decoration: none; color: inherit; display: block;
 }
 .product-card:hover { background: var(--bg-card); }
 .product-card::before {
@@ -719,7 +720,7 @@ footer {
   <div class="section-desc reveal">From flagship gloss to daily-use protection, the Namsan Series is designed to help dealers match the right PPF to each customer, vehicle, and installation need.</div>
 
   <div class="product-grid">
-    <div class="product-card reveal">
+    <a href="/namsan-series-1.html#apex" class="product-card reveal">
       <div class="product-icon">◇</div>
       <div class="product-name">Namsan Apex</div>
       <div class="product-desc">Top-tier gloss PPF designed for premium installations requiring high clarity, deep gloss, and long-term durability.</div>
@@ -728,10 +729,10 @@ footer {
         <span class="spec-tag">High Gloss</span>
         <span class="spec-tag">Long-Term</span>
       </div>
-      <a href="/namsan-series-1.html#apex" class="product-link">View product details →</a>
-    </div>
+      <span class="product-link">View product details →</span>
+    </a>
 
-    <div class="product-card reveal">
+    <a href="/namsan-series-1.html#max" class="product-card reveal">
       <div class="product-icon">◈</div>
       <div class="product-name">Namsan Prime</div>
       <div class="product-desc">Premium gloss PPF built for professional dealers seeking optical clarity, reliable protection, and consistent installation performance.</div>
@@ -740,10 +741,10 @@ footer {
         <span class="spec-tag">Gloss</span>
         <span class="spec-tag">Dealer-Ready</span>
       </div>
-      <a href="/namsan-series-1.html#max" class="product-link">View product details →</a>
-    </div>
+      <span class="product-link">View product details →</span>
+    </a>
 
-    <div class="product-card reveal">
+    <a href="/namsan-series-1.html#fit" class="product-card reveal">
       <div class="product-icon">◆</div>
       <div class="product-name">Namsan Core</div>
       <div class="product-desc">Balanced gloss PPF for stable handling, everyday protection, and volume-based installation needs.</div>
@@ -752,10 +753,10 @@ footer {
         <span class="spec-tag">Stable</span>
         <span class="spec-tag">Volume</span>
       </div>
-      <a href="/namsan-series-1.html#fit" class="product-link">View product details →</a>
-    </div>
+      <span class="product-link">View product details →</span>
+    </a>
 
-    <div class="product-card reveal">
+    <a href="/namsan-series-1.html#desert" class="product-card reveal">
       <div class="product-icon">◐</div>
       <div class="product-name">Namsan Satin</div>
       <div class="product-desc">Satin-finish PPF designed to protect painted surfaces while creating a refined matte appearance.</div>
@@ -764,10 +765,10 @@ footer {
         <span class="spec-tag">Matte Look</span>
         <span class="spec-tag">Styling</span>
       </div>
-      <a href="/namsan-series-1.html#desert" class="product-link">View product details →</a>
-    </div>
+      <span class="product-link">View product details →</span>
+    </a>
 
-    <div class="product-card reveal">
+    <a href="/namsan-series-1.html#daily" class="product-card reveal">
       <div class="product-icon">○</div>
       <div class="product-name">Namsan Daily</div>
       <div class="product-desc">Practical PPF for daily driving protection against road wear, light scratches, and everyday exposure.</div>
@@ -776,8 +777,8 @@ footer {
         <span class="spec-tag">Practical</span>
         <span class="spec-tag">Entry</span>
       </div>
-      <a href="/namsan-series-1.html#daily" class="product-link">View product details →</a>
-    </div>
+      <span class="product-link">View product details →</span>
+    </a>
   </div>
 </section>
 
