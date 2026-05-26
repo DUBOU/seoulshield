@@ -79,6 +79,7 @@
   --border: rgba(255,255,255,0.06);
   --font-display: 'Syne', sans-serif;
   --font-body: 'Outfit', sans-serif;
+  --page-max: 1160px;
 }
 
 html { scroll-behavior: smooth; }
@@ -180,7 +181,10 @@ nav.scrolled { padding: 14px 48px; }
 /* STATS BAR */
 .stats-bar {
   display: grid; grid-template-columns: repeat(4, 1fr);
+  max-width: var(--page-max);
+  margin: 0 auto;
   border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  border-left: 1px solid var(--border); border-right: 1px solid var(--border);
 }
 .stat-item {
   padding: 40px 32px; text-align: center;
@@ -193,8 +197,8 @@ nav.scrolled { padding: 14px 48px; }
 }
 .stat-label { font-size: 13px; color: var(--text-muted); margin-top: 6px; text-transform: uppercase; letter-spacing: 0.08em; }
 
-/* SECTIONS */
-section { padding: 120px 48px; }
+/* SECTIONS - centered content width */
+section { padding: 120px max(48px, calc((100vw - var(--page-max)) / 2)); }
 .section-label {
   font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
   color: var(--accent); margin-bottom: 16px;
@@ -293,7 +297,7 @@ section { padding: 120px 48px; }
   text-align: left;
 }
 .warranty-layout {
-  max-width: 1160px;
+  max-width: var(--page-max);
   margin: 0 auto;
   display: grid;
   grid-template-columns: minmax(0, 0.92fr) minmax(320px, 0.78fr);
@@ -358,7 +362,7 @@ section { padding: 120px 48px; }
 
 /* FOOTER */
 footer {
-  padding: 42px 48px 32px;
+  padding: 42px max(48px, calc((100vw - var(--page-max)) / 2)) 32px;
   background: #070707;
   border-top: 1px solid rgba(255,255,255,0.12);
 }
@@ -584,7 +588,7 @@ footer {
   border-radius: 34px;
   isolation: isolate;
   transform-style: preserve-3d;
-  animation: ss-card-sway 5.8s ease-in-out infinite;
+  animation: ss-card-dori 5.2s ease-in-out infinite;
   filter: drop-shadow(0 20px 30px rgba(0,0,0,.26));
 }
 .warranty-badge-stage .ss-badge-img {
@@ -628,9 +632,22 @@ footer {
   68% { opacity: .60; }
   88%, 100% { transform: translateX(620%) skewX(-18deg); opacity: 0; }
 }
-@keyframes ss-card-sway {
-  0%, 100% { transform: perspective(900px) translateX(-7px) rotateY(-0.7deg) rotateX(0deg); }
-  50% { transform: perspective(900px) translateX(9px) rotateY(0.9deg) rotateX(-0.25deg); }
+@keyframes ss-card-dori {
+  0%, 100% {
+    transform: perspective(900px) rotateY(0deg) rotateZ(0deg) translateY(0);
+  }
+  18% {
+    transform: perspective(900px) rotateY(-5deg) rotateZ(-0.6deg) translateY(-1px);
+  }
+  36% {
+    transform: perspective(900px) rotateY(4.5deg) rotateZ(0.45deg) translateY(0);
+  }
+  54% {
+    transform: perspective(900px) rotateY(-3deg) rotateZ(-0.3deg) translateY(-1px);
+  }
+  72% {
+    transform: perspective(900px) rotateY(2deg) rotateZ(0.2deg) translateY(0);
+  }
 }
 @media (max-width: 768px) {
   .warranty-layout {
