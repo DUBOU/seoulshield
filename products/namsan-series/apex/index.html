@@ -278,13 +278,40 @@
 
     .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 36px; }
     .feature-item {
-      padding: 20px; background: var(--bg-surface); border: 1px solid var(--border);
+      min-height: 88px;
+      padding: 20px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .feature-icon {
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(200,255,0,0.20);
+      color: var(--accent);
+      font-size: 14px;
+      line-height: 1;
+    }
+    .feature-icon img {
+      width: 20px;
+      height: 20px;
+      display: block;
+      object-fit: contain;
     }
     .feature-item h4 {
-      font-size: 13px; font-weight: 600; margin-bottom: 6px;
-      color: var(--text); letter-spacing: 0.01em;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 0;
+      color: var(--text);
+      letter-spacing: 0.01em;
+      line-height: 1.35;
     }
-    .feature-item p { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
 
     .spec-table { width: 100%; border-collapse: collapse; font-size: 14px; }
     .spec-table th, .spec-table td {
@@ -510,10 +537,10 @@
     <article class="info-card">
       <h3 class="info-card-title">Key Features</h3>
       <div class="feature-grid" id="featureGrid">
-        <div class="feature-item"><h4>Instant Self-Healing</h4><p>Helps light surface scratches recover quickly without hot water or external heat.</p></div>
-        <div class="feature-item"><h4>High Gloss Finish</h4><p>Maintains a clear, polished look over the original paint.</p></div>
-        <div class="feature-item"><h4>Hydrophobic Surface</h4><p>Repels liquid and helps reduce water spots during daily use.</p></div>
-        <div class="feature-item"><h4>Chemical Resistance</h4><p>Helps remove insects, bird droppings, and oily contaminants more easily.</p></div>
+        <div class="feature-item"><span class="feature-icon"><img src="icon-1.svg" alt="Instant Self-Healing"></span><h4>Instant Self-Healing</h4></div>
+        <div class="feature-item"><span class="feature-icon"><img src="icon-2.svg" alt="High Gloss Finish"></span><h4>High Gloss Finish</h4></div>
+        <div class="feature-item"><span class="feature-icon"><img src="icon-3.svg" alt="Hydrophobic Surface"></span><h4>Hydrophobic Surface</h4></div>
+        <div class="feature-item"><span class="feature-icon"><img src="icon-4.svg" alt="Anti-Yellowing"></span><h4>Anti-Yellowing</h4></div>
       </div>
 
       <h3 class="info-card-title">Quick Specs</h3>
@@ -522,7 +549,6 @@
           <tr><th>Finish</th><td>Clear gloss</td></tr>
           <tr><th>Film Thickness</th><td>190μm / 7.5mil</td></tr>
           <tr><th>Total Thickness</th><td>315μm</td></tr>
-          <tr><th>Gloss 60°</th><td>≥90GU</td></tr>
           <tr><th>Self-Healing</th><td>Instant</td></tr>
           <tr><th>Warranty</th><td>5 years</td></tr>
         </tbody>
@@ -648,16 +674,15 @@
       tagline: 'Premium gloss PPF for clear protection and fast surface recovery.',
       badges: ['Instant Self-Healing', 'High Gloss', 'Hydrophobic', 'Anti-Yellowing', '5-Year Warranty'],
       features: [
-        ['Instant Self-Healing', 'Helps light surface scratches recover quickly without hot water or external heat.'],
-        ['High Gloss Finish', 'Maintains a clear, polished look over the original paint.'],
-        ['Hydrophobic Surface', 'Repels liquid and helps reduce water spots during daily use.'],
-        ['Chemical Resistance', 'Helps remove insects, bird droppings, and oily contaminants more easily.']
+        ['icon-1.svg', 'Instant Self-Healing', 'Instant Self-Healing'],
+        ['icon-2.svg', 'High Gloss Finish', 'High Gloss Finish'],
+        ['icon-3.svg', 'Hydrophobic Surface', 'Hydrophobic Surface'],
+        ['icon-4.svg', 'Anti-Yellowing', 'Anti-Yellowing']
       ],
       specs: [
         ['Finish', 'Clear gloss'],
         ['Film Thickness', '190μm / 7.5mil'],
         ['Total Thickness', '315μm'],
-        ['Gloss 60°', '≥90GU'],
         ['Self-Healing', 'Instant'],
         ['Warranty', '5 years']
       ]
@@ -667,10 +692,10 @@
       tagline: 'Gloss PPF for installers who want measured durability data.',
       badges: ['Gloss Finish', 'Chemical Resistance', 'Weathering Tested', 'Durability Data'],
       features: [
-        ['Durability Data', 'Built around measurable physical properties and test results.'],
-        ['Chemical Resistance', 'Tested against acid, alkali, alcohol, gasoline, and boiling water.'],
-        ['Weathering Resistance', 'Designed to support outdoor automotive use.'],
-        ['Gloss Protection', 'A clear gloss option for painted exterior surfaces.']
+        ['icon-1.svg', 'Durability Data', 'Durability Data'],
+        ['icon-2.svg', 'Chemical Resistance', 'Chemical Resistance'],
+        ['icon-3.svg', 'Weathering Tested', 'Weathering Tested'],
+        ['icon-4.svg', 'Gloss Finish', 'Gloss Finish']
       ],
       specs: [
         ['Finish', 'Clear gloss'],
@@ -686,15 +711,14 @@
       tagline: 'Clear gloss PPF for everyday protection and accessible installation.',
       badges: ['Heat Self-Healing', 'High Gloss', 'Hydrophobic', '99% UV Block'],
       features: [
-        ['Heat Self-Healing', 'Light scratches can recover with hot water or heat application.'],
-        ['High Gloss Finish', 'Designed to keep the vehicle looking clean and polished.'],
-        ['Hydrophobic Surface', 'Helps repel liquid and reduce water spots.'],
-        ['UV Protection', 'Blocks 99% of ultraviolet rays.']
+        ['icon-1.svg', 'Heat Self-Healing', 'Heat Self-Healing'],
+        ['icon-2.svg', 'High Gloss Finish', 'High Gloss Finish'],
+        ['icon-3.svg', 'Hydrophobic Surface', 'Hydrophobic Surface'],
+        ['icon-4.svg', 'UV Protection', 'UV Protection']
       ],
       specs: [
         ['Finish', 'Clear gloss'],
         ['Thickness', '312μm'],
-        ['Gloss 60°', '≥90GU'],
         ['Self-Healing', 'Heat'],
         ['UV Block', '99%'],
         ['Warranty', 'To be confirmed']
@@ -705,16 +729,15 @@
       tagline: 'Matte finish PPF for a refined low-gloss surface.',
       badges: ['Matte Finish', 'Heat Self-Healing', 'Hydrophobic', 'Anti-Yellowing', '5–7-Year Warranty'],
       features: [
-        ['Matte Coating', 'Provides a low-gloss finish for a refined visual effect.'],
-        ['Heat Self-Healing', 'Light scratches can recover with hot water or heat application.'],
-        ['Hydrophobic Surface', 'Repels liquid and helps reduce water spots.'],
-        ['Yellowing Resistance', 'Tested through 3,000h Quick UV Test.']
+        ['icon-1.svg', 'Matte Finish', 'Matte Finish'],
+        ['icon-2.svg', 'Heat Self-Healing', 'Heat Self-Healing'],
+        ['icon-3.svg', 'Hydrophobic Surface', 'Hydrophobic Surface'],
+        ['icon-4.svg', 'Anti-Yellowing', 'Anti-Yellowing']
       ],
       specs: [
         ['Finish', 'Matte'],
         ['Film Thickness', '186μm / 7.3mil'],
         ['Total Thickness', '265μm'],
-        ['Gloss 60°', '10–15GU'],
         ['Self-Healing', 'Heat'],
         ['Warranty', '5–7 years']
       ]
@@ -724,10 +747,10 @@
       tagline: 'Practical PPF for daily driving protection.',
       badges: ['Basic Protection', 'Gloss Finish', 'Entry Line', 'Dealer-Friendly'],
       features: [
-        ['Basic Protection', 'Suitable for common contact areas and simple paint protection needs.'],
-        ['Gloss Finish', 'Maintains the original painted appearance.'],
-        ['Dealer-Friendly', 'Useful as an approachable entry product in the lineup.'],
-        ['Flexible Coverage', 'Can support essential-area installation packages.']
+        ['icon-1.svg', 'Basic Protection', 'Basic Protection'],
+        ['icon-2.svg', 'Gloss Finish', 'Gloss Finish'],
+        ['icon-3.svg', 'Dealer-Friendly', 'Dealer-Friendly'],
+        ['icon-4.svg', 'Flexible Coverage', 'Flexible Coverage']
       ],
       specs: [
         ['Finish', 'Clear gloss'],
@@ -759,8 +782,8 @@
     featureGrid.innerHTML = product.features
       .map(feature => `
         <div class="feature-item">
-          <h4>${feature[0]}</h4>
-          <p>${feature[1]}</p>
+          <span class="feature-icon"><img src="${feature[0]}" alt="${feature[1]}"></span>
+          <h4>${feature[2]}</h4>
         </div>
       `)
       .join('');
