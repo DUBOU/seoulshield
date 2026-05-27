@@ -116,6 +116,31 @@ nav.scrolled { padding: 14px 48px; }
 }
 .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 24px rgba(200,255,0,0.25); }
 
+/* NAV DROPDOWN */
+.nav-dropdown { position: relative; }
+.dropdown-menu {
+  position: absolute; top: 100%; left: -12px;
+  background: rgba(16,16,16,0.96); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border); padding: 8px 0;
+  min-width: 200px; display: flex; flex-direction: column;
+  opacity: 0; visibility: hidden; transform: translateY(8px);
+  transition: opacity 0.25s, visibility 0.25s, transform 0.25s;
+  z-index: 200; margin-top: 12px;
+}
+.nav-dropdown:hover .dropdown-menu {
+  opacity: 1; visibility: visible; transform: translateY(0);
+}
+.dropdown-menu li { list-style: none; }
+.dropdown-menu a {
+  display: block; padding: 10px 20px; font-size: 13px;
+  color: var(--text-muted); text-decoration: none;
+  letter-spacing: 0.02em; text-transform: none;
+  transition: color 0.2s, background 0.2s;
+}
+.dropdown-menu a:hover {
+  color: var(--accent); background: rgba(255,255,255,0.04);
+}
+
 /* HERO */
 .hero {
   height: 100vh; display: flex; align-items: center; justify-content: center;
@@ -670,7 +695,16 @@ footer {
 <nav id="nav">
   <div class="logo">SEOUL<span>SHIELD</span></div>
   <ul class="nav-links">
-    <li><a href="#products">Products</a></li>
+    <li class="nav-dropdown">
+      <a href="#products">Products</a>
+      <ul class="dropdown-menu">
+        <li><a href="/products/namsan-series/apex/">Namsan Apex</a></li>
+        <li><a href="/products/namsan-series/max/">Namsan Max</a></li>
+        <li><a href="/products/namsan-series/fit/">Namsan Fit</a></li>
+        <li><a href="/products/namsan-series/desert/">Namsan Desert</a></li>
+        <li><a href="/products/namsan-series/daily/">Namsan Daily</a></li>
+      </ul>
+    </li>
     <li><a href="#why">Why Us</a></li>
     <li><a href="#warranty">Warranty</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -720,7 +754,7 @@ footer {
   <div class="section-desc reveal">From flagship gloss to daily-use protection, the Namsan Series is designed to help dealers match the right PPF to each customer, vehicle, and installation need.</div>
 
   <div class="product-grid">
-    <a href="/namsan-series-1.html#apex" class="product-card reveal">
+    <a href="/products/namsan-series/apex/" class="product-card reveal">
       <div class="product-icon">◇</div>
       <div class="product-name">Namsan Apex</div>
       <div class="product-desc">Top-tier gloss PPF designed for premium installations requiring high clarity, deep gloss, and long-term durability.</div>
@@ -732,7 +766,7 @@ footer {
       <span class="product-link">View product details →</span>
     </a>
 
-    <a href="/namsan-series-1.html#max" class="product-card reveal">
+    <a href="/products/namsan-series/max/" class="product-card reveal">
       <div class="product-icon">◈</div>
       <div class="product-name">Namsan Prime</div>
       <div class="product-desc">Premium gloss PPF built for professional dealers seeking optical clarity, reliable protection, and consistent installation performance.</div>
@@ -744,7 +778,7 @@ footer {
       <span class="product-link">View product details →</span>
     </a>
 
-    <a href="/namsan-series-1.html#fit" class="product-card reveal">
+    <a href="/products/namsan-series/fit/" class="product-card reveal">
       <div class="product-icon">◆</div>
       <div class="product-name">Namsan Core</div>
       <div class="product-desc">Balanced gloss PPF for stable handling, everyday protection, and volume-based installation needs.</div>
@@ -756,7 +790,7 @@ footer {
       <span class="product-link">View product details →</span>
     </a>
 
-    <a href="/namsan-series-1.html#desert" class="product-card reveal">
+    <a href="/products/namsan-series/desert/" class="product-card reveal">
       <div class="product-icon">◐</div>
       <div class="product-name">Namsan Satin</div>
       <div class="product-desc">Satin-finish PPF designed to protect painted surfaces while creating a refined matte appearance.</div>
@@ -768,7 +802,7 @@ footer {
       <span class="product-link">View product details →</span>
     </a>
 
-    <a href="/namsan-series-1.html#daily" class="product-card reveal">
+    <a href="/products/namsan-series/daily/" class="product-card reveal">
       <div class="product-icon">○</div>
       <div class="product-name">Namsan Daily</div>
       <div class="product-desc">Practical PPF for daily driving protection against road wear, light scratches, and everyday exposure.</div>
