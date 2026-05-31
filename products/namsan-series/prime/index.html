@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Namsan Prime | SeoulShield</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0a0a0a; --bg-surface: #111111; --bg-card: #161616;
+      --text: #f0ede6; --text-muted: #8a8880; --accent: #c8ff00;
+      --accent-dim: rgba(200,255,0,0.12); --border: rgba(255,255,255,0.06);
+      --font-display: 'Syne', sans-serif; --font-body: 'Outfit', sans-serif;
+      --content-max: 1040px;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; background: rgba(10,10,10,0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); transition: padding 0.3s; }
+    nav.scrolled { padding: 14px 48px; }
+    .logo { font-family: var(--font-display); font-weight: 800; font-size: 22px; letter-spacing: -0.02em; }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { background: var(--accent); color: #0a0a0a; border: none; padding: 10px 24px; font-family: var(--font-body); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; cursor: pointer; transition: transform 0.2s, box-shadow 0.3s; text-decoration: none; }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 24px rgba(200,255,0,0.25); }
+    .nav-dropdown { position: relative; }
+    .dropdown-menu { position: absolute; top: 100%; left: -12px; background: rgba(16,16,16,0.96); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--border); padding: 8px 0; min-width: 200px; display: flex; flex-direction: column; opacity: 0; visibility: hidden; transform: translateY(8px); transition: opacity 0.25s, visibility 0.25s, transform 0.25s; z-index: 200; margin-top: 12px; }
+    .nav-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+    .dropdown-menu li { list-style: none; }
+    .dropdown-menu a { display: block; padding: 10px 20px; font-size: 13px; color: var(--text-muted); text-decoration: none; letter-spacing: 0.02em; text-transform: none; transition: color 0.2s, background 0.2s; }
+    .dropdown-menu a:hover { color: var(--accent); background: rgba(255,255,255,0.04); }
+
+    /* SECTIONS */
+    section { padding: 120px max(48px, calc((100vw - var(--content-max)) / 2)); }
+    .section-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+    .section-title { font-family: var(--font-display); font-size: clamp(32px, 4vw, 52px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 20px; }
+    .section-desc { font-size: 16px; color: var(--text-muted); line-height: 1.7; max-width: 520px; margin-bottom: 56px; }
+
+    /* HERO */
+    .hero { min-height: auto; padding-top: 210px; padding-bottom: 124px; display: flex; align-items: flex-start; position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(200,255,0,0.04) 0%, transparent 70%), radial-gradient(ellipse 60% 50% at 70% 60%, rgba(45,122,255,0.03) 0%, transparent 60%); }
+    .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 70%); }
+    .hero-content { position: relative; max-width: var(--content-max); width: 100%; margin: 0 auto; padding: 0 48px; }
+    .hero-badge { display: inline-block; padding: 6px 16px; border: 1px solid rgba(200,255,0,0.2); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 32px; animation: fadeUp 0.8s ease both; }
+    .hero h1 { font-family: var(--font-display); font-size: clamp(38px, 5.5vw, 68px); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 24px; animation: fadeUp 0.8s ease 0.15s both; }
+    .hero h1 em { font-style: normal; background: linear-gradient(135deg, var(--accent), #a0ff40); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero p { font-size: 15px; font-weight: 300; color: var(--text-muted); line-height: 1.7; max-width: 560px; margin-bottom: 40px; animation: fadeUp 0.8s ease 0.3s both; }
+    .hero-actions { display: flex; gap: 16px; animation: fadeUp 0.8s ease 0.45s both; }
+
+    /* BUTTONS */
+    .btn-primary { background: var(--accent); color: #0a0a0a; border: none; padding: 14px 32px; font-family: var(--font-body); font-size: 14px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; cursor: pointer; transition: transform 0.2s, box-shadow 0.3s; text-decoration: none; display: inline-block; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 30px rgba(200,255,0,0.3); }
+    .tds-button { background: #ffffff; color: #0a0a0a; border-color: #ffffff; }
+    .tds-button:hover { background: #ffffff; color: #0a0a0a; border-color: #ffffff; box-shadow: 0 6px 30px rgba(255,255,255,0.18); }
+    .btn-secondary { background: transparent; color: var(--text); border: 1px solid rgba(255,255,255,0.15); padding: 14px 32px; font-family: var(--font-body); font-size: 14px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; cursor: pointer; transition: border-color 0.3s, background 0.3s; text-decoration: none; display: inline-block; }
+    .btn-secondary:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.04); }
+
+    /* PRODUCT EXPLORER */
+    .product-explorer-head { display: block; margin-bottom: 44px; }
+    .product-explorer-copy { max-width: none; }
+    .product-explorer-copy .section-title { white-space: nowrap; margin-bottom: 28px; }
+    .product-tabs { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; align-items: center; width: 100%; margin: 0 0 40px 0; }
+    .product-tab { width: 100%; min-width: 0; background: transparent; color: var(--text-muted); border: 1px solid rgba(255,255,255,0.12); border-radius: 0; padding: 15px 28px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; transition: color 0.3s, border-color 0.3s, background 0.3s; text-align: center; white-space: nowrap; }
+    .product-tab:hover { color: var(--text); border-color: rgba(255,255,255,0.32); background: rgba(255,255,255,0.04); }
+    .product-tab.active { color: #0a0a0a; background: var(--accent); border-color: var(--accent); }
+    .product-card h3#productName { color: var(--accent); }
+
+    /* PRODUCT DETAIL */
+    .detail-section { background: var(--bg-surface); border-top: 1px solid var(--border); }
+    .product-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .product-card, .info-card { background: var(--bg); border: 1px solid var(--border); padding: 44px; }
+    .product-card { display: flex; flex-direction: column; }
+    .product-card .eyebrow { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+    .product-card h3 { font-family: var(--font-display); font-size: clamp(28px, 3vw, 40px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .product-card .tagline { font-size: 15px; color: var(--text); font-weight: 500; margin-bottom: 16px; }
+    .product-card .desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 28px; }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 32px; }
+    .badge { padding: 4px 10px; border: 1px solid rgba(255,255,255,0.08); font-size: 11px; color: var(--text-muted); letter-spacing: 0.04em; text-transform: uppercase; }
+    .card-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: auto; }
+    .mock-film { height: 180px; background: #1a1a1a; border: 1px solid var(--border); margin-top: 28px; display: flex; align-items: flex-end; padding: 18px; color: rgba(255,255,255,0.25); font-size: 12px; font-weight: 400; }
+
+    /* INFO CARD */
+    .info-card { display: flex; flex-direction: column; }
+    .info-card-title { font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-bottom: 20px; letter-spacing: -0.01em; }
+    .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 36px; }
+    .feature-item { min-height: 88px; padding: 20px; background: var(--bg-surface); border: 1px solid var(--border); display: flex; align-items: center; gap: 14px; }
+    .feature-icon { width: 32px; height: 32px; min-width: 32px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid rgba(200,255,0,0.20); color: var(--accent); font-size: 14px; line-height: 1; }
+    .feature-icon img { width: 20px; height: 20px; display: block; object-fit: contain; }
+    .feature-item h4 { font-size: 13px; font-weight: 600; margin-bottom: 0; color: var(--text); letter-spacing: 0.01em; line-height: 1.35; }
+    .spec-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .spec-table th, .spec-table td { border-bottom: 1px solid var(--border); padding: 12px 0; text-align: left; vertical-align: top; }
+    .spec-table th { width: 42%; color: var(--text-muted); font-weight: 400; font-size: 13px; }
+    .spec-table td { font-weight: 500; color: var(--text); }
+
+    /* COVERAGE */
+    .coverage-section { background: var(--bg); }
+    .coverage-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+    .coverage-card { background: var(--bg-surface); border: 1px solid var(--border); padding: 36px 28px; position: relative; overflow: hidden; transition: background 0.4s; }
+    .coverage-card:hover { background: var(--bg-card); }
+    .coverage-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+    .coverage-card:hover::before { transform: scaleX(1); }
+    .coverage-card h3 { font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.01em; }
+    .coverage-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px; }
+    .coverage-card ul { list-style: none; }
+    .coverage-card li { padding: 8px 0; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-muted); font-weight: 400; }
+
+    /* FAQ */
+    .faq-section { background: var(--bg-surface); border-top: 1px solid var(--border); }
+    .faq-list { border-top: 1px solid var(--border); }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-question { width: 100%; min-height: 64px; border: 0; background: transparent; display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 22px 0; font-size: 16px; font-weight: 500; color: var(--text); text-align: left; cursor: pointer; font-family: var(--font-body); transition: color 0.3s; }
+    .faq-question:hover { color: var(--accent); }
+    .faq-icon { width: 32px; height: 32px; min-width: 32px; border: 1px solid rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 300; color: var(--text-muted); line-height: 1; transition: all 0.3s ease; }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .faq-answer-inner { color: var(--text-muted); max-width: 720px; padding: 0 0 24px 0; font-size: 15px; line-height: 1.7; }
+    .faq-item.open .faq-answer { max-height: 300px; }
+    .faq-item.open .faq-icon { background: var(--accent); border-color: var(--accent); color: #0a0a0a; transform: rotate(45deg); }
+
+    /* CTA */
+    .cta-section { background: var(--bg); text-align: center; border-top: 1px solid var(--border); }
+    .cta-section .section-title { max-width: 600px; margin: 0 auto 20px; }
+    .cta-section .section-desc { margin: 0 auto 40px; max-width: 520px; }
+
+    /* FOOTER */
+    footer { padding: 42px max(48px, calc((100vw - var(--content-max)) / 2)) 32px; background: #070707; border-top: 1px solid rgba(255,255,255,0.12); }
+    .footer-upper { display: flex; align-items: center; justify-content: flex-start; padding-bottom: 14px; }
+    .footer-upper .logo { font-size: 14.08px; color: #f0ede6; }
+    .footer-upper .logo span { color: #f0ede6; }
+    .footer-lower { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+    .footer-copy { font-size: 12px; color: var(--text-muted); }
+    .footer-privacy { font-size: 12px; color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+    .footer-privacy:hover { color: var(--accent); }
+
+    /* SCROLL TOP */
+    .scroll-top { position: fixed; bottom: 32px; right: 32px; z-index: 99; width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); color: var(--text-muted); font-size: 20px; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 0.3s, background 0.3s, color 0.3s, border-color 0.3s; }
+    .scroll-top.visible { opacity: 1; pointer-events: auto; }
+    .scroll-top:hover { background: var(--accent); color: #0a0a0a; border-color: var(--accent); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 1180px) { nav { padding: 18px 32px; } nav.scrolled { padding: 13px 32px; } .nav-links { gap: 24px; } .nav-links a { font-size: 12px; } .nav-cta { padding: 10px 18px; font-size: 12px; } }
+    @media (min-width: 769px) and (max-width: 1024px) { .nav-links { display: none; } }
+    @media (min-width: 769px) and (max-width: 980px) { .product-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    @media (max-width: 768px) {
+      nav { padding: 14px 20px; } nav.scrolled { padding: 12px 20px; } .nav-links { display: none; } .logo { font-size: 18px; } .nav-cta { padding: 10px 14px; font-size: 11px; }
+      .hero { height: auto; min-height: 80svh; padding: 118px 20px 72px; align-items: flex-start; }
+      .hero-content { padding: 0; text-align: left; }
+      .hero h1 { font-size: clamp(38px, 12vw, 56px); }
+      .hero-actions { flex-direction: column; }
+      .btn-primary, .btn-secondary { width: 100%; text-align: center; }
+      section { padding: 80px 20px; }
+      .product-explorer-copy .section-title { white-space: normal; }
+      .product-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-bottom: 28px; }
+      .product-tab { width: 100%; min-width: 0; text-align: center; padding: 13px 14px; }
+      .product-panel { grid-template-columns: 1fr; }
+      .product-card, .info-card { padding: 28px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .coverage-grid { grid-template-columns: 1fr; }
+      footer { padding: 34px 20px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="logo"><a href="/" style="color:inherit;text-decoration:none;">SEOUL<span>SHIELD</span></a></div>
+  <ul class="nav-links">
+    <li class="nav-dropdown">
+      <a href="/#products">Products</a>
+      <ul class="dropdown-menu">
+        <li><a href="/products/namsan-series/apex/">Namsan Apex</a></li>
+        <li><a href="/products/namsan-series/prime/">Namsan Prime</a></li>
+        <li><a href="/products/namsan-series/fit/">Namsan Fit</a></li>
+        <li><a href="/products/namsan-series/desert/">Namsan Desert</a></li>
+        <li><a href="/products/namsan-series/basic/">Namsan Basic</a></li>
+      </ul>
+    </li>
+    <li><a href="/#why">Why Us</a></li>
+    <li><a href="/#warranty">Warranty</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <a href="/#contact" class="nav-cta">Become a Dealer</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">SeoulShield Premium PPF</div>
+    <h1>Namsan<br><em>Prime.</em></h1>
+    <p>Premium gloss PPF with instant self-healing and strong adhesion. Built for professional installers who need reliable performance and consistent results across every panel.</p>
+    <div class="hero-actions">
+      <a href="/#contact" class="btn-primary">Request Product Details</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT EXPLORER -->
+<section id="specs" class="detail-section">
+  <div class="product-explorer-head">
+    <div class="product-explorer-copy">
+      <div class="section-label reveal">Product Explorer</div>
+      <div class="section-title reveal">Explore Namsan PPF</div>
+    </div>
+    <div class="product-tabs reveal">
+      <button class="product-tab" type="button" data-product="apex">Apex</button>
+      <button class="product-tab active" type="button" data-product="prime">Prime</button>
+      <button class="product-tab" type="button" data-product="fit">Fit</button>
+      <button class="product-tab" type="button" data-product="desert">Desert</button>
+      <button class="product-tab" type="button" data-product="basic">Basic</button>
+    </div>
+  </div>
+
+  <div class="product-panel">
+    <article class="product-card">
+      <h3 id="productName">Namsan Prime</h3>
+      <div class="tagline" id="productTagline">Premium gloss PPF with instant self-healing and strong adhesion.</div>
+      <div class="badge-row" id="productBadges">
+        <span class="badge">Instant Self-Healing</span>
+        <span class="badge">High Gloss</span>
+        <span class="badge">Hydrophobic</span>
+        <span class="badge">Anti-Yellowing</span>
+        <span class="badge">5-Year Warranty</span>
+      </div>
+      <div class="card-actions">
+        <a class="btn-primary tds-button" id="tdsLink" href="#">Download TDS</a>
+      </div>
+      <div class="mock-film" id="productImage">Namsan Prime image area</div>
+    </article>
+
+    <article class="info-card">
+      <h3 class="info-card-title">Key Features</h3>
+      <div class="feature-grid" id="featureGrid">
+        <div class="feature-item"><span class="feature-icon"><img src="icon-1.svg" alt="Instant Self-Healing"></span><h4>Instant Self-Healing</h4></div>
+        <div class="feature-item"><span class="feature-icon"><img src="icon-2.svg" alt="High Gloss Finish"></span><h4>High Gloss Finish</h4></div>
+        <div class="feature-item"><span class="feature-icon"><img src="icon-3.svg" alt="Hydrophobic Surface"></span><h4>Hydrophobic Surface</h4></div>
+        <div class="feature-item"><span class="feature-icon"><img src="icon-4.svg" alt="Anti-Yellowing"></span><h4>Anti-Yellowing</h4></div>
+      </div>
+
+      <h3 class="info-card-title">Quick Specs</h3>
+      <table class="spec-table">
+        <tbody id="specTable">
+          <tr><th>Finish</th><td>Clear gloss</td></tr>
+          <tr><th>Film Thickness</th><td>190μm / 7.5mil</td></tr>
+          <tr><th>Total Thickness</th><td>325μm</td></tr>
+          <tr><th>Self-Healing</th><td>Instant</td></tr>
+          <tr><th>Glossy (60°)</th><td>≥90GU</td></tr>
+          <tr><th>Coating Elongation</th><td>180%</td></tr>
+          <tr><th>Anti-Yellowing</th><td>ΔE≤ 2</td></tr>
+          <tr><th>Adhesive</th><td>PSA</td></tr>
+          <tr><th>Peel Adhesion (Initial)</th><td>≥11.8 N/25mm</td></tr>
+          <tr><th>Peel Adhesion (7 days)</th><td>≥14.7 N/25mm</td></tr>
+          <tr><th>Application Method</th><td>Wet only</td></tr>
+          <tr><th>Application Temp.</th><td>15℃–25℃</td></tr>
+          <tr><th>Warranty</th><td>5 years</td></tr>
+        </tbody>
+      </table>
+    </article>
+  </div>
+</section>
+
+<!-- COVERAGE -->
+<section id="coverage" class="coverage-section">
+  <div class="section-label reveal">Coverage Options</div>
+  <div class="section-title reveal">Flexible coverage options<br>for every customer need.</div>
+  <div class="section-desc reveal">A practical guide for dealers to explain PPF installation options while keeping pricing flexible by market, vehicle, and installer.</div>
+  <div class="coverage-grid">
+    <article class="coverage-card reveal">
+      <h3>Essential</h3>
+      <p>Basic touch-point protection for daily-use vehicles.</p>
+      <ul><li>Door cups</li><li>Door edges</li><li>Trunk ledge</li><li>Side mirrors</li></ul>
+    </article>
+    <article class="coverage-card reveal">
+      <h3>Front Impact</h3>
+      <p>Focused protection for areas exposed to road debris.</p>
+      <ul><li>Front bumper</li><li>Partial hood</li><li>Partial fenders</li><li>Side mirrors</li></ul>
+    </article>
+    <article class="coverage-card reveal">
+      <h3>Full Front</h3>
+      <p>Popular option for premium new-car protection.</p>
+      <ul><li>Full hood</li><li>Full fenders</li><li>Front bumper</li><li>Side mirrors</li></ul>
+    </article>
+    <article class="coverage-card reveal">
+      <h3>Full Body</h3>
+      <p>Maximum painted-surface protection for long-term preservation.</p>
+      <ul><li>All painted panels</li><li>High-impact zones</li><li>Detail areas</li><li>Custom coverage</li></ul>
+    </article>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="faq-section">
+  <div class="section-label reveal">FAQ</div>
+  <div class="section-title reveal">Frequently asked questions</div>
+  <div class="faq-list" style="margin-top: 48px;">
+    <div class="faq-item">
+      <button class="faq-question" type="button"><span>What is PPF?</span><span class="faq-icon">+</span></button>
+      <div class="faq-answer"><div class="faq-answer-inner">PPF is a transparent paint protection film applied to painted exterior surfaces to help protect against scratches, stone chips, insects, stains, and daily driving damage.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" type="button"><span>How does self-healing work?</span><span class="faq-icon">+</span></button>
+      <div class="faq-answer"><div class="faq-answer-inner">Light surface scratches can recover through the film's self-healing coating. Recovery performance may vary depending on scratch depth, film condition, and surrounding temperature.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" type="button"><span>How long is the warranty?</span><span class="faq-icon">+</span></button>
+      <div class="faq-answer"><div class="faq-answer-inner">Namsan Prime carries a 5-year warranty. Final warranty terms should follow the official warranty policy in each market.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" type="button"><span>How much does PPF installation cost?</span><span class="faq-icon">+</span></button>
+      <div class="faq-answer"><div class="faq-answer-inner">Installation cost depends on vehicle size, coverage area, installer pricing, and market conditions. Use the coverage options above as a guide, then contact a local installer or dealer for a quotation.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" type="button"><span>Can ceramic coating be applied over PPF?</span><span class="faq-icon">+</span></button>
+      <div class="faq-answer"><div class="faq-answer-inner">Yes, ceramic coating may be applied over PPF when the coating is compatible and applied correctly. Always follow the coating manufacturer's instructions and allow the film to settle after installation.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" type="button"><span>What should be avoided after installation?</span><span class="faq-icon">+</span></button>
+      <div class="faq-answer"><div class="faq-answer-inner">Avoid aggressive washing, high-pressure water near film edges, harsh chemicals, and picking at edges during the initial settling period. Professional installers should provide final aftercare instructions.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" type="button"><span>How long does PPF last?</span><span class="faq-icon">+</span></button>
+      <div class="faq-answer"><div class="faq-answer-inner">Film life depends on product grade, installation quality, climate, washing habits, and vehicle usage. Proper care helps maintain appearance and protection performance over time.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact" class="cta-section">
+  <div class="section-label reveal">Partnership</div>
+  <div class="section-title reveal">Grow with SeoulShield.</div>
+  <div class="section-desc reveal">Join our global network of authorized dealers and installers. Contact us for product details, sample requests, dealer supply, and technical information.</div>
+  <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;" class="reveal">
+    <a class="btn-primary" href="mailto:info@seoulshield.com">Apply for Dealership</a>
+    <a class="btn-secondary" href="/#products">Compare Products</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-upper">
+    <div class="logo"><a href="/" style="color:inherit;text-decoration:none;">SEOUL<span>SHIELD</span></a></div>
+  </div>
+  <div class="footer-lower">
+    <div class="footer-copy">&copy; SEOULSHIELD 2026. All rights reserved.</div>
+    <a href="/privacy.html" class="footer-privacy">Privacy Policy</a>
+  </div>
+</footer>
+
+<div class="scroll-top" id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+<script>
+  const navEl = document.getElementById('nav');
+  const scrollTopBtn = document.getElementById('scroll-top');
+  window.addEventListener('scroll', () => {
+    navEl.classList.toggle('scrolled', window.scrollY > 60);
+    scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+  });
+
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  reveals.forEach(el => observer.observe(el));
+
+  const products = {
+    apex: {
+      name: 'Namsan Apex',
+      tagline: 'Premium gloss PPF for clear protection and fast surface recovery.',
+      badges: ['Instant Self-Healing', 'High Gloss', 'Hydrophobic', 'Anti-Yellowing', '5-Year Warranty'],
+      features: [
+        ['icon-1.svg', 'Instant Self-Healing', 'Instant Self-Healing'],
+        ['icon-2.svg', 'High Gloss Finish', 'High Gloss Finish'],
+        ['icon-3.svg', 'Hydrophobic Surface', 'Hydrophobic Surface'],
+        ['icon-4.svg', 'Anti-Yellowing', 'Anti-Yellowing']
+      ],
+      specs: [
+        ['Finish', 'Clear gloss'],
+        ['Film Thickness', '190μm / 7.5mil'],
+        ['Total Thickness', '315μm'],
+        ['Self-Healing', 'Instant'],
+        ['Warranty', '5 years']
+      ]
+    },
+    prime: {
+      name: 'Namsan Prime',
+      tagline: 'Premium gloss PPF with instant self-healing and strong adhesion.',
+      badges: ['Instant Self-Healing', 'High Gloss', 'Hydrophobic', 'Anti-Yellowing', '5-Year Warranty'],
+      features: [
+        ['icon-1.svg', 'Instant Self-Healing', 'Instant Self-Healing'],
+        ['icon-2.svg', 'High Gloss Finish', 'High Gloss Finish'],
+        ['icon-3.svg', 'Hydrophobic Surface', 'Hydrophobic Surface'],
+        ['icon-4.svg', 'Anti-Yellowing', 'Anti-Yellowing']
+      ],
+      specs: [
+        ['Finish', 'Clear gloss'],
+        ['Film Thickness', '190μm / 7.5mil'],
+        ['Total Thickness', '325μm'],
+        ['Self-Healing', 'Instant'],
+        ['Glossy (60°)', '≥90GU'],
+        ['Coating Elongation', '180%'],
+        ['Anti-Yellowing', 'ΔE≤ 2'],
+        ['Adhesive', 'PSA'],
+        ['Peel Adhesion (Initial)', '≥11.8 N/25mm'],
+        ['Peel Adhesion (7 days)', '≥14.7 N/25mm'],
+        ['Application Method', 'Wet only'],
+        ['Application Temp.', '15℃–25℃'],
+        ['Warranty', '5 years']
+      ]
+    },
+    fit: {
+      name: 'Namsan Fit',
+      tagline: 'Clear gloss PPF for everyday protection and accessible installation.',
+      badges: ['Heat Self-Healing', 'High Gloss', 'Hydrophobic', '99% UV Block'],
+      features: [
+        ['icon-1.svg', 'Heat Self-Healing', 'Heat Self-Healing'],
+        ['icon-2.svg', 'High Gloss Finish', 'High Gloss Finish'],
+        ['icon-3.svg', 'Hydrophobic Surface', 'Hydrophobic Surface'],
+        ['icon-4.svg', 'UV Protection', 'UV Protection']
+      ],
+      specs: [
+        ['Finish', 'Clear gloss'],
+        ['Thickness', '312μm'],
+        ['Self-Healing', 'Heat'],
+        ['UV Block', '99%'],
+        ['Warranty', 'To be confirmed']
+      ]
+    },
+    desert: {
+      name: 'Namsan Desert',
+      tagline: 'Matte finish PPF for a refined low-gloss surface.',
+      badges: ['Matte Finish', 'Heat Self-Healing', 'Hydrophobic', 'Anti-Yellowing', '5–7-Year Warranty'],
+      features: [
+        ['icon-1.svg', 'Matte Finish', 'Matte Finish'],
+        ['icon-2.svg', 'Heat Self-Healing', 'Heat Self-Healing'],
+        ['icon-3.svg', 'Hydrophobic Surface', 'Hydrophobic Surface'],
+        ['icon-4.svg', 'Anti-Yellowing', 'Anti-Yellowing']
+      ],
+      specs: [
+        ['Finish', 'Matte'],
+        ['Film Thickness', '186μm / 7.3mil'],
+        ['Total Thickness', '265μm'],
+        ['Self-Healing', 'Heat'],
+        ['Warranty', '5–7 years']
+      ]
+    },
+    basic: {
+      name: 'Namsan Basic',
+      tagline: 'Practical PPF for daily driving protection.',
+      badges: ['Basic Protection', 'Gloss Finish', 'Entry Line', 'Dealer-Friendly'],
+      features: [
+        ['icon-1.svg', 'Basic Protection', 'Basic Protection'],
+        ['icon-2.svg', 'Gloss Finish', 'Gloss Finish'],
+        ['icon-3.svg', 'Dealer-Friendly', 'Dealer-Friendly'],
+        ['icon-4.svg', 'Flexible Coverage', 'Flexible Coverage']
+      ],
+      specs: [
+        ['Finish', 'Clear gloss'],
+        ['Film Thickness', 'To be confirmed'],
+        ['Total Thickness', 'To be confirmed'],
+        ['Self-Healing', 'To be confirmed'],
+        ['Warranty', 'To be confirmed'],
+        ['Position', 'Entry line']
+      ]
+    }
+  };
+
+  const productTabs = document.querySelectorAll('.product-tab');
+  const productName = document.getElementById('productName');
+  const productTagline = document.getElementById('productTagline');
+  const productBadges = document.getElementById('productBadges');
+  const featureGrid = document.getElementById('featureGrid');
+  const specTable = document.getElementById('specTable');
+  const tdsLink = document.getElementById('tdsLink');
+  const productImage = document.getElementById('productImage');
+
+  function escapeHTML(value) {
+    return String(value).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+  }
+
+  function renderProduct(productKey) {
+    const product = products[productKey];
+    if (!product) return;
+    productName.textContent = product.name;
+    productTagline.textContent = product.tagline;
+    productBadges.innerHTML = product.badges.map(b => `<span class="badge">${escapeHTML(b)}</span>`).join('');
+    featureGrid.innerHTML = product.features.map(f => `
+      <div class="feature-item">
+        <span class="feature-icon"><img src="${escapeHTML(f[0])}" alt="${escapeHTML(f[1])}"></span>
+        <h4>${escapeHTML(f[2])}</h4>
+      </div>`).join('');
+    specTable.innerHTML = product.specs.map(s => `<tr><th>${escapeHTML(s[0])}</th><td>${escapeHTML(s[1])}</td></tr>`).join('');
+    if (tdsLink) { tdsLink.href = product.tds || '#'; }
+    if (productImage) { productImage.textContent = `${product.name} image area`; }
+  }
+
+  productTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      productTabs.forEach(item => item.classList.remove('active'));
+      tab.classList.add('active');
+      renderProduct(tab.dataset.product);
+    });
+  });
+
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.setAttribute('aria-expanded', 'false');
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        const q = i.querySelector('.faq-question');
+        if (q) q.setAttribute('aria-expanded', 'false');
+      });
+      if (!wasOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+    });
+  });
+</script>
+</body>
+</html>
