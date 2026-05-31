@@ -219,10 +219,51 @@ footer { padding: 42px max(48px, calc((100vw - var(--content-max)) / 2)) 32px; b
 .warranty-badge-stage { width: 100%; display: grid; justify-items: end; align-items: center; margin-top: 0; padding-right: clamp(8px, 4vw, 64px); }
 .warranty-badge-stage .ss-badge-outer { display: inline-block; }
 .warranty-badge-stage .ss-badge-wrap { position: relative; width: min(34vw, 340px); aspect-ratio: 394 / 586; overflow: hidden; border-radius: 34px; isolation: isolate; animation: ss-card-dori 5.2s ease-in-out infinite; box-shadow: 0 20px 40px rgba(0,0,0,.5); }
-.warranty-badge-stage .ss-badge-img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; user-select: none; pointer-events: none; }
-.warranty-badge-stage .ss-shine { position: absolute; inset: 0; overflow: hidden; pointer-events: none; opacity: .55; -webkit-mask-image: url("https://raw.githubusercontent.com/DUBOU/seoulshield/main/Warrenty-Badge-1.png?v=20260531"); mask-image: url("https://raw.githubusercontent.com/DUBOU/seoulshield/main/Warrenty-Badge-1.png?v=20260531"); -webkit-mask-size: 100% 100%; mask-size: 100% 100%; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center; -webkit-mask-mode: alpha; mask-mode: alpha; }
-.warranty-badge-stage .ss-shine::before { content: ""; position: absolute; top: -28%; bottom: -28%; left: -55%; width: 28%; background: linear-gradient(105deg, transparent 0%, rgba(255,255,255,0.00) 22%, rgba(255,255,255,0.10) 42%, rgba(255,255,255,0.30) 50%, rgba(255,255,255,0.085) 58%, transparent 78%); transform: translateX(-200%) skewX(-18deg); animation: ss-shine-sweep 5.4s cubic-bezier(.45,0,.25,1) infinite; }
-@keyframes ss-shine-sweep { 0%, 36% { transform: translateX(-210%) skewX(-18deg); opacity: 0; } 46% { opacity: .41; } 68% { opacity: .60; } 88%, 100% { transform: translateX(620%) skewX(-18deg); opacity: 0; } }
+.warranty-badge-stage .ss-badge-img { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; display: block; user-select: none; pointer-events: none; }
+.warranty-badge-stage .ss-metal-orbit,
+.warranty-badge-stage .ss-metal-orbit::before,
+.warranty-badge-stage .ss-metal-orbit::after {
+  position: absolute;
+  pointer-events: none;
+  -webkit-mask-image: url("https://raw.githubusercontent.com/DUBOU/seoulshield/main/Warrenty-Badge-1.png?v=20260531-metal");
+  mask-image: url("https://raw.githubusercontent.com/DUBOU/seoulshield/main/Warrenty-Badge-1.png?v=20260531-metal");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+.warranty-badge-stage .ss-metal-orbit {
+  inset: 0;
+  z-index: 2;
+  opacity: .36;
+  mix-blend-mode: screen;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,.18) 0 1px, transparent 2px),
+    conic-gradient(from 0deg at 50% 50%, rgba(255,255,255,.04) 0deg, rgba(255,255,255,.24) 24deg, rgba(0,0,0,.08) 68deg, rgba(255,255,255,.18) 116deg, rgba(0,0,0,.10) 182deg, rgba(255,255,255,.22) 262deg, rgba(255,255,255,.05) 360deg);
+}
+.warranty-badge-stage .ss-metal-orbit::before {
+  content: "";
+  inset: 0;
+  opacity: .30;
+  mix-blend-mode: soft-light;
+  background:
+    repeating-conic-gradient(from 0deg at 50% 50%, rgba(255,255,255,.050) 0deg .35deg, rgba(0,0,0,.030) .35deg .7deg, transparent .7deg 1.15deg),
+    repeating-radial-gradient(circle at 50% 50%, rgba(255,255,255,.030) 0 1px, transparent 1px 3px);
+}
+.warranty-badge-stage .ss-metal-orbit::after {
+  content: "";
+  inset: -16%;
+  opacity: .80;
+  filter: blur(10px);
+  transform-origin: 50% 50%;
+  animation: ss-orbit-light 6.8s linear infinite;
+  background:
+    radial-gradient(circle at 50% 50%, transparent 0 20%, rgba(255,255,255,.11) 27%, transparent 35%),
+    conic-gradient(from 0deg at 50% 50%, transparent 0deg 288deg, rgba(255,255,255,.22) 306deg, rgba(255,255,255,.95) 324deg, rgba(255,255,255,.26) 342deg, transparent 360deg);
+}
+@keyframes ss-orbit-light { from { transform: rotate(0deg) scale(1.06); } to { transform: rotate(360deg) scale(1.06); } }
 @keyframes ss-card-dori { 0%, 100% { transform: perspective(900px) rotateY(0deg) rotateZ(0deg) translateY(0); } 18% { transform: perspective(900px) rotateY(-5deg) rotateZ(-0.6deg) translateY(-1px); } 36% { transform: perspective(900px) rotateY(4.5deg) rotateZ(0.45deg) translateY(0); } 54% { transform: perspective(900px) rotateY(-3deg) rotateZ(-0.3deg) translateY(-1px); } 72% { transform: perspective(900px) rotateY(2deg) rotateZ(0.2deg) translateY(0); } }
 
 /* TABLET */
@@ -416,8 +457,8 @@ footer { padding: 42px max(48px, calc((100vw - var(--content-max)) / 2)) 32px; b
     <div class="warranty-badge-stage reveal">
       <div class="ss-badge-outer">
         <div class="ss-badge-wrap" aria-label="SeoulShield Warranty Badge">
-          <img class="ss-badge-img" src="https://raw.githubusercontent.com/DUBOU/seoulshield/main/Warrenty-Badge-1.png?v=20260531" alt="SeoulShield Warranty Badge" />
-          <div class="ss-shine" aria-hidden="true"></div>
+          <img class="ss-badge-img" src="https://raw.githubusercontent.com/DUBOU/seoulshield/main/Warrenty-Badge-1.png?v=20260531-metal" alt="SeoulShield Warranty Badge" />
+          <div class="ss-metal-orbit" aria-hidden="true"></div>
         </div>
       </div>
     </div>
