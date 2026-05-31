@@ -217,8 +217,8 @@ footer { padding: 42px max(48px, calc((100vw - var(--content-max)) / 2)) 32px; b
 
 /* WARRANTY BADGE */
 .warranty-badge-stage { width: 100%; display: grid; justify-items: end; align-items: center; margin-top: 0; padding-right: clamp(8px, 4vw, 64px); }
-.warranty-badge-stage .ss-badge-outer { filter: drop-shadow(0 20px 30px rgba(0,0,0,.26)); }
-.warranty-badge-stage .ss-badge-wrap { position: relative; width: min(34vw, 340px); aspect-ratio: 394 / 586; overflow: hidden; border-radius: 34px; isolation: isolate; animation: ss-card-dori 5.2s ease-in-out infinite; }
+.warranty-badge-stage .ss-badge-outer { display: inline-block; }
+.warranty-badge-stage .ss-badge-wrap { position: relative; width: min(34vw, 340px); aspect-ratio: 394 / 586; overflow: hidden; border-radius: 34px; isolation: isolate; animation: ss-card-dori 5.2s ease-in-out infinite; box-shadow: 0 20px 40px rgba(0,0,0,.5); }
 .warranty-badge-stage .ss-badge-img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; user-select: none; pointer-events: none; }
 .warranty-badge-stage .ss-shine { position: absolute; inset: 2.5% 4.5% 2.5% 4.5%; border-radius: 28px; overflow: hidden; pointer-events: none; opacity: .55; }
 .warranty-badge-stage .ss-shine::before { content: ""; position: absolute; top: -28%; bottom: -28%; left: -55%; width: 28%; background: linear-gradient(105deg, transparent 0%, rgba(255,255,255,0.00) 22%, rgba(255,255,255,0.10) 42%, rgba(255,255,255,0.30) 50%, rgba(255,255,255,0.085) 58%, transparent 78%); transform: translateX(-200%) skewX(-18deg); animation: ss-shine-sweep 5.4s cubic-bezier(.45,0,.25,1) infinite; }
