@@ -218,9 +218,9 @@ footer { padding: 42px max(48px, calc((100vw - var(--content-max)) / 2)) 32px; b
 /* WARRANTY BADGE */
 .warranty-badge-stage { width: 100%; display: grid; justify-items: end; align-items: center; margin-top: 0; padding-right: clamp(8px, 4vw, 64px); }
 .warranty-badge-stage .ss-badge-outer { display: inline-block; }
-.warranty-badge-stage .ss-badge-wrap { position: relative; width: min(34vw, 340px); aspect-ratio: 502 / 712; overflow: hidden; border-radius: 34px; isolation: isolate; animation: ss-card-dori 5.2s ease-in-out infinite; box-shadow: 0 20px 40px rgba(0,0,0,.5); }
+.warranty-badge-stage .ss-badge-wrap { position: relative; width: min(34vw, 340px); aspect-ratio: 502 / 712; overflow: hidden; border-radius: 0; isolation: isolate; animation: ss-card-dori 5.2s ease-in-out infinite; box-shadow: none; }
 .warranty-badge-stage .ss-badge-img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; user-select: none; pointer-events: none; }
-.warranty-badge-stage .ss-shine { position: absolute; inset: 2.5% 4.5% 2.5% 4.5%; border-radius: 28px; overflow: hidden; pointer-events: none; opacity: .55; }
+.warranty-badge-stage .ss-shine { position: absolute; top: 9%; left: 11.5%; right: 11.5%; bottom: 9%; border-radius: 30px; overflow: hidden; pointer-events: none; opacity: .55; }
 .warranty-badge-stage .ss-shine::before { content: ""; position: absolute; top: -28%; bottom: -28%; left: -55%; width: 28%; background: linear-gradient(105deg, transparent 0%, rgba(255,255,255,0.00) 22%, rgba(255,255,255,0.10) 42%, rgba(255,255,255,0.30) 50%, rgba(255,255,255,0.085) 58%, transparent 78%); transform: translateX(-200%) skewX(-18deg); animation: ss-shine-sweep 5.4s cubic-bezier(.45,0,.25,1) infinite; }
 @keyframes ss-shine-sweep { 0%, 36% { transform: translateX(-210%) skewX(-18deg); opacity: 0; } 46% { opacity: .41; } 68% { opacity: .60; } 88%, 100% { transform: translateX(620%) skewX(-18deg); opacity: 0; } }
 @keyframes ss-card-dori { 0%, 100% { transform: perspective(900px) rotateY(0deg) rotateZ(0deg) translateY(0); } 18% { transform: perspective(900px) rotateY(-5deg) rotateZ(-0.6deg) translateY(-1px); } 36% { transform: perspective(900px) rotateY(4.5deg) rotateZ(0.45deg) translateY(0); } 54% { transform: perspective(900px) rotateY(-3deg) rotateZ(-0.3deg) translateY(-1px); } 72% { transform: perspective(900px) rotateY(2deg) rotateZ(0.2deg) translateY(0); } }
@@ -265,7 +265,7 @@ footer { padding: 42px max(48px, calc((100vw - var(--content-max)) / 2)) 32px; b
   .footer-upper { padding-bottom: 12px; }
   .warranty-layout { grid-template-columns: 1fr; gap: 44px; }
   .warranty-badge-stage { justify-items: start; padding-right: 0; }
-  .warranty-badge-stage .ss-badge-wrap { width: min(86vw, 320px); border-radius: 30px; }
+  .warranty-badge-stage .ss-badge-wrap { width: min(86vw, 320px); border-radius: 0; }
   .warranty-section > .section-label, .warranty-section > .section-title, .warranty-section > .section-desc,
   .dealer-cta > .section-label, .dealer-cta > .section-title, .dealer-cta > .section-desc { text-align: left; }
   .warranty-section > .section-desc { margin: 0 0 56px !important; }
