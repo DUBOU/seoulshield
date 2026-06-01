@@ -46,7 +46,7 @@
     .hero { min-height: auto; padding-top: 210px; padding-bottom: 124px; display: flex; align-items: flex-start; position: relative; overflow: hidden; }
     .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(200,255,0,0.04) 0%, transparent 70%), radial-gradient(ellipse 60% 50% at 70% 60%, rgba(45,122,255,0.03) 0%, transparent 60%); }
     .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 70%); }
-    .hero-content { position: relative; max-width: var(--content-max); width: 100%; margin: 0 auto; padding: 0 48px; }
+    .hero-content { position: relative; max-width: var(--content-max); width: 100%; margin: 0 auto; padding: 0; }
     .hero-badge { display: inline-block; padding: 6px 16px; border: 1px solid rgba(200,255,0,0.2); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 32px; animation: fadeUp 0.8s ease both; }
     .hero h1 { font-family: var(--font-display); font-size: clamp(38px, 5.5vw, 68px); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 24px; animation: fadeUp 0.8s ease 0.15s both; }
     .hero h1 em { font-style: normal; background: linear-gradient(135deg, var(--accent), #a0ff40); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
@@ -200,7 +200,7 @@
   <div class="hero-content">
     <div class="hero-badge">SeoulShield PPF</div>
     <h1>Namsan<br><em>Basic.</em></h1>
-    <p>Practical gloss PPF for daily driving protection, designed for entry-level applications and dealer-friendly coverage options. Until the final Basic TDS is confirmed, the technical details are temporarily aligned with Namsan Core.</p>
+    <p>Practical gloss PPF for daily driving protection, designed for entry-level applications and dealer-friendly coverage options. A straightforward choice for customers who need essential painted-surface protection.</p>
     <div class="hero-actions">
       <a href="/#contact" class="btn-primary">Request Product Details</a>
     </div>
@@ -404,14 +404,6 @@
         ['Film Thickness', '190μm / 7.5mil'],
         ['Total Thickness', '325μm'],
         ['Self-Healing', 'Instant'],
-        ['Glossy (60°)', '≥90GU'],
-        ['Coating Elongation', '180%'],
-        ['Anti-Yellowing', 'ΔE≤ 2'],
-        ['Adhesive', 'PSA'],
-        ['Peel Adhesion (Initial)', '≥11.8 N/25mm'],
-        ['Peel Adhesion (7 days)', '≥14.7 N/25mm'],
-        ['Application Method', 'Wet only'],
-        ['Application Temp.', '15℃–25℃'],
         ['Warranty', '5 years']
       ]
     },
@@ -435,16 +427,16 @@
     },
     satin: {
       name: 'Namsan Satin',
-      tagline: 'Satin-finish PPF for a refined low-gloss surface.',
-      badges: ['Satin Finish', 'Heat Self-Healing', 'Hydrophobic', 'Anti-Yellowing', '5–7-Year Warranty'],
+      tagline: 'Satin matte PPF for a refined low-sheen finish with durable everyday protection.',
+      badges: ['Satin Matte Finish', 'Low-Sheen Surface', 'Heat Self-Healing', 'Hydrophobic', 'Anti-Yellowing'],
       features: [
-        ['/products/namsan-series/apex/icon-1.svg', 'Satin Finish', 'Satin Finish'],
-        ['/products/namsan-series/apex/icon-2.svg', 'Heat Self-Healing', 'Heat Self-Healing'],
+        ['/products/namsan-series/apex/icon-1.svg', 'Satin Matte Finish', 'Satin Matte Finish'],
+        ['/products/namsan-series/apex/icon-2.svg', 'Low-Sheen Surface', 'Low-Sheen Surface'],
         ['/products/namsan-series/apex/icon-3.svg', 'Hydrophobic Surface', 'Hydrophobic Surface'],
         ['/products/namsan-series/apex/icon-4.svg', 'Anti-Yellowing', 'Anti-Yellowing']
       ],
       specs: [
-        ['Finish', 'Satin'],
+        ['Finish', 'Satin matte'],
         ['Film Thickness', '186μm / 7.3mil'],
         ['Total Thickness', '265μm'],
         ['Self-Healing', 'Heat'],
