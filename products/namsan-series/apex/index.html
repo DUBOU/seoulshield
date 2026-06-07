@@ -856,8 +856,17 @@
       .join('');
 
     if (tdsLink) {
-      tdsLink.href = product.tds || '#';
-      tdsLink.setAttribute('aria-disabled', product.tds ? 'false' : 'true');
+      if (product.tds) {
+        tdsLink.href = product.tds;
+        tdsLink.target = '_blank';
+        tdsLink.rel = 'noopener noreferrer';
+        tdsLink.setAttribute('aria-disabled', 'false');
+      } else {
+        tdsLink.href = '#';
+        tdsLink.removeAttribute('target');
+        tdsLink.removeAttribute('rel');
+        tdsLink.setAttribute('aria-disabled', 'true');
+      }
     }
 
     if (productImage) {
