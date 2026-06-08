@@ -307,7 +307,6 @@
       height: 230px;
       margin: 28px -44px -44px;
       overflow: hidden;
-      background-image: url('/products/namsan-series/apex/image_apex.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -898,7 +897,11 @@
     }
 
     if (productImage) {
+      const imagePath = `/products/namsan-series/${productKey}/image_${productKey}.png`;
+
       productImage.textContent = '';
+      productImage.style.backgroundImage = `url('${imagePath}')`;
+      productImage.setAttribute('aria-label', `${product.name} PPF installation visual`);
     }
   }
 
@@ -909,6 +912,8 @@
       renderProduct(tab.dataset.product);
     });
   });
+
+  renderProduct('apex');
 
   document.querySelectorAll('.faq-question').forEach(btn => {
     btn.setAttribute('aria-expanded', 'false');
