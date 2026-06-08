@@ -87,7 +87,34 @@
     .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 32px; }
     .badge { padding: 4px 10px; border: 1px solid rgba(255,255,255,0.08); font-size: 11px; color: var(--text-muted); letter-spacing: 0.04em; text-transform: uppercase; }
     .card-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: auto; }
-    .mock-film { height: 180px; background: #1a1a1a; border: 1px solid var(--border); margin-top: 28px; display: flex; align-items: flex-end; padding: 18px; color: rgba(255,255,255,0.25); font-size: 12px; font-weight: 400; }
+    .product-visual {
+      position: relative;
+      height: 230px;
+      margin: 28px -44px -44px;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      isolation: isolate;
+    }
+
+    .product-visual::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 36%;
+      pointer-events: none;
+      z-index: 1;
+      background: linear-gradient(
+        180deg,
+        rgba(10,10,10,1) 0%,
+        rgba(10,10,10,0.88) 20%,
+        rgba(10,10,10,0.48) 52%,
+        rgba(10,10,10,0) 100%
+      );
+    }
 
     /* INFO CARD */
     .info-card { display: flex; flex-direction: column; }
@@ -171,6 +198,11 @@
       .product-tab { width: 100%; min-width: 0; text-align: center; padding: 13px 14px; }
       .product-panel { grid-template-columns: 1fr; }
       .product-card, .info-card { padding: 28px; }
+      .product-visual {
+        height: 220px;
+        margin: 28px -28px -28px;
+        background-position: center;
+      }
       .feature-grid { grid-template-columns: 1fr; }
       .coverage-grid { grid-template-columns: 1fr; }
       footer { padding: 34px 20px 24px; }
@@ -247,7 +279,7 @@
       <div class="card-actions">
         <a class="btn-primary tds-button" id="tdsLink" href="#">Download TDS</a>
       </div>
-      <div class="mock-film" id="productImage">Namsan Basic image area</div>
+      <div class="product-visual" id="productImage" role="img" aria-label="Namsan Basic PPF installation visual"></div>
     </article>
 
     <article class="info-card">
@@ -500,7 +532,12 @@
       </div>`).join('');
     specTable.innerHTML = product.specs.map(s => `<tr><th>${escapeHTML(s[0])}</th><td>${escapeHTML(s[1])}</td></tr>`).join('');
     if (tdsLink) { tdsLink.href = product.tds || '#'; }
-    if (productImage) { productImage.textContent = `${product.name} image area`; }
+    if (productImage) {
+      const imagePath = `/products/namsan-series/${productKey}/image_${productKey}.png`;
+      productImage.textContent = '';
+      productImage.style.backgroundImage = `url('${imagePath}')`;
+      productImage.setAttribute('aria-label', `${product.name} PPF installation visual`);
+    }
   }
 
   productTabs.forEach(tab => {
@@ -510,6 +547,10 @@
       renderProduct(tab.dataset.product);
     });
   });
+
+
+  const activeProductTab = document.querySelector('.product-tab.active');
+  renderProduct(activeProductTab?.dataset.product || 'apex');
 
   document.querySelectorAll('.faq-question').forEach(btn => {
     btn.setAttribute('aria-expanded', 'false');
