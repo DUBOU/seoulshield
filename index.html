@@ -142,13 +142,65 @@ section { padding: 120px max(48px, calc((100vw - var(--content-max)) / 2)); }
 .product-link { font-size: 13px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: gap 0.3s; }
 .product-card:hover .product-link { gap: 12px; }
 
-/* WHY SEOULSHIELD */
+/* WHY SEOULSHIELD — redesigned */
 .why-section { background: var(--bg-surface); }
-.why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
-.why-card { padding: 48px 40px; background: var(--bg); border: 1px solid var(--border); position: relative; }
-.why-number { font-family: var(--font-display); font-size: 64px; font-weight: 800; color: rgba(200,255,0,0.06); position: absolute; top: 20px; right: 28px; line-height: 1; }
-.why-title { font-size: 20px; font-weight: 600; margin-bottom: 12px; letter-spacing: -0.01em; }
-.why-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.why-card {
+  background: #1a1c18;
+  border: 0.5px solid #2e302a;
+  border-radius: 12px;
+  padding: 2rem 1.75rem 1.75rem;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  transition: transform 0.25s cubic-bezier(0.22,1,0.36,1),
+              box-shadow 0.25s cubic-bezier(0.22,1,0.36,1),
+              border-color 0.25s ease;
+}
+.why-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  background: radial-gradient(ellipse at 50% 110%, rgba(200,255,0,0.13) 0%, transparent 70%);
+  pointer-events: none;
+}
+.why-card:hover {
+  transform: scale(1.025) translateY(-2px);
+  border-color: rgba(200,255,0,0.35);
+  box-shadow:
+    0 0 0 1px rgba(200,255,0,0.12),
+    0 8px 32px rgba(200,255,0,0.10),
+    0 2px 8px rgba(0,0,0,0.4);
+}
+.why-card:hover::before { opacity: 1; }
+.why-card-icon {
+  width: 28px;
+  height: 28px;
+  margin-bottom: 0.75rem;
+  color: var(--accent);
+  opacity: 0.9;
+}
+.why-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #e8e8e2;
+  margin-bottom: 0.5rem;
+}
+.why-desc {
+  font-size: 13px;
+  color: #7a7a72;
+  line-height: 1.7;
+}
+
 
 /* TECHNOLOGY */
 .tech-section { background: var(--bg); position: relative; }
@@ -385,27 +437,27 @@ footer { padding: 42px max(48px, calc((100vw - var(--content-max)) / 2)) 32px; b
 <section class="why-section" id="why">
   <div class="section-label reveal">Why SeoulShield</div>
   <div class="section-title reveal">Dealer-ready from day one.</div>
-  <div class="section-desc reveal">SeoulShield gives installers and distributors a focused PPF lineup with clear specs, official TDS, and real installation visuals — making each product easier to explain, compare, and sell.</div>
+  <div class="section-desc reveal">Four reasons serious installers and distributors choose SeoulShield over every other PPF lineup.</div>
   <div class="why-grid">
     <div class="why-card reveal">
-      <div class="why-number">01</div>
-      <div class="why-title">Sales-ready from day one</div>
-      <div class="why-desc">Official TDS, real installation visuals, and product pages help dealers start confident sales conversations faster.</div>
+      <svg class="why-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+      <div class="why-title">Margins that make sense</div>
+      <div class="why-desc">딜러 수익 구조를 설계 단계부터 고려했습니다. 시공 단가와 유통 마진 모두 현실적인 수익을 낼 수 있도록 구성되어 있습니다.</div>
     </div>
     <div class="why-card reveal">
-      <div class="why-number">02</div>
-      <div class="why-title">Easy to compare</div>
-      <div class="why-desc">Five Namsan grades are structured by finish, protection level, warranty, and customer budget.</div>
+      <svg class="why-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 1 0 0-14h-1"/><path d="M9 14h2"/><path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2z"/><path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"/></svg>
+      <div class="why-title">Engineered in Seoul</div>
+      <div class="why-desc">자체 연구소에서 개발·검증된 제품입니다. 혹한과 혹서를 포함한 가혹한 4계절 환경 테스트를 통과한 PPF — 스펙이 아니라 데이터로 증명합니다.</div>
     </div>
     <div class="why-card reveal">
-      <div class="why-number">03</div>
-      <div class="why-title">Proof customers can see</div>
-      <div class="why-desc">Real installation visuals help show gloss, texture, surface finish, and application quality before customers commit.</div>
+      <svg class="why-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+      <div class="why-title">Everything to sell with</div>
+      <div class="why-desc">TDS, 가격표, 시공 실사, 제품 페이지가 처음부터 제공됩니다. 브랜딩 준비 없이도 첫날부터 고객에게 설명할 수 있습니다.</div>
     </div>
     <div class="why-card reveal">
-      <div class="why-number">04</div>
-      <div class="why-title">Focused PPF partnership</div>
-      <div class="why-desc">A PPF-only lineup and simple brand structure make SeoulShield easier to present, manage, and grow in your market.</div>
+      <svg class="why-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+      <div class="why-title">First mover advantage</div>
+      <div class="why-desc">한국 엔지니어드 PPF 브랜드는 아직 딜러 시장에 드뭅니다. 지금 파트너가 되면 지역 내 독점적 포지션을 선점할 수 있습니다.</div>
     </div>
   </div>
 </section>
