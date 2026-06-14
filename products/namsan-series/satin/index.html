@@ -278,7 +278,7 @@
         <span class="badge">Anti-Yellowing</span>
       </div>
       <div class="card-actions">
-        <a class="btn-primary tds-button" id="tdsLink" href="#">Download TDS</a>
+        <a class="btn-primary tds-button" id="tdsLink" href="https://drive.google.com/file/d/1GD8avXTInWZ15JPrG4j5y22gm69vc2Lw/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Download TDS</a>
       </div>
       <div class="product-visual" id="productImage" role="img" aria-label="Namsan Satin PPF installation visual"></div>
     </article>
@@ -418,6 +418,7 @@
     apex: {
       name: 'Namsan Apex',
       tagline: 'Premium gloss PPF for clear protection and fast surface recovery.',
+      tds: 'https://drive.google.com/file/d/1i-HMvWWZUG2C0iq8nHlIzDULn56a1h9n/view?usp=drive_link',
       badges: ['Instant Self-Healing', 'High Gloss', 'Hydrophobic', 'Anti-Yellowing', '5-Year Warranty'],
       features: [
         ['/products/namsan-series/apex/icon-1.svg', 'Instant Self-Healing', 'Instant Self-Healing'],
@@ -436,6 +437,7 @@
     prime: {
       name: 'Namsan Prime',
       tagline: 'Premium gloss PPF with instant self-healing and strong adhesion.',
+      tds: 'https://drive.google.com/file/d/1KV5QB3GuBvXhHvm1IQrlPH8RDAh7nory/view?usp=drive_link',
       badges: ['Instant Self-Healing', 'High Gloss', 'Hydrophobic', 'Anti-Yellowing', '5-Year Warranty'],
       features: [
         ['/products/namsan-series/apex/icon-1.svg', 'Instant Self-Healing', 'Instant Self-Healing'],
@@ -454,6 +456,7 @@
     core: {
       name: 'Namsan Core',
       tagline: 'Balanced gloss PPF for stable handling and everyday protection.',
+      tds: 'https://drive.google.com/file/d/1sLBYeka30JjK1Bq65O9pPN1B6lwFHGa8/view?usp=drive_link',
       badges: ['Heat Self-Healing', 'High Gloss', 'Hydrophobic', '99% UV Block'],
       features: [
         ['/products/namsan-series/apex/icon-1.svg', 'Heat Self-Healing', 'Heat Self-Healing'],
@@ -472,6 +475,7 @@
     satin: {
       name: 'Namsan Satin',
       tagline: 'Satin matte PPF for a refined low-sheen finish with durable everyday protection.',
+      tds: 'https://drive.google.com/file/d/1GD8avXTInWZ15JPrG4j5y22gm69vc2Lw/view?usp=drive_link',
       badges: ['Satin Matte Finish', 'Low-Sheen Surface', 'Heat Self-Healing', 'Hydrophobic', 'Anti-Yellowing'],
       features: [
         ['/products/namsan-series/apex/icon-1.svg', 'Satin Matte Finish', 'Satin Matte Finish'],
@@ -533,7 +537,19 @@
         <h4>${escapeHTML(f[2])}</h4>
       </div>`).join('');
     specTable.innerHTML = product.specs.map(s => `<tr><th>${escapeHTML(s[0])}</th><td>${escapeHTML(s[1])}</td></tr>`).join('');
-    if (tdsLink) { tdsLink.href = product.tds || '#'; }
+    if (tdsLink) {
+      if (product.tds) {
+        tdsLink.href = product.tds;
+        tdsLink.target = '_blank';
+        tdsLink.rel = 'noopener noreferrer';
+        tdsLink.setAttribute('aria-disabled', 'false');
+      } else {
+        tdsLink.href = '#';
+        tdsLink.removeAttribute('target');
+        tdsLink.removeAttribute('rel');
+        tdsLink.setAttribute('aria-disabled', 'true');
+      }
+    }
     if (productImage) {
       const imagePath = `/products/namsan-series/${productKey}/image_${productKey}.png`;
       productImage.textContent = '';
