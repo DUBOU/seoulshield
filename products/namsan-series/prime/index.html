@@ -456,6 +456,7 @@
     core: {
       name: 'Namsan Core',
       tagline: 'Clear gloss PPF for everyday protection and accessible installation.',
+      tds: 'https://drive.google.com/file/d/1sLBYeka30JjK1Bq65O9pPN1B6lwFHGa8/view?usp=drive_link',
       badges: ['Heat Self-Healing', 'High Gloss', 'Hydrophobic', '99% UV Block'],
       features: [
         ['/products/namsan-series/apex/icon-1.svg', 'Heat Self-Healing', 'Heat Self-Healing'],
@@ -474,6 +475,7 @@
     satin: {
       name: 'Namsan Satin',
       tagline: 'Satin matte PPF for a refined low-sheen finish with durable everyday protection.',
+      tds: 'https://drive.google.com/file/d/1GD8avXTInWZ15JPrG4j5y22gm69vc2Lw/view?usp=drive_link',
       badges: ['Satin Matte Finish', 'Low-Sheen Surface', 'Heat Self-Healing', 'Hydrophobic', 'Anti-Yellowing'],
       features: [
         ['/products/namsan-series/apex/icon-1.svg', 'Satin Matte Finish', 'Satin Matte Finish'],
@@ -536,9 +538,17 @@
       </div>`).join('');
     specTable.innerHTML = product.specs.map(s => `<tr><th>${escapeHTML(s[0])}</th><td>${escapeHTML(s[1])}</td></tr>`).join('');
     if (tdsLink) {
-      tdsLink.href = product.tds || '#';
-      tdsLink.target = '_blank';
-      tdsLink.rel = 'noopener noreferrer';
+      if (product.tds) {
+        tdsLink.href = product.tds;
+        tdsLink.target = '_blank';
+        tdsLink.rel = 'noopener noreferrer';
+        tdsLink.setAttribute('aria-disabled', 'false');
+      } else {
+        tdsLink.href = '#';
+        tdsLink.removeAttribute('target');
+        tdsLink.removeAttribute('rel');
+        tdsLink.setAttribute('aria-disabled', 'true');
+      }
     }
     if (productImage) {
       const imagePath = `/products/namsan-series/${productKey}/image_${productKey}.png`;
