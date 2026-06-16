@@ -613,9 +613,13 @@ form.addEventListener('submit', async (e) => {
 .float-channels.open .float-channel-btn:nth-child(4) { transition-delay: 0.04s; }
 .float-channels.open .float-channel-btn:nth-child(5) { transition-delay: 0s; }
 
-.float-toggle { width: 52px; height: 52px; border-radius: 50%; background: var(--accent); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(200,255,0,0.3); transition: background 0.25s, box-shadow 0.25s, transform 0.2s; flex-shrink: 0; }
-.float-toggle:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(200,255,0,0.45); }
-.float-toggle.open { background: #ffffff; box-shadow: 0 4px 20px rgba(255,255,255,0.15); }
+@keyframes neon-pulse {
+  0%, 100% { box-shadow: 0 0 10px 2px rgba(200,255,0,0.2), 0 0 24px 4px rgba(200,255,0,0.1); }
+  50% { box-shadow: 0 0 18px 6px rgba(200,255,0,0.38), 0 0 40px 10px rgba(200,255,0,0.15); }
+}
+.float-toggle { width: 52px; height: 52px; border-radius: 50%; background: var(--accent); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; animation: neon-pulse 3.5s ease-in-out infinite; transition: background 0.25s, transform 0.2s; flex-shrink: 0; }
+.float-toggle:hover { transform: scale(1.08); animation: none; box-shadow: 0 6px 28px rgba(200,255,0,0.5); }
+.float-toggle.open { background: #ffffff; animation: none; box-shadow: 0 4px 20px rgba(255,255,255,0.15); }
 .float-toggle svg { stroke: #0a0a0a; }
 
 /* PC QR 모달 */
