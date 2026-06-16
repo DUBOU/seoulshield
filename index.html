@@ -607,11 +607,11 @@ form.addEventListener('submit', async (e) => {
 .float-channel-btn:hover { border-color: rgba(200,255,0,0.35); background: rgba(200,255,0,0.07); }
 
 .float-channels.open .float-channel-btn { opacity: 1; transform: translateX(0) scale(1); pointer-events: auto; }
-.float-channels.open .float-channel-btn:nth-child(1) { transition-delay: 0s; }
-.float-channels.open .float-channel-btn:nth-child(2) { transition-delay: 0.04s; }
+.float-channels.open .float-channel-btn:nth-child(1) { transition-delay: 0.16s; }
+.float-channels.open .float-channel-btn:nth-child(2) { transition-delay: 0.12s; }
 .float-channels.open .float-channel-btn:nth-child(3) { transition-delay: 0.08s; }
-.float-channels.open .float-channel-btn:nth-child(4) { transition-delay: 0.12s; }
-.float-channels.open .float-channel-btn:nth-child(5) { transition-delay: 0.16s; }
+.float-channels.open .float-channel-btn:nth-child(4) { transition-delay: 0.04s; }
+.float-channels.open .float-channel-btn:nth-child(5) { transition-delay: 0s; }
 
 .float-toggle { width: 52px; height: 52px; border-radius: 50%; background: var(--accent); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(200,255,0,0.3); transition: background 0.25s, box-shadow 0.25s, transform 0.2s; flex-shrink: 0; }
 .float-toggle:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(200,255,0,0.45); }
@@ -650,7 +650,7 @@ form.addEventListener('submit', async (e) => {
 @media (max-width: 768px) {
   .float-contact { bottom: 84px; right: 16px; }
   .float-toggle { width: 48px; height: 48px; }
-  .float-channel-btn { width: 44px; height: 44px; border-radius: 50%; }
+  .float-channel-btn { width: 52px; height: 52px; border-radius: 50%; }
 }
 </style>
 
