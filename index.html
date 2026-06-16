@@ -585,84 +585,92 @@ form.addEventListener('submit', async (e) => {
   }
 });
 </script>
-<!-- FLOATING CONTACT BUTTONS -->
+<!-- FLOATING CONTACT BUTTONS v4 -->
 <style>
-.float-contact { position: fixed; bottom: 92px; right: 28px; z-index: 200; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+.float-contact { position: fixed; bottom: 92px; right: 28px; z-index: 200; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
 .float-channels { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
-.float-channel-btn { display: flex; align-items: center; gap: 10px; background: #1a1a1a; border: 1px solid rgba(255,255,255,0.1); padding: 8px 14px 8px 10px; cursor: pointer; text-decoration: none; color: var(--text); font-family: var(--font-body); font-size: 13px; font-weight: 500; white-space: nowrap; opacity: 0; transform: translateX(16px) scale(0.92); transition: opacity 0.22s ease, transform 0.22s ease, border-color 0.2s, background 0.2s; pointer-events: none; }
+
+.float-channel-btn {
+  display: flex; align-items: center; justify-content: center;
+  width: 48px; height: 48px;
+  background: #1a1a1a;
+  border: 1px solid rgba(255,255,255,0.1);
+  cursor: pointer; text-decoration: none;
+  padding: 8px;
+  opacity: 0; transform: translateX(16px) scale(0.92);
+  transition: opacity 0.22s ease, transform 0.22s ease, border-color 0.2s, background 0.2s;
+  pointer-events: none;
+  border-radius: 0;
+}
+.float-channel-btn img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .float-channel-btn:hover { border-color: rgba(200,255,0,0.35); background: rgba(200,255,0,0.07); }
-.float-channel-btn img { width: 28px; height: 28px; object-fit: contain; border-radius: 6px; }
+
 .float-channels.open .float-channel-btn { opacity: 1; transform: translateX(0) scale(1); pointer-events: auto; }
 .float-channels.open .float-channel-btn:nth-child(1) { transition-delay: 0s; }
 .float-channels.open .float-channel-btn:nth-child(2) { transition-delay: 0.04s; }
 .float-channels.open .float-channel-btn:nth-child(3) { transition-delay: 0.08s; }
 .float-channels.open .float-channel-btn:nth-child(4) { transition-delay: 0.12s; }
 .float-channels.open .float-channel-btn:nth-child(5) { transition-delay: 0.16s; }
+
 .float-toggle { width: 52px; height: 52px; border-radius: 50%; background: var(--accent); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(200,255,0,0.3); transition: background 0.25s, box-shadow 0.25s, transform 0.2s; flex-shrink: 0; }
 .float-toggle:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(200,255,0,0.45); }
 .float-toggle.open { background: #ffffff; box-shadow: 0 4px 20px rgba(255,255,255,0.15); }
+.float-toggle svg { stroke: #0a0a0a; }
 
 /* PC QR 모달 */
 .qr-overlay { display: none; position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,0.72); align-items: center; justify-content: center; }
 .qr-overlay.show { display: flex; }
-.qr-card { background: #1a1a1a; border: 1px solid rgba(255,255,255,0.1); padding: 28px 24px 24px; text-align: center; position: relative; width: 240px; }
-.qr-close { position: absolute; top: 12px; right: 14px; background: none; border: none; color: #8a8880; font-size: 20px; cursor: pointer; line-height: 1; }
+.qr-card { background: #1a1a1a; border: 1px solid rgba(255,255,255,0.1); padding: 32px 28px 28px; text-align: center; position: relative; width: 280px; }
+.qr-close { position: absolute; top: 12px; right: 14px; background: none; border: none; color: #8a8880; font-size: 22px; cursor: pointer; line-height: 1; }
 .qr-close:hover { color: var(--text); }
-.qr-logo-row { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 16px; }
-.qr-logo-icon { width: 24px; height: 24px; border-radius: 6px; overflow: hidden; }
-.qr-logo-icon img { width: 100%; height: 100%; object-fit: contain; }
-.qr-channel-name { font-family: var(--font-body); font-size: 15px; font-weight: 600; color: var(--text); }
-.qr-img-wrap { width: 160px; height: 160px; background: #fff; margin: 0 auto 14px; display: flex; align-items: center; justify-content: center; padding: 8px; }
-.qr-img-wrap img, .qr-img-wrap svg { width: 100%; height: 100%; object-fit: contain; display: block; }
-.qr-id { font-size: 12px; color: var(--accent); font-family: var(--font-body); margin-bottom: 6px; }
-.qr-hint { font-size: 11px; color: var(--text-muted); font-family: var(--font-body); line-height: 1.5; }
+.qr-channel-name { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 20px; }
+.qr-img-wrap { width: 180px; height: 180px; background: #fff; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; padding: 10px; }
+.qr-img-wrap img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.qr-id { font-size: 13px; color: var(--accent); font-family: var(--font-body); margin-bottom: 8px; }
+.qr-hint { font-size: 13px; color: var(--text-muted); font-family: var(--font-body); line-height: 1.6; }
 
 /* 모바일 바텀시트 */
 .sheet-overlay { display: none; position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,0.65); align-items: flex-end; }
 .sheet-overlay.show { display: flex; }
-.sheet-card { background: #1a1a1a; border-top: 1px solid rgba(255,255,255,0.1); padding: 16px 20px 32px; width: 100%; text-align: center; }
-.sheet-handle { width: 36px; height: 3px; background: rgba(255,255,255,0.2); border-radius: 2px; margin: 0 auto 18px; }
-.sheet-logo-row { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 16px; }
-.sheet-logo-icon { width: 24px; height: 24px; border-radius: 6px; overflow: hidden; }
-.sheet-logo-icon img { width: 100%; height: 100%; object-fit: contain; }
-.sheet-channel-name { font-family: var(--font-body); font-size: 15px; font-weight: 600; color: var(--text); }
-.sheet-qr-wrap { width: 140px; height: 140px; background: #fff; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; padding: 8px; }
-.sheet-qr-wrap img, .sheet-qr-wrap svg { width: 100%; height: 100%; object-fit: contain; display: block; }
-.sheet-id { font-size: 12px; color: var(--accent); font-family: var(--font-body); margin-bottom: 4px; }
-.sheet-hint { font-size: 11px; color: var(--text-muted); font-family: var(--font-body); line-height: 1.5; margin-bottom: 14px; }
-.sheet-copy-btn { background: #07C160; border: none; width: 100%; padding: 12px; font-size: 13px; font-weight: 600; color: #fff; font-family: var(--font-body); cursor: pointer; }
+.sheet-card { background: #1a1a1a; border-top: 1px solid rgba(255,255,255,0.1); padding: 16px 24px 36px; width: 100%; text-align: center; transform: translateY(100%); transition: transform 0.35s cubic-bezier(0.32,0.72,0,1); will-change: transform; }
+.sheet-overlay.show .sheet-card { transform: translateY(0); }
+.sheet-overlay.closing .sheet-card { transform: translateY(100%); }
+.sheet-handle { width: 36px; height: 4px; background: rgba(255,255,255,0.25); border-radius: 2px; margin: 0 auto 20px; cursor: grab; }
+.sheet-channel-name { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 20px; }
+.sheet-qr-wrap { width: 180px; height: 180px; background: #fff; margin: 0 auto 14px; display: flex; align-items: center; justify-content: center; padding: 10px; }
+.sheet-qr-wrap img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.sheet-id { font-size: 13px; color: var(--accent); font-family: var(--font-body); margin-bottom: 6px; }
+.sheet-hint { font-size: 13px; color: var(--text-muted); font-family: var(--font-body); line-height: 1.6; margin-bottom: 18px; }
+.sheet-copy-btn { background: #07C160; border: none; width: 100%; padding: 14px; font-size: 14px; font-weight: 600; color: #fff; font-family: var(--font-body); cursor: pointer; }
 
-.float-toast { position: fixed; bottom: 156px; right: 28px; z-index: 400; background: #1a1a1a; border: 1px solid rgba(200,255,0,0.3); color: var(--text); font-family: var(--font-body); font-size: 12px; padding: 8px 14px; opacity: 0; pointer-events: none; transition: opacity 0.3s; white-space: nowrap; }
+.float-toast { position: fixed; bottom: 160px; right: 28px; z-index: 400; background: #1a1a1a; border: 1px solid rgba(200,255,0,0.3); color: var(--text); font-family: var(--font-body); font-size: 12px; padding: 8px 14px; opacity: 0; pointer-events: none; transition: opacity 0.3s; white-space: nowrap; }
 .float-toast.show { opacity: 1; }
 
 @media (max-width: 768px) {
   .float-contact { bottom: 84px; right: 16px; }
   .float-toggle { width: 48px; height: 48px; }
+  .float-channel-btn { width: 44px; height: 44px; }
 }
 </style>
 
 <div class="float-contact">
   <div class="float-channels" id="floatChannels">
-    <a class="float-channel-btn" href="http://pf.kakao.com/_QxeEXX/chat" target="_blank" rel="noopener">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/KakaoTalk_logo.svg" alt="KakaoTalk">
-      KakaoTalk
+    <!-- 순서: 라인, 인스타, 위챗, 카카오, 왓츠앱 -->
+    <a class="float-channel-btn" id="lineBtn" href="https://line.me/ti/p/~seoulshield" target="_blank" rel="noopener" aria-label="LINE">
+      <img src="/assets/images/home/sns_icons_line.svg" alt="LINE">
     </a>
-    <a class="float-channel-btn" href="https://wa.me/821067180030" target="_blank" rel="noopener">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-      WhatsApp
+    <a class="float-channel-btn" href="https://www.instagram.com/seoulshield/" target="_blank" rel="noopener" aria-label="Instagram">
+      <img src="/assets/images/home/sns_icons_instargram.svg" alt="Instagram">
     </a>
-    <a class="float-channel-btn" id="lineBtn" href="https://line.me/ti/p/~seoulshield" target="_blank" rel="noopener">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="LINE">
-      LINE
-    </a>
-    <a class="float-channel-btn" href="https://www.instagram.com/seoulshield/" target="_blank" rel="noopener">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
-      Instagram
-    </a>
-    <button class="float-channel-btn" id="wechatBtn">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/WeChat_logo_PNG.PNG" alt="WeChat">
-      WeChat
+    <button class="float-channel-btn" id="wechatBtn" aria-label="WeChat">
+      <img src="/assets/images/home/sns_icons_wechat.svg" alt="WeChat">
     </button>
+    <a class="float-channel-btn" href="http://pf.kakao.com/_QxeEXX/chat" target="_blank" rel="noopener" aria-label="KakaoTalk">
+      <img src="/assets/images/home/sns_icons_kakao.svg" alt="KakaoTalk">
+    </a>
+    <a class="float-channel-btn" href="https://wa.me/821067180030" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <img src="/assets/images/home/sns_icons_whatsapp.svg" alt="WhatsApp">
+    </a>
   </div>
   <button class="float-toggle" id="floatToggle" aria-label="Contact channels">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -675,10 +683,7 @@ form.addEventListener('submit', async (e) => {
 <div class="qr-overlay" id="lineModal">
   <div class="qr-card">
     <button class="qr-close" id="lineClose">&times;</button>
-    <div class="qr-logo-row">
-      <div class="qr-logo-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="LINE"></div>
-      <span class="qr-channel-name">LINE</span>
-    </div>
+    <div class="qr-channel-name">LINE</div>
     <div class="qr-img-wrap"><img src="/assets/images/home/QR_LINE.svg" alt="LINE QR Code"></div>
     <div class="qr-id">@seoulshield</div>
     <div class="qr-hint">Open LINE and scan this code<br>to start a conversation</div>
@@ -689,10 +694,7 @@ form.addEventListener('submit', async (e) => {
 <div class="qr-overlay" id="wechatModal">
   <div class="qr-card">
     <button class="qr-close" id="wechatClose">&times;</button>
-    <div class="qr-logo-row">
-      <div class="qr-logo-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/7/73/WeChat_logo_PNG.PNG" alt="WeChat"></div>
-      <span class="qr-channel-name">WeChat</span>
-    </div>
+    <div class="qr-channel-name">WeChat</div>
     <div class="qr-img-wrap"><img src="/assets/images/home/QR_WECHAT.png" alt="WeChat QR Code"></div>
     <div class="qr-id">WeChat ID: SeoulShield</div>
     <div class="qr-hint">Open WeChat on your phone<br>and scan this code</div>
@@ -701,12 +703,9 @@ form.addEventListener('submit', async (e) => {
 
 <!-- 모바일 바텀시트 — LINE -->
 <div class="sheet-overlay" id="lineSheet">
-  <div class="sheet-card">
-    <div class="sheet-handle"></div>
-    <div class="sheet-logo-row">
-      <div class="sheet-logo-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="LINE"></div>
-      <span class="sheet-channel-name">LINE</span>
-    </div>
+  <div class="sheet-card" id="lineSheetCard">
+    <div class="sheet-handle" id="lineHandle"></div>
+    <div class="sheet-channel-name">LINE</div>
     <div class="sheet-qr-wrap"><img src="/assets/images/home/QR_LINE.svg" alt="LINE QR Code"></div>
     <div class="sheet-id">@seoulshield</div>
     <div class="sheet-hint">LINE 앱에서 이 QR을 스캔하거나<br>ID로 직접 검색하세요</div>
@@ -716,12 +715,9 @@ form.addEventListener('submit', async (e) => {
 
 <!-- 모바일 바텀시트 — WeChat -->
 <div class="sheet-overlay" id="wechatSheet">
-  <div class="sheet-card">
-    <div class="sheet-handle"></div>
-    <div class="sheet-logo-row">
-      <div class="sheet-logo-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/7/73/WeChat_logo_PNG.PNG" alt="WeChat"></div>
-      <span class="sheet-channel-name">WeChat</span>
-    </div>
+  <div class="sheet-card" id="wechatSheetCard">
+    <div class="sheet-handle" id="wechatHandle"></div>
+    <div class="sheet-channel-name">WeChat</div>
     <div class="sheet-qr-wrap"><img src="/assets/images/home/QR_WECHAT.png" alt="WeChat QR Code"></div>
     <div class="sheet-id">WeChat ID: SeoulShield</div>
     <div class="sheet-hint">WeChat 앱에서 이 QR을 스캔하거나<br>ID로 직접 검색하세요</div>
@@ -738,7 +734,7 @@ form.addEventListener('submit', async (e) => {
   var channels = document.getElementById('floatChannels');
   var open = false;
 
-  function closeAll() {
+  function closeChannels() {
     open = false;
     channels.classList.remove('open');
     toggle.classList.remove('open');
@@ -751,7 +747,7 @@ form.addEventListener('submit', async (e) => {
   });
 
   document.addEventListener('click', function(e){
-    if (open && !e.target.closest('.float-contact')) closeAll();
+    if (open && !e.target.closest('.float-contact')) closeChannels();
   });
 
   function showToast(msg) {
@@ -765,14 +761,50 @@ form.addEventListener('submit', async (e) => {
     navigator.clipboard.writeText(text).then(function(){ showToast(msg); });
   }
 
+  function closeSheet(overlayId) {
+    var overlay = document.getElementById(overlayId);
+    overlay.classList.add('closing');
+    setTimeout(function(){
+      overlay.classList.remove('show', 'closing');
+    }, 350);
+  }
+
+  function setupDrag(handleId, sheetCardId, overlayId) {
+    var handle = document.getElementById(handleId);
+    var card = document.getElementById(sheetCardId);
+    var startY = 0;
+    var currentY = 0;
+
+    handle.addEventListener('touchstart', function(e){
+      startY = e.touches[0].clientY;
+      card.style.transition = 'none';
+    }, { passive: true });
+
+    handle.addEventListener('touchmove', function(e){
+      currentY = e.touches[0].clientY - startY;
+      if (currentY > 0) {
+        card.style.transform = 'translateY(' + currentY + 'px)';
+      }
+    }, { passive: true });
+
+    handle.addEventListener('touchend', function(){
+      card.style.transition = '';
+      if (currentY > 80) {
+        closeSheet(overlayId);
+      } else {
+        card.style.transform = '';
+      }
+      currentY = 0;
+    });
+  }
+
   if (isMobile) {
     document.getElementById('lineBtn').addEventListener('click', function(e){
-      e.preventDefault();
-      closeAll();
+      e.preventDefault(); closeChannels();
       document.getElementById('lineSheet').classList.add('show');
     });
     document.getElementById('wechatBtn').addEventListener('click', function(){
-      closeAll();
+      closeChannels();
       document.getElementById('wechatSheet').classList.add('show');
     });
     document.getElementById('lineCopyBtn').addEventListener('click', function(){
@@ -783,17 +815,18 @@ form.addEventListener('submit', async (e) => {
     });
     ['lineSheet','wechatSheet'].forEach(function(id){
       document.getElementById(id).addEventListener('click', function(e){
-        if (e.target === this) this.classList.remove('show');
+        if (e.target === this) closeSheet(id);
       });
     });
+    setupDrag('lineHandle', 'lineSheetCard', 'lineSheet');
+    setupDrag('wechatHandle', 'wechatSheetCard', 'wechatSheet');
   } else {
     document.getElementById('lineBtn').addEventListener('click', function(e){
-      e.preventDefault();
-      closeAll();
+      e.preventDefault(); closeChannels();
       document.getElementById('lineModal').classList.add('show');
     });
     document.getElementById('wechatBtn').addEventListener('click', function(){
-      closeAll();
+      closeChannels();
       document.getElementById('wechatModal').classList.add('show');
     });
     document.getElementById('lineClose').addEventListener('click', function(){ document.getElementById('lineModal').classList.remove('show'); });
