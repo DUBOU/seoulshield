@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SeoulShield — Connect</title>
+<meta name="description" content="SeoulShield premium paint protection film. Dealer & distributor inquiries via WhatsApp, Instagram, WeChat, LINE, KakaoTalk, email.">
+
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EGMFSVX6PT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EGMFSVX6PT');
+</script>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+  :root{
+    --bg:#0a0a0a;
+    --card:#0f0f0f;
+    --btn:#1c1c1c;
+    --btn-hover:#282828;
+    --line:#2a2a2a;
+    --line-hover:#3a3a3a;
+    --white:#ffffff;
+    --gray:#9a9a9a;
+    --dgray:#6e6e6e;
+    --accent:#c8ff00;
+    --black:#0a0a0a;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html,body{height:100%;}
+
+  body{
+    font-family:'Outfit',-apple-system,sans-serif;
+    background:var(--bg);
+    color:var(--white);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    padding:22px 16px 0;
+  }
+
+  /* PC: centered mobile-width card that extends to the bottom edge */
+  .wrap{
+    position:relative;
+    width:100%;
+    max-width:468px;
+    padding:100px 22px 40px;
+    display:flex;
+    flex-direction:column;
+    min-height:calc(100vh - 22px);
+    /* card rounded on top only, runs to the bottom of the screen */
+    background:var(--card);
+    border:1px solid var(--line);
+    border-bottom:none;
+    border-radius:32px 32px 0 0;
+  }
+  /* very subtle neon glow behind the card (top only) */
+  .wrap::before{
+    content:"";
+    position:absolute;
+    inset:-2px 0 auto;
+    height:220px;
+    border-radius:34px 34px 0 0;
+    z-index:-1;
+    background:radial-gradient(120% 80% at 50% 0%, rgba(200,255,0,0.11), transparent 62%);
+    filter:blur(22px);
+    pointer-events:none;
+  }
+
+  /* ---- Header / profile ---- */
+  .logo{
+    font-family:'Syne',sans-serif;
+    font-weight:800;
+    font-size:26px;
+    letter-spacing:2px;
+    text-align:center;
+    margin-bottom:22px;
+  }
+  .logo .s2{color:var(--accent);}
+
+  .badge{
+    display:inline-block;
+    align-self:center;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1.5px;
+    color:var(--accent);
+    border:1px solid var(--line);
+    background:var(--card);
+    border-radius:999px;
+    padding:6px 14px;
+    margin-bottom:18px;
+  }
+
+  .tagline{
+    text-align:center;
+    color:var(--gray);
+    font-size:14px;
+    line-height:1.5;
+    font-weight:300;
+    margin-bottom:34px;
+    padding:0 8px;
+  }
+  .tagline strong{color:var(--white);font-weight:600;}
+
+  /* ---- Link buttons ---- */
+  .links{display:flex;flex-direction:column;gap:13px;}
+
+  .link{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--btn);
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:21px 24px;
+    color:var(--white);
+    text-decoration:none;
+    font-size:15px;
+    font-weight:600;
+    transition:background .2s ease, border-color .2s ease;
+    cursor:pointer;
+    width:100%;
+    font-family:inherit;
+  }
+
+  /* PC / mouse only: gentle brighten on hover */
+  @media (hover:hover) and (pointer:fine){
+    .link:hover{
+      background:var(--btn-hover);
+      border-color:var(--line-hover);
+    }
+  }
+  /* Touch: subtle press feedback */
+  @media (hover:none){
+    .link:active{
+      background:var(--btn-hover);
+      border-color:var(--line-hover);
+    }
+  }
+
+  .link:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+
+  .link .ico{
+    width:28px;height:28px;flex:0 0 28px;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--accent);
+    position:absolute;
+    left:22px;
+  }
+  .link .ico svg{width:28px;height:28px;fill:currentColor;}
+
+  .link .name{font-weight:600;font-size:15px;color:var(--white);}
+
+  /* ---- Promo image card (placeholder) ---- */
+  .promo{
+    display:block;
+    margin:4px 0;
+    border-radius:24px;
+    overflow:hidden;
+    border:1px dashed var(--line);
+    background:
+      repeating-linear-gradient(115deg,
+        transparent 0 14px, rgba(200,255,0,0.02) 14px 16px);
+    aspect-ratio:16/7;
+    position:relative;
+    text-decoration:none;
+  }
+  .promo .ph{
+    position:absolute;inset:0;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:6px;color:var(--dgray);
+  }
+  .promo .ph .lbl{font-size:11px;letter-spacing:2px;font-weight:700;color:var(--dgray);}
+  .promo .ph .lbl2{font-size:10px;color:var(--dgray);opacity:.7;}
+
+  /* ---- Footer ---- */
+  .foot{margin-top:auto;padding-top:34px;text-align:center;}
+  .foot .site{font-size:12px;color:var(--gray);letter-spacing:1px;margin-bottom:6px;font-weight:600;}
+  .foot .copy{font-size:10px;color:var(--dgray);}
+
+  /* ---- WeChat modal ---- */
+  .modal-overlay{
+    position:fixed;inset:0;
+    background:rgba(0,0,0,.78);
+    backdrop-filter:blur(4px);
+    display:none;
+    align-items:center;justify-content:center;
+    z-index:100;padding:24px;
+  }
+  .modal-overlay.open{display:flex;}
+  .modal{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:28px 26px 24px;
+    max-width:300px;width:100%;
+    text-align:center;
+    position:relative;
+  }
+  .modal h3{
+    font-family:'Syne',sans-serif;font-weight:800;
+    font-size:16px;letter-spacing:2px;color:var(--accent);margin-bottom:18px;
+  }
+  .modal .qr{
+    background:#fff;border-radius:12px;padding:14px;
+    width:200px;height:200px;margin:0 auto 16px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .modal .qr img,.modal .qr svg{width:100%;height:100%;object-fit:contain;display:block;}
+  .modal .wid{font-size:14px;font-weight:600;color:var(--white);margin-bottom:4px;}
+  .modal .whint{font-size:11px;color:var(--dgray);line-height:1.5;}
+  .modal .close{
+    position:absolute;top:14px;right:16px;
+    background:none;border:none;color:var(--gray);
+    font-size:22px;cursor:pointer;line-height:1;padding:0;
+  }
+  .modal .close:hover{color:var(--white);}
+  .modal .close:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+
+
+  /* ---- Share button (top-left of card) ---- */
+  .share-btn{
+    position:absolute;
+    top:22px;left:22px;
+    width:40px;height:40px;
+    border-radius:50%;
+    background:var(--btn);
+    border:1px solid var(--line);
+    color:var(--white);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+    transition:border-color .18s,background .18s;
+    z-index:5;
+  }
+  .share-btn:hover{border-color:var(--accent);background:#202020;}
+  .share-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  .share-btn svg{width:18px;height:18px;fill:currentColor;}
+
+  /* ---- Share modal ---- */
+  .share-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:20px;
+    max-width:320px;width:100%;
+    position:relative;
+    overflow:hidden;
+  }
+  .share-card .close{
+    position:absolute;top:14px;right:14px;
+    background:rgba(0,0,0,.3);border:none;color:var(--white);
+    width:30px;height:30px;border-radius:50%;
+    font-size:18px;cursor:pointer;line-height:1;
+    display:flex;align-items:center;justify-content:center;z-index:2;
+  }
+  .share-card .close:hover{background:rgba(0,0,0,.55);}
+  .share-card .close:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  .share-top{
+    padding:34px 24px 22px;
+    text-align:center;
+    background:
+      radial-gradient(120% 100% at 50% 0%, rgba(200,255,0,0.10), transparent 70%),
+      var(--btn);
+    border-bottom:1px solid var(--line);
+  }
+  .share-top .mini-logo{
+    font-family:'Syne',sans-serif;font-weight:800;
+    font-size:18px;letter-spacing:1.5px;margin-bottom:14px;
+  }
+  .share-top .mini-logo .s2{color:var(--accent);}
+  .share-url{
+    font-size:14px;color:var(--white);font-weight:500;margin-bottom:14px;
+    word-break:break-all;
+  }
+  .copy-btn{
+    display:inline-flex;align-items:center;gap:7px;
+    background:var(--card);border:1px solid var(--line);
+    color:var(--white);border-radius:999px;
+    padding:9px 18px;font-size:13px;font-weight:500;cursor:pointer;
+    font-family:inherit;transition:border-color .18s,background .18s;
+  }
+  .copy-btn:hover{border-color:var(--accent);}
+  .copy-btn.copied{border-color:var(--accent);color:var(--accent);}
+  .copy-btn svg{width:15px;height:15px;fill:currentColor;}
+  .share-qr-wrap{padding:26px 24px 28px;display:flex;justify-content:center;}
+  .share-qr{
+    background:#fff;border-radius:14px;padding:14px;
+    width:180px;height:180px;display:flex;align-items:center;justify-content:center;
+  }
+  .share-qr canvas, .share-qr img{width:100%!important;height:100%!important;}
+
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important;}
+  }
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <button class="share-btn" id="shareBtn" aria-label="Share this page">
+      <svg viewBox="0 0 24 24"><path d="M18 16.1c-.8 0-1.5.3-2 .8l-7-4.1c.1-.2.1-.5.1-.8s0-.5-.1-.8l7-4c.5.5 1.2.8 2 .8a3 3 0 1 0-3-3c0 .3 0 .5.1.8L8 9c-.5-.5-1.2-.8-2-.8a3 3 0 1 0 0 6c.8 0 1.5-.3 2-.8l7 4.1c-.1.2-.1.5-.1.7a2.9 2.9 0 1 0 3-2.9"/></svg>
+    </button>
+    <div class="logo">SEOUL<span class="s2">SHIELD</span></div>
+    <span class="badge">DEALER &amp; DISTRIBUTOR</span>
+    <p class="tagline">Premium paint protection film.<br><strong>Pick a channel to start a conversation.</strong></p>
+
+    <nav class="links">
+
+      <!-- WhatsApp -->
+      <a class="link" href="https://wa.me/821067180030?utm_source=linkhub&utm_medium=button&utm_campaign=whatsapp"
+         data-ch="whatsapp" target="_blank" rel="noopener">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.6.1-.2.3-.7 1-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.6-1.5-.9-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 .9-1 2.3s1 2.7 1.2 2.9c.1.2 2 3.1 5 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.5-.3M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.9-1.3A10 10 0 1 0 12 2m0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2"/></svg>
+        </span>
+        <span class="name">WhatsApp</span>
+      </a>
+
+      <!-- WeChat (modal) -->
+      <button class="link" type="button" data-ch="wechat" id="wechatBtn">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M8.7 3C4.8 3 1.6 5.6 1.6 8.9c0 1.8 1 3.5 2.6 4.6l-.6 2 2.3-1.2c.8.2 1.5.3 2.2.3h.6a4.7 4.7 0 0 1-.2-1.4c0-3 2.8-5.4 6.3-5.4h.6C15.2 4.9 12.2 3 8.7 3M6.3 7.5a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8m4.8 0a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8m11.3 5.7c0-2.8-2.8-5-6-5s-6 2.2-6 5 2.8 5 6 5c.7 0 1.3-.1 2-.3l1.8 1-.5-1.6c1.3-.9 2.7-2.3 2.7-4.1m-8-.8a.7.7 0 1 1 0-1.5.7.7 0 0 1 0 1.5m4 0a.7.7 0 1 1 0-1.5.7.7 0 0 1 0 1.5"/></svg>
+        </span>
+        <span class="name">WeChat</span>
+      </button>
+
+      <!-- Promo placeholder card -->
+      <a class="promo" href="#" data-ch="promo" aria-label="Featured (coming soon)">
+        <span class="ph">
+          <span class="lbl">FEATURED</span>
+          <span class="lbl2">Banner slot — coming soon</span>
+        </span>
+      </a>
+
+      <!-- LINE -->
+      <a class="link" href="https://line.me/ti/p/~seoulshield?utm_source=linkhub&utm_medium=button&utm_campaign=line"
+         data-ch="line" target="_blank" rel="noopener">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 5.6 2 10.1c0 4 3.6 7.4 8.4 8 .3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.6 1.1-.5 6-3.5 8.2-6C21.7 13.4 22 11.8 22 10.1 22 5.6 17.5 2 12 2M8.3 12.6H6.2c-.3 0-.5-.2-.5-.5V8c0-.3.2-.5.5-.5s.5.2.5.5v3.6h1.6c.3 0 .5.2.5.5s-.2.5-.5.5m2-.5c0 .3-.2.5-.5.5s-.5-.2-.5-.5V8c0-.3.2-.5.5-.5s.5.2.5.5zm4.6 0c0 .2-.1.4-.3.5h-.2c-.2 0-.3-.1-.4-.2l-2.1-2.9v2.6c0 .3-.2.5-.5.5s-.5-.2-.5-.5V8c0-.2.1-.4.3-.5h.2c.1 0 .3.1.4.2l2.1 2.9V8c0-.3.2-.5.5-.5s.5.2.5.5zm3.3-2.6c.3 0 .5.2.5.5s-.2.5-.5.5h-1.6v1h1.6c.3 0 .5.2.5.5s-.2.5-.5.5h-2.1c-.3 0-.5-.2-.5-.5V8c0-.3.2-.5.5-.5h2.1c.3 0 .5.2.5.5s-.2.5-.5.5h-1.6v1z"/></svg>
+        </span>
+        <span class="name">LINE</span>
+      </a>
+
+      <!-- KakaoTalk -->
+      <a class="link" href="https://pf.kakao.com/_QxeEXX/chat?utm_source=linkhub&utm_medium=button&utm_campaign=kakao"
+         data-ch="kakao" target="_blank" rel="noopener">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 3C6.9 3 2.8 6.3 2.8 10.3c0 2.6 1.7 4.9 4.3 6.2-.2.7-.7 2.5-.8 2.9-.1.5.2.5.4.4.2-.1 2.6-1.8 3.7-2.5.5.1 1 .1 1.6.1 5.1 0 9.2-3.3 9.2-7.3S17.1 3 12 3"/></svg>
+        </span>
+        <span class="name">KakaoTalk</span>
+      </a>
+
+      <!-- Email -->
+      <a class="link" href="mailto:info@seoulshield.com?subject=Dealer%20Inquiry%20%E2%80%94%20SeoulShield"
+         data-ch="email">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2m0 4-8 5-8-5V6l8 5 8-5z"/></svg>
+        </span>
+        <span class="name">Email</span>
+      </a>
+
+      <!-- Website -->
+      <a class="link" href="https://seoulshield.com?utm_source=linkhub&utm_medium=button&utm_campaign=website"
+         data-ch="website" target="_blank" rel="noopener">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20m6.9 6h-3a15.7 15.7 0 0 0-1.3-3.4A8 8 0 0 1 18.9 8M12 4c.8 1.2 1.4 2.5 1.8 4h-3.6c.4-1.5 1-2.8 1.8-4M4.3 14a7.8 7.8 0 0 1 0-4h3.4a16.6 16.6 0 0 0 0 4zm.8 2h3a15.7 15.7 0 0 0 1.3 3.4A8 8 0 0 1 5.1 16m3-8h-3a8 8 0 0 1 4.3-3.4A15.7 15.7 0 0 0 8.1 8M12 20c-.8-1.2-1.4-2.5-1.8-4h3.6c-.4 1.5-1 2.8-1.8 4m2.3-6H9.7a14.7 14.7 0 0 1 0-4h4.6a14.7 14.7 0 0 1 0 4m.4 5.4c.6-1 1-2.2 1.3-3.4h3a8 8 0 0 1-4.3 3.4m1.6-5.4a16.6 16.6 0 0 0 0-4h3.4a7.8 7.8 0 0 1 0 4z"/></svg>
+        </span>
+        <span class="name">Visit our website</span>
+      </a>
+
+      <!-- Instagram (moved to bottom) -->
+      <a class="link" href="https://instagram.com/seoulshield?utm_source=linkhub&utm_medium=button&utm_campaign=instagram"
+         data-ch="instagram" target="_blank" rel="noopener">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4 1.3-.1 1.7-.1 4.9-.1M12 0C8.7 0 8.3 0 7 .1 5.7.1 4.8.3 4.1.6c-.8.3-1.4.7-2.1 1.4C1.3 2.7.9 3.3.6 4.1.3 4.8.1 5.7.1 7 0 8.3 0 8.7 0 12s0 3.7.1 5c0 1.3.2 2.2.5 2.9.3.8.7 1.4 1.4 2.1.7.7 1.3 1.1 2.1 1.4.7.3 1.6.5 2.9.5 1.3.1 1.7.1 5 .1s3.7 0 5-.1c1.3 0 2.2-.2 2.9-.5.8-.3 1.4-.7 2.1-1.4.7-.7 1.1-1.3 1.4-2.1.3-.7.5-1.6.5-2.9.1-1.3.1-1.7.1-5s0-3.7-.1-5c0-1.3-.2-2.2-.5-2.9-.3-.8-.7-1.4-1.4-2.1-.7-.7-1.3-1.1-2.1-1.4-.7-.3-1.6-.5-2.9-.5C15.7 0 15.3 0 12 0m0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4m0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8m6.4-10.4a1.4 1.4 0 1 1-2.9 0 1.4 1.4 0 0 1 2.9 0"/></svg>
+        </span>
+        <span class="name">Instagram</span>
+      </a>
+
+    </nav>
+
+    <footer class="foot">
+      <div class="copy">© SEOULSHIELD 2026. All rights reserved.</div>
+    </footer>
+  </main>
+
+  <!-- WeChat modal -->
+  <div class="modal-overlay" id="wechatModal" role="dialog" aria-modal="true" aria-labelledby="wechatTitle">
+    <div class="modal">
+      <button class="close" id="wechatClose" aria-label="Close">&times;</button>
+      <h3 id="wechatTitle">WECHAT</h3>
+      <div class="qr" id="wechatQrBox">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 850 850">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #000;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        fill-rule: evenodd;
+      }
+
+      .cls-3 {
+        fill: #fff;
+      }
+
+      .cls-4 {
+        fill: #fefefe;
+      }
+    </style>
+  </defs>
+  <g id="_레이어_1" data-name="레이어 1" shape-rendering="crispEdges">
+    <g>
+      <rect class="cls-3" y="0" width="850" height="850"/>
+      <g>
+        <polygon class="cls-2" points="757.5 755.5 755.5 757.5 755.5 767.5 757.5 769.5 767.5 769.5 769.5 767.5 769.5 757.5 767.5 755.5 757.5 755.5"/>
+        <polygon class="cls-2" points="738.5 755.5 736.5 757.5 736.5 767.5 738.5 769.5 749.5 769.5 751.5 767.5 751.5 757.5 749.5 755.5 738.5 755.5"/>
+        <polygon class="cls-2" points="701.5 755.5 699.5 757.5 699.5 767.5 701.5 769.5 711.5 769.5 713.5 767.5 713.5 757.5 711.5 755.5 701.5 755.5"/>
+        <polygon class="cls-2" points="664.5 755.5 663.5 756.5 662.5 756.5 662.5 768.5 663.5 769.5 674.5 769.5 676.5 767.5 676.5 757.5 674.5 755.5 664.5 755.5"/>
+        <polygon class="cls-2" points="645.5 755.5 643.5 757.5 643.5 767.5 645.5 769.5 655.5 769.5 656.5 768.5 657.5 768.5 657.5 757.5 655.5 755.5 645.5 755.5"/>
+        <polygon class="cls-2" points="626.5 755.5 624.5 757.5 624.5 767.5 626.5 769.5 637.5 769.5 639.5 767.5 639.5 757.5 637.5 755.5 626.5 755.5"/>
+        <polygon class="cls-2" points="570.5 755.5 568.5 757.5 568.5 767.5 570.5 769.5 581.5 769.5 583.5 767.5 583.5 757.5 581.5 755.5 570.5 755.5"/>
+        <polygon class="cls-2" points="533.5 755.5 531.5 757.5 531.5 767.5 533.5 769.5 544.5 769.5 545.5 768.5 545.5 756.5 544.5 755.5 533.5 755.5"/>
+        <polygon class="cls-2" points="514.5 755.5 512.5 757.5 512.5 767.5 514.5 769.5 525.5 769.5 527.5 767.5 527.5 757.5 525.5 755.5 514.5 755.5"/>
+        <polygon class="cls-2" points="496.5 755.5 494.5 757.5 494.5 767.5 496.5 769.5 506.5 769.5 508.5 767.5 508.5 757.5 506.5 755.5 496.5 755.5"/>
+        <polygon class="cls-2" points="458.5 755.5 457.5 756.5 457.5 757.5 456.5 758.5 456.5 766.5 457.5 767.5 457.5 768.5 458.5 769.5 469.5 769.5 471.5 767.5 471.5 757.5 469.5 755.5 458.5 755.5"/>
+        <polygon class="cls-2" points="440.5 755.5 438.5 757.5 438.5 767.5 440.5 769.5 450.5 769.5 452.5 767.5 452.5 757.5 450.5 755.5 440.5 755.5"/>
+        <polygon class="cls-2" points="402.5 755.5 401.5 756.5 401.5 757.5 400.5 758.5 400.5 766.5 401.5 767.5 401.5 768.5 402.5 769.5 413.5 769.5 415.5 767.5 415.5 757.5 413.5 755.5 402.5 755.5"/>
+        <polygon class="cls-2" points="384.5 755.5 382.5 757.5 382.5 767.5 384.5 769.5 394.5 769.5 396.5 767.5 396.5 757.5 394.5 755.5 384.5 755.5"/>
+        <polygon class="cls-2" points="365.5 755.5 363.5 757.5 363.5 767.5 365.5 769.5 376.5 769.5 378.5 767.5 378.5 757.5 376.5 755.5 365.5 755.5"/>
+        <polygon class="cls-2" points="346.5 755.5 345.5 756.5 345.5 768.5 346.5 769.5 357.5 769.5 359.5 767.5 359.5 757.5 357.5 755.5 346.5 755.5"/>
+        <polygon class="cls-2" points="272.5 755.5 270.5 757.5 270.5 767.5 272.5 769.5 283.5 769.5 284.5 768.5 284.5 756.5 283.5 756.5 282.5 755.5 272.5 755.5"/>
+        <polygon class="cls-2" points="235.5 755.5 233.5 757.5 233.5 767.5 235.5 769.5 245.5 769.5 247.5 767.5 247.5 757.5 245.5 755.5 235.5 755.5"/>
+        <polygon class="cls-2" points="738.5 736.5 736.5 738.5 736.5 748.5 737.5 749.5 737.5 750.5 738.5 750.5 739.5 751.5 748.5 751.5 751.5 748.5 751.5 739.5 750.5 738.5 750.5 737.5 749.5 737.5 748.5 736.5 738.5 736.5"/>
+        <polygon class="cls-2" points="720.5 736.5 718.5 738.5 718.5 749.5 720.5 751.5 729.5 751.5 730.5 750.5 731.5 750.5 732.5 749.5 732.5 738.5 730.5 736.5 720.5 736.5"/>
+        <polygon class="cls-2" points="701.5 736.5 699.5 738.5 699.5 749.5 700.5 750.5 701.5 750.5 702.5 751.5 711.5 751.5 713.5 749.5 713.5 738.5 711.5 736.5 701.5 736.5"/>
+        <polygon class="cls-2" points="682.5 736.5 680.5 738.5 680.5 748.5 681.5 749.5 681.5 750.5 682.5 750.5 683.5 751.5 692.5 751.5 695.5 748.5 695.5 739.5 694.5 738.5 694.5 737.5 693.5 737.5 692.5 736.5 682.5 736.5"/>
+        <polygon class="cls-2" points="626.5 736.5 625.5 737.5 625.5 738.5 624.5 739.5 624.5 748.5 627.5 751.5 636.5 751.5 639.5 748.5 639.5 739.5 638.5 738.5 638.5 737.5 637.5 736.5 626.5 736.5"/>
+        <polygon class="cls-2" points="608.5 736.5 606.5 738.5 606.5 749.5 608.5 751.5 617.5 751.5 618.5 750.5 619.5 750.5 620.5 749.5 620.5 738.5 618.5 736.5 608.5 736.5"/>
+        <polygon class="cls-2" points="571.5 736.5 570.5 737.5 569.5 737.5 569.5 738.5 568.5 739.5 568.5 748.5 571.5 751.5 580.5 751.5 581.5 750.5 582.5 750.5 582.5 749.5 583.5 748.5 583.5 738.5 581.5 736.5 571.5 736.5"/>
+        <polygon class="cls-2" points="533.5 736.5 531.5 738.5 531.5 749.5 532.5 750.5 533.5 750.5 534.5 751.5 543.5 751.5 545.5 749.5 545.5 738.5 543.5 736.5 533.5 736.5"/>
+        <polygon class="cls-2" points="496.5 736.5 494.5 738.5 494.5 749.5 496.5 751.5 506.5 751.5 508.5 749.5 508.5 738.5 506.5 736.5 496.5 736.5"/>
+        <polygon class="cls-2" points="477.5 736.5 475.5 738.5 475.5 749.5 476.5 750.5 477.5 750.5 478.5 751.5 487.5 751.5 489.5 749.5 489.5 748.5 490.5 747.5 490.5 739.5 487.5 736.5 477.5 736.5"/>
+        <polygon class="cls-2" points="403.5 736.5 401.5 738.5 401.5 739.5 400.5 740.5 400.5 747.5 401.5 748.5 401.5 749.5 403.5 751.5 412.5 751.5 413.5 750.5 414.5 750.5 415.5 749.5 415.5 738.5 413.5 736.5 403.5 736.5"/>
+        <polygon class="cls-2" points="347.5 736.5 345.5 738.5 345.5 749.5 347.5 751.5 356.5 751.5 357.5 750.5 358.5 750.5 359.5 749.5 359.5 738.5 357.5 736.5 347.5 736.5"/>
+        <polygon class="cls-2" points="291.5 736.5 289.5 738.5 289.5 749.5 291.5 751.5 300.5 751.5 301.5 750.5 302.5 750.5 303.5 749.5 303.5 738.5 301.5 736.5 291.5 736.5"/>
+        <polygon class="cls-2" points="272.5 736.5 270.5 738.5 270.5 749.5 271.5 750.5 272.5 750.5 273.5 751.5 282.5 751.5 284.5 749.5 284.5 738.5 282.5 736.5 272.5 736.5"/>
+        <polygon class="cls-2" points="738.5 718.5 736.5 720.5 736.5 730.5 738.5 732.5 749.5 732.5 750.5 731.5 750.5 730.5 751.5 729.5 751.5 720.5 749.5 718.5 738.5 718.5"/>
+        <polygon class="cls-2" points="719.5 718.5 718.5 719.5 718.5 730.5 720.5 732.5 730.5 732.5 732.5 730.5 732.5 720.5 730.5 718.5 719.5 718.5"/>
+        <polygon class="cls-2" points="644.5 718.5 644.5 719.5 643.5 720.5 643.5 730.5 645.5 732.5 655.5 732.5 657.5 730.5 657.5 719.5 656.5 718.5 644.5 718.5"/>
+        <polygon class="cls-2" points="626.5 718.5 624.5 720.5 624.5 730.5 626.5 732.5 637.5 732.5 639.5 730.5 639.5 720.5 637.5 718.5 626.5 718.5"/>
+        <polygon class="cls-2" points="607.5 718.5 606.5 719.5 606.5 730.5 608.5 732.5 618.5 732.5 620.5 730.5 620.5 720.5 619.5 719.5 619.5 718.5 607.5 718.5"/>
+        <polygon class="cls-2" points="570.5 718.5 568.5 720.5 568.5 729.5 569.5 730.5 569.5 731.5 570.5 732.5 581.5 732.5 583.5 730.5 583.5 720.5 581.5 718.5 570.5 718.5"/>
+        <polygon class="cls-2" points="477.5 718.5 475.5 720.5 475.5 730.5 477.5 732.5 487.5 732.5 488.5 731.5 489.5 731.5 489.5 730.5 490.5 729.5 490.5 721.5 489.5 720.5 489.5 719.5 488.5 718.5 477.5 718.5"/>
+        <polygon class="cls-2" points="458.5 718.5 457.5 719.5 457.5 720.5 456.5 721.5 456.5 729.5 457.5 730.5 457.5 731.5 458.5 731.5 459.5 732.5 469.5 732.5 471.5 730.5 471.5 720.5 469.5 718.5 458.5 718.5"/>
+        <polygon class="cls-2" points="421.5 718.5 419.5 720.5 419.5 730.5 421.5 732.5 432.5 732.5 433.5 731.5 433.5 730.5 434.5 729.5 434.5 720.5 432.5 718.5 421.5 718.5"/>
+        <polygon class="cls-2" points="383.5 718.5 382.5 719.5 382.5 730.5 384.5 732.5 394.5 732.5 396.5 730.5 396.5 719.5 395.5 718.5 383.5 718.5"/>
+        <polygon class="cls-2" points="309.5 718.5 307.5 720.5 307.5 730.5 309.5 732.5 320.5 732.5 322.5 730.5 322.5 720.5 320.5 718.5 309.5 718.5"/>
+        <polygon class="cls-2" points="271.5 718.5 271.5 719.5 270.5 720.5 270.5 730.5 272.5 732.5 282.5 732.5 284.5 730.5 284.5 719.5 283.5 718.5 271.5 718.5"/>
+        <polygon class="cls-2" points="664.5 699.5 663.5 700.5 662.5 700.5 662.5 712.5 663.5 713.5 674.5 713.5 676.5 711.5 676.5 701.5 674.5 699.5 664.5 699.5"/>
+        <polygon class="cls-2" points="645.5 699.5 643.5 701.5 643.5 711.5 645.5 713.5 656.5 713.5 657.5 712.5 657.5 701.5 655.5 699.5 645.5 699.5"/>
+        <polygon class="cls-2" points="626.5 699.5 624.5 701.5 624.5 711.5 626.5 713.5 637.5 713.5 639.5 711.5 639.5 701.5 637.5 699.5 626.5 699.5"/>
+        <polygon class="cls-2" points="589.5 699.5 587.5 701.5 587.5 711.5 589.5 713.5 600.5 713.5 601.5 712.5 601.5 700.5 600.5 700.5 599.5 699.5 589.5 699.5"/>
+        <polygon class="cls-2" points="458.5 699.5 457.5 700.5 457.5 701.5 456.5 702.5 456.5 710.5 457.5 711.5 457.5 712.5 458.5 713.5 469.5 713.5 471.5 711.5 471.5 701.5 469.5 699.5 458.5 699.5"/>
+        <polygon class="cls-2" points="440.5 699.5 438.5 701.5 438.5 711.5 440.5 713.5 450.5 713.5 452.5 711.5 452.5 701.5 450.5 699.5 440.5 699.5"/>
+        <polygon class="cls-2" points="384.5 699.5 382.5 701.5 382.5 711.5 384.5 713.5 394.5 713.5 396.5 711.5 396.5 701.5 394.5 699.5 384.5 699.5"/>
+        <polygon class="cls-2" points="328.5 699.5 326.5 701.5 326.5 711.5 328.5 713.5 339.5 713.5 340.5 712.5 340.5 701.5 338.5 699.5 328.5 699.5"/>
+        <polygon class="cls-2" points="291.5 699.5 289.5 701.5 289.5 712.5 290.5 713.5 301.5 713.5 303.5 711.5 303.5 701.5 301.5 699.5 291.5 699.5"/>
+        <polygon class="cls-2" points="757.5 680.5 755.5 682.5 755.5 693.5 757.5 695.5 767.5 695.5 769.5 693.5 769.5 682.5 767.5 680.5 757.5 680.5"/>
+        <polygon class="cls-2" points="720.5 680.5 718.5 682.5 718.5 693.5 720.5 695.5 729.5 695.5 730.5 694.5 731.5 694.5 732.5 693.5 732.5 682.5 730.5 680.5 720.5 680.5"/>
+        <polygon class="cls-2" points="701.5 680.5 699.5 682.5 699.5 693.5 701.5 695.5 711.5 695.5 713.5 693.5 713.5 682.5 711.5 680.5 701.5 680.5"/>
+        <polygon class="cls-2" points="682.5 680.5 680.5 682.5 680.5 692.5 681.5 693.5 681.5 694.5 682.5 694.5 683.5 695.5 692.5 695.5 695.5 692.5 695.5 683.5 694.5 682.5 694.5 681.5 693.5 681.5 692.5 680.5 682.5 680.5"/>
+        <polygon class="cls-2" points="664.5 680.5 662.5 682.5 662.5 693.5 664.5 695.5 674.5 695.5 676.5 693.5 676.5 682.5 674.5 680.5 664.5 680.5"/>
+        <polygon class="cls-2" points="645.5 680.5 643.5 682.5 643.5 693.5 645.5 695.5 655.5 695.5 657.5 693.5 657.5 682.5 655.5 680.5 645.5 680.5"/>
+        <polygon class="cls-2" points="627.5 680.5 626.5 681.5 625.5 681.5 625.5 682.5 624.5 683.5 624.5 692.5 625.5 693.5 625.5 694.5 626.5 694.5 627.5 695.5 636.5 695.5 637.5 694.5 638.5 694.5 638.5 693.5 639.5 692.5 639.5 683.5 638.5 682.5 638.5 681.5 637.5 681.5 636.5 680.5 627.5 680.5"/>
+        <polygon class="cls-2" points="608.5 680.5 606.5 682.5 606.5 693.5 608.5 695.5 618.5 695.5 620.5 693.5 620.5 682.5 618.5 680.5 608.5 680.5"/>
+        <polygon class="cls-2" points="571.5 680.5 570.5 681.5 569.5 681.5 569.5 682.5 568.5 683.5 568.5 692.5 571.5 695.5 580.5 695.5 581.5 694.5 582.5 694.5 582.5 693.5 583.5 692.5 583.5 682.5 581.5 680.5 571.5 680.5"/>
+        <polygon class="cls-2" points="552.5 680.5 550.5 682.5 550.5 693.5 552.5 695.5 562.5 695.5 564.5 693.5 564.5 682.5 562.5 680.5 552.5 680.5"/>
+        <polygon class="cls-2" points="533.5 680.5 531.5 682.5 531.5 693.5 532.5 694.5 533.5 694.5 534.5 695.5 543.5 695.5 545.5 693.5 545.5 682.5 543.5 680.5 533.5 680.5"/>
+        <polygon class="cls-2" points="515.5 680.5 514.5 681.5 513.5 681.5 513.5 682.5 512.5 683.5 512.5 692.5 515.5 695.5 524.5 695.5 525.5 694.5 526.5 694.5 526.5 693.5 527.5 692.5 527.5 682.5 525.5 680.5 515.5 680.5"/>
+        <polygon class="cls-2" points="496.5 680.5 494.5 682.5 494.5 693.5 496.5 695.5 506.5 695.5 508.5 693.5 508.5 682.5 506.5 680.5 496.5 680.5"/>
+        <polygon class="cls-2" points="440.5 680.5 438.5 682.5 438.5 693.5 440.5 695.5 450.5 695.5 452.5 693.5 452.5 682.5 450.5 680.5 440.5 680.5"/>
+        <polygon class="cls-2" points="421.5 680.5 419.5 682.5 419.5 693.5 420.5 694.5 421.5 694.5 422.5 695.5 431.5 695.5 434.5 692.5 434.5 683.5 433.5 682.5 433.5 681.5 432.5 681.5 431.5 680.5 421.5 680.5"/>
+        <polygon class="cls-2" points="365.5 680.5 363.5 682.5 363.5 692.5 364.5 693.5 364.5 694.5 365.5 694.5 366.5 695.5 375.5 695.5 378.5 692.5 378.5 683.5 377.5 682.5 377.5 681.5 376.5 681.5 375.5 680.5 365.5 680.5"/>
+        <polygon class="cls-2" points="347.5 680.5 345.5 682.5 345.5 693.5 347.5 695.5 357.5 695.5 359.5 693.5 359.5 682.5 357.5 680.5 347.5 680.5"/>
+        <polygon class="cls-2" points="328.5 680.5 326.5 682.5 326.5 693.5 328.5 695.5 338.5 695.5 340.5 693.5 340.5 682.5 338.5 680.5 328.5 680.5"/>
+        <polygon class="cls-2" points="310.5 680.5 309.5 681.5 308.5 681.5 308.5 682.5 307.5 683.5 307.5 692.5 308.5 693.5 308.5 694.5 309.5 694.5 310.5 695.5 319.5 695.5 320.5 694.5 321.5 694.5 321.5 693.5 322.5 692.5 322.5 683.5 321.5 682.5 321.5 681.5 320.5 681.5 319.5 680.5 310.5 680.5"/>
+        <polygon class="cls-2" points="254.5 680.5 253.5 681.5 252.5 681.5 252.5 682.5 251.5 683.5 251.5 692.5 252.5 693.5 252.5 694.5 253.5 694.5 254.5 695.5 263.5 695.5 264.5 694.5 265.5 694.5 265.5 693.5 266.5 692.5 266.5 683.5 265.5 682.5 265.5 681.5 264.5 681.5 263.5 680.5 254.5 680.5"/>
+        <polygon class="cls-2" points="235.5 680.5 233.5 682.5 233.5 693.5 235.5 695.5 245.5 695.5 247.5 693.5 247.5 682.5 245.5 680.5 235.5 680.5"/>
+        <polygon class="cls-2" points="756.5 662.5 756.5 663.5 755.5 664.5 755.5 674.5 757.5 676.5 767.5 676.5 769.5 674.5 769.5 663.5 768.5 662.5 756.5 662.5"/>
+        <polygon class="cls-2" points="719.5 662.5 718.5 663.5 718.5 675.5 719.5 675.5 720.5 676.5 730.5 676.5 732.5 674.5 732.5 664.5 730.5 662.5 719.5 662.5"/>
+        <polygon class="cls-2" points="701.5 662.5 699.5 664.5 699.5 674.5 701.5 676.5 711.5 676.5 713.5 674.5 713.5 663.5 712.5 662.5 701.5 662.5"/>
+        <polygon class="cls-2" points="682.5 662.5 680.5 664.5 680.5 674.5 682.5 676.5 693.5 676.5 695.5 674.5 695.5 664.5 693.5 662.5 682.5 662.5"/>
+        <polygon class="cls-2" points="607.5 662.5 606.5 663.5 606.5 674.5 608.5 676.5 618.5 676.5 620.5 674.5 620.5 664.5 618.5 662.5 607.5 662.5"/>
+        <polygon class="cls-2" points="570.5 662.5 568.5 664.5 568.5 674.5 570.5 676.5 581.5 676.5 583.5 674.5 583.5 664.5 581.5 662.5 570.5 662.5"/>
+        <polygon class="cls-2" points="533.5 662.5 531.5 664.5 531.5 674.5 533.5 676.5 543.5 676.5 544.5 675.5 545.5 675.5 545.5 663.5 544.5 662.5 533.5 662.5"/>
+        <polygon class="cls-2" points="495.5 662.5 494.5 663.5 494.5 674.5 496.5 676.5 506.5 676.5 508.5 674.5 508.5 663.5 507.5 662.5 495.5 662.5"/>
+        <polygon class="cls-2" points="458.5 662.5 457.5 663.5 457.5 664.5 456.5 665.5 456.5 673.5 457.5 674.5 457.5 675.5 458.5 676.5 469.5 676.5 471.5 674.5 471.5 664.5 469.5 662.5 458.5 662.5"/>
+        <polygon class="cls-2" points="421.5 662.5 419.5 664.5 419.5 674.5 421.5 676.5 432.5 676.5 433.5 675.5 433.5 674.5 434.5 673.5 434.5 664.5 432.5 662.5 421.5 662.5"/>
+        <polygon class="cls-2" points="402.5 662.5 401.5 663.5 401.5 664.5 400.5 665.5 400.5 672.5 401.5 673.5 401.5 675.5 402.5 675.5 403.5 676.5 413.5 676.5 415.5 674.5 415.5 664.5 413.5 662.5 402.5 662.5"/>
+        <polygon class="cls-2" points="383.5 662.5 383.5 663.5 382.5 664.5 382.5 674.5 384.5 676.5 394.5 676.5 396.5 674.5 396.5 663.5 395.5 662.5 383.5 662.5"/>
+        <polygon class="cls-2" points="328.5 662.5 326.5 664.5 326.5 674.5 328.5 676.5 338.5 676.5 340.5 674.5 340.5 663.5 339.5 662.5 328.5 662.5"/>
+        <polygon class="cls-2" points="290.5 662.5 289.5 663.5 289.5 674.5 291.5 676.5 301.5 676.5 303.5 674.5 303.5 664.5 301.5 662.5 290.5 662.5"/>
+        <polygon class="cls-2" points="738.5 643.5 736.5 645.5 736.5 655.5 738.5 657.5 749.5 657.5 751.5 655.5 751.5 646.5 750.5 645.5 750.5 644.5 749.5 643.5 738.5 643.5"/>
+        <polygon class="cls-2" points="682.5 643.5 680.5 645.5 680.5 655.5 682.5 657.5 693.5 657.5 695.5 655.5 695.5 645.5 693.5 643.5 682.5 643.5"/>
+        <polygon class="cls-2" points="645.5 643.5 643.5 645.5 643.5 655.5 645.5 657.5 656.5 657.5 657.5 656.5 657.5 645.5 655.5 643.5 645.5 643.5"/>
+        <polygon class="cls-2" points="608.5 643.5 606.5 645.5 606.5 656.5 607.5 657.5 618.5 657.5 620.5 655.5 620.5 645.5 618.5 643.5 608.5 643.5"/>
+        <polygon class="cls-2" points="533.5 643.5 531.5 645.5 531.5 655.5 533.5 657.5 544.5 657.5 545.5 656.5 545.5 644.5 544.5 644.5 543.5 643.5 533.5 643.5"/>
+        <polygon class="cls-2" points="514.5 643.5 513.5 644.5 513.5 645.5 512.5 646.5 512.5 655.5 514.5 657.5 525.5 657.5 527.5 655.5 527.5 645.5 525.5 643.5 514.5 643.5"/>
+        <polygon class="cls-2" points="458.5 643.5 457.5 644.5 457.5 645.5 456.5 646.5 456.5 654.5 457.5 655.5 457.5 656.5 458.5 657.5 469.5 657.5 471.5 655.5 471.5 645.5 469.5 643.5 458.5 643.5"/>
+        <polygon class="cls-2" points="402.5 643.5 401.5 644.5 401.5 646.5 400.5 647.5 400.5 654.5 401.5 655.5 401.5 656.5 402.5 657.5 413.5 657.5 415.5 655.5 415.5 645.5 413.5 643.5 402.5 643.5"/>
+        <polygon class="cls-2" points="384.5 643.5 382.5 645.5 382.5 655.5 384.5 657.5 395.5 657.5 396.5 656.5 396.5 645.5 394.5 643.5 384.5 643.5"/>
+        <polygon class="cls-2" points="365.5 643.5 363.5 645.5 363.5 655.5 365.5 657.5 376.5 657.5 378.5 655.5 378.5 645.5 376.5 643.5 365.5 643.5"/>
+        <polygon class="cls-2" points="235.5 643.5 233.5 645.5 233.5 656.5 234.5 657.5 245.5 657.5 247.5 655.5 247.5 645.5 245.5 643.5 235.5 643.5"/>
+        <polygon class="cls-2" points="683.5 624.5 682.5 625.5 681.5 625.5 681.5 626.5 680.5 627.5 680.5 636.5 681.5 637.5 681.5 638.5 682.5 638.5 683.5 639.5 692.5 639.5 693.5 638.5 694.5 638.5 694.5 637.5 695.5 636.5 695.5 627.5 694.5 626.5 694.5 625.5 693.5 625.5 692.5 624.5 683.5 624.5"/>
+        <polygon class="cls-2" points="608.5 624.5 606.5 626.5 606.5 637.5 608.5 639.5 618.5 639.5 620.5 637.5 620.5 626.5 618.5 624.5 608.5 624.5"/>
+        <polygon class="cls-2" points="571.5 624.5 570.5 625.5 569.5 625.5 569.5 626.5 568.5 627.5 568.5 636.5 569.5 637.5 569.5 638.5 570.5 638.5 571.5 639.5 580.5 639.5 581.5 638.5 582.5 638.5 582.5 637.5 583.5 636.5 583.5 627.5 582.5 626.5 582.5 625.5 581.5 625.5 580.5 624.5 571.5 624.5"/>
+        <polygon class="cls-2" points="552.5 624.5 550.5 626.5 550.5 637.5 552.5 639.5 562.5 639.5 564.5 637.5 564.5 626.5 562.5 624.5 552.5 624.5"/>
+        <polygon class="cls-2" points="515.5 624.5 512.5 627.5 512.5 636.5 515.5 639.5 524.5 639.5 525.5 638.5 526.5 638.5 527.5 637.5 527.5 626.5 526.5 625.5 525.5 625.5 524.5 624.5 515.5 624.5"/>
+        <polygon class="cls-2" points="496.5 624.5 494.5 626.5 494.5 637.5 496.5 639.5 506.5 639.5 508.5 637.5 508.5 626.5 506.5 624.5 496.5 624.5"/>
+        <polygon class="cls-2" points="477.5 624.5 475.5 626.5 475.5 637.5 477.5 639.5 487.5 639.5 489.5 637.5 489.5 636.5 490.5 635.5 490.5 628.5 489.5 627.5 489.5 626.5 487.5 624.5 477.5 624.5"/>
+        <polygon class="cls-2" points="366.5 624.5 365.5 625.5 364.5 625.5 364.5 626.5 363.5 627.5 363.5 637.5 364.5 638.5 365.5 638.5 366.5 639.5 375.5 639.5 376.5 638.5 377.5 638.5 377.5 637.5 378.5 636.5 378.5 627.5 377.5 626.5 377.5 625.5 376.5 625.5 375.5 624.5 366.5 624.5"/>
+        <polygon class="cls-2" points="310.5 624.5 309.5 625.5 308.5 625.5 308.5 626.5 307.5 627.5 307.5 636.5 308.5 637.5 308.5 638.5 309.5 638.5 310.5 639.5 319.5 639.5 320.5 638.5 321.5 638.5 321.5 637.5 322.5 636.5 322.5 627.5 321.5 626.5 321.5 625.5 320.5 625.5 319.5 624.5 310.5 624.5"/>
+        <polygon class="cls-2" points="254.5 624.5 253.5 625.5 252.5 625.5 252.5 626.5 251.5 627.5 251.5 636.5 252.5 637.5 252.5 638.5 253.5 638.5 254.5 639.5 263.5 639.5 264.5 638.5 265.5 638.5 265.5 637.5 266.5 636.5 266.5 627.5 265.5 626.5 265.5 625.5 264.5 625.5 263.5 624.5 254.5 624.5"/>
+        <polygon class="cls-2" points="235.5 624.5 233.5 626.5 233.5 637.5 235.5 639.5 245.5 639.5 247.5 637.5 247.5 626.5 245.5 624.5 235.5 624.5"/>
+        <polygon class="cls-2" points="738.5 606.5 736.5 608.5 736.5 618.5 738.5 620.5 749.5 620.5 750.5 619.5 750.5 618.5 751.5 617.5 751.5 608.5 749.5 606.5 738.5 606.5"/>
+        <polygon class="cls-2" points="682.5 606.5 680.5 608.5 680.5 618.5 682.5 620.5 693.5 620.5 695.5 618.5 695.5 608.5 693.5 606.5 682.5 606.5"/>
+        <polygon class="cls-2" points="663.5 606.5 662.5 607.5 662.5 618.5 664.5 620.5 674.5 620.5 676.5 618.5 676.5 608.5 674.5 606.5 663.5 606.5"/>
+        <polygon class="cls-2" points="645.5 606.5 643.5 608.5 643.5 618.5 645.5 620.5 655.5 620.5 657.5 618.5 657.5 607.5 656.5 606.5 645.5 606.5"/>
+        <polygon class="cls-2" points="626.5 606.5 624.5 608.5 624.5 618.5 626.5 620.5 637.5 620.5 639.5 618.5 639.5 608.5 637.5 606.5 626.5 606.5"/>
+        <polygon class="cls-2" points="607.5 606.5 606.5 607.5 606.5 618.5 608.5 620.5 618.5 620.5 620.5 618.5 620.5 608.5 618.5 606.5 607.5 606.5"/>
+        <polygon class="cls-2" points="589.5 606.5 587.5 608.5 587.5 618.5 589.5 620.5 599.5 620.5 601.5 618.5 601.5 607.5 600.5 606.5 589.5 606.5"/>
+        <polygon class="cls-2" points="533.5 606.5 531.5 608.5 531.5 618.5 533.5 620.5 543.5 620.5 544.5 619.5 545.5 619.5 545.5 607.5 544.5 606.5 533.5 606.5"/>
+        <polygon class="cls-2" points="495.5 606.5 494.5 607.5 494.5 618.5 496.5 620.5 506.5 620.5 508.5 618.5 508.5 608.5 506.5 606.5 495.5 606.5"/>
+        <polygon class="cls-2" points="477.5 606.5 475.5 608.5 475.5 618.5 477.5 620.5 488.5 620.5 489.5 619.5 489.5 618.5 490.5 617.5 490.5 609.5 489.5 608.5 489.5 607.5 488.5 606.5 477.5 606.5"/>
+        <polygon class="cls-2" points="458.5 606.5 457.5 607.5 457.5 608.5 456.5 609.5 456.5 617.5 457.5 618.5 457.5 619.5 458.5 620.5 469.5 620.5 471.5 618.5 471.5 608.5 469.5 606.5 458.5 606.5"/>
+        <polygon class="cls-2" points="421.5 606.5 419.5 608.5 419.5 618.5 421.5 620.5 432.5 620.5 433.5 619.5 433.5 618.5 434.5 617.5 434.5 608.5 432.5 606.5 421.5 606.5"/>
+        <polygon class="cls-2" points="402.5 606.5 401.5 607.5 401.5 608.5 400.5 609.5 400.5 616.5 401.5 617.5 401.5 619.5 402.5 620.5 413.5 620.5 415.5 618.5 415.5 608.5 413.5 606.5 402.5 606.5"/>
+        <polygon class="cls-2" points="384.5 606.5 382.5 608.5 382.5 618.5 384.5 620.5 394.5 620.5 396.5 618.5 396.5 607.5 395.5 606.5 384.5 606.5"/>
+        <polygon class="cls-2" points="328.5 606.5 326.5 608.5 326.5 618.5 328.5 620.5 338.5 620.5 340.5 618.5 340.5 607.5 339.5 606.5 328.5 606.5"/>
+        <polygon class="cls-2" points="290.5 606.5 289.5 607.5 289.5 618.5 291.5 620.5 301.5 620.5 303.5 618.5 303.5 608.5 301.5 606.5 290.5 606.5"/>
+        <polygon class="cls-2" points="253.5 606.5 251.5 608.5 251.5 618.5 253.5 620.5 264.5 620.5 266.5 618.5 266.5 608.5 264.5 606.5 253.5 606.5"/>
+        <polygon class="cls-2" points="234.5 606.5 233.5 607.5 233.5 618.5 235.5 620.5 245.5 620.5 247.5 618.5 247.5 608.5 245.5 606.5 234.5 606.5"/>
+        <polygon class="cls-2" points="216.5 606.5 214.5 608.5 214.5 618.5 216.5 620.5 226.5 620.5 227.5 619.5 228.5 619.5 228.5 607.5 227.5 606.5 216.5 606.5"/>
+        <polygon class="cls-2" points="197.5 606.5 195.5 608.5 195.5 618.5 197.5 620.5 208.5 620.5 210.5 618.5 210.5 608.5 208.5 606.5 197.5 606.5"/>
+        <polygon class="cls-2" points="178.5 606.5 177.5 607.5 177.5 618.5 179.5 620.5 189.5 620.5 191.5 618.5 191.5 608.5 189.5 606.5 178.5 606.5"/>
+        <polygon class="cls-2" points="141.5 606.5 139.5 608.5 139.5 617.5 140.5 618.5 140.5 619.5 141.5 620.5 152.5 620.5 154.5 618.5 154.5 608.5 152.5 606.5 141.5 606.5"/>
+        <polygon class="cls-2" points="122.5 606.5 122.5 607.5 121.5 608.5 121.5 618.5 123.5 620.5 133.5 620.5 135.5 618.5 135.5 608.5 133.5 606.5 122.5 606.5"/>
+        <polygon class="cls-2" points="104.5 606.5 102.5 608.5 102.5 618.5 104.5 620.5 115.5 620.5 116.5 619.5 116.5 618.5 117.5 617.5 117.5 609.5 116.5 608.5 116.5 607.5 115.5 606.5 104.5 606.5"/>
+        <polygon class="cls-2" points="84.5 606.5 83.5 607.5 83.5 619.5 84.5 619.5 85.5 620.5 95.5 620.5 97.5 618.5 97.5 608.5 95.5 606.5 84.5 606.5"/>
+        <polygon class="cls-2" points="738.5 587.5 736.5 589.5 736.5 599.5 738.5 601.5 749.5 601.5 751.5 599.5 751.5 590.5 750.5 589.5 750.5 588.5 749.5 587.5 738.5 587.5"/>
+        <polygon class="cls-2" points="682.5 587.5 680.5 589.5 680.5 599.5 682.5 601.5 693.5 601.5 695.5 599.5 695.5 589.5 693.5 587.5 682.5 587.5"/>
+        <polygon class="cls-2" points="664.5 587.5 662.5 589.5 662.5 600.5 663.5 601.5 674.5 601.5 676.5 599.5 676.5 589.5 674.5 587.5 664.5 587.5"/>
+        <polygon class="cls-2" points="645.5 587.5 643.5 589.5 643.5 599.5 645.5 601.5 656.5 601.5 657.5 600.5 657.5 589.5 655.5 587.5 645.5 587.5"/>
+        <polygon class="cls-2" points="570.5 587.5 568.5 589.5 568.5 599.5 570.5 601.5 581.5 601.5 583.5 599.5 583.5 589.5 581.5 587.5 570.5 587.5"/>
+        <polygon class="cls-2" points="514.5 587.5 513.5 588.5 513.5 589.5 512.5 590.5 512.5 599.5 514.5 601.5 525.5 601.5 527.5 599.5 527.5 589.5 525.5 587.5 514.5 587.5"/>
+        <polygon class="cls-2" points="477.5 587.5 475.5 589.5 475.5 599.5 477.5 601.5 488.5 601.5 489.5 600.5 489.5 599.5 490.5 598.5 490.5 590.5 489.5 589.5 489.5 588.5 488.5 587.5 477.5 587.5"/>
+        <polygon class="cls-2" points="458.5 587.5 457.5 588.5 457.5 589.5 456.5 590.5 456.5 598.5 457.5 599.5 457.5 600.5 458.5 601.5 469.5 601.5 471.5 599.5 471.5 589.5 469.5 587.5 458.5 587.5"/>
+        <polygon class="cls-2" points="440.5 587.5 438.5 589.5 438.5 600.5 439.5 601.5 451.5 601.5 452.5 600.5 452.5 589.5 450.5 587.5 440.5 587.5"/>
+        <polygon class="cls-2" points="403.5 587.5 402.5 588.5 401.5 588.5 401.5 590.5 400.5 591.5 400.5 598.5 401.5 599.5 401.5 600.5 402.5 601.5 413.5 601.5 415.5 599.5 415.5 589.5 413.5 587.5 403.5 587.5"/>
+        <polygon class="cls-2" points="384.5 587.5 382.5 589.5 382.5 599.5 383.5 600.5 383.5 601.5 395.5 601.5 396.5 600.5 396.5 589.5 394.5 587.5 384.5 587.5"/>
+        <polygon class="cls-2" points="365.5 587.5 363.5 589.5 363.5 599.5 365.5 601.5 376.5 601.5 378.5 599.5 378.5 590.5 377.5 589.5 377.5 588.5 376.5 587.5 365.5 587.5"/>
+        <polygon class="cls-2" points="347.5 587.5 345.5 589.5 345.5 600.5 346.5 601.5 357.5 601.5 359.5 599.5 359.5 589.5 357.5 587.5 347.5 587.5"/>
+        <polygon class="cls-2" points="328.5 587.5 326.5 589.5 326.5 599.5 328.5 601.5 339.5 601.5 340.5 600.5 340.5 589.5 338.5 587.5 328.5 587.5"/>
+        <polygon class="cls-2" points="179.5 587.5 177.5 589.5 177.5 600.5 178.5 601.5 190.5 601.5 190.5 600.5 191.5 599.5 191.5 589.5 189.5 587.5 179.5 587.5"/>
+        <polygon class="cls-2" points="160.5 587.5 158.5 589.5 158.5 599.5 160.5 601.5 171.5 601.5 172.5 600.5 172.5 599.5 173.5 598.5 173.5 591.5 172.5 590.5 172.5 588.5 171.5 588.5 170.5 587.5 160.5 587.5"/>
+        <polygon class="cls-2" points="123.5 587.5 121.5 589.5 121.5 600.5 122.5 601.5 134.5 601.5 135.5 600.5 135.5 589.5 133.5 587.5 123.5 587.5"/>
+        <polygon class="cls-2" points="701.5 568.5 699.5 570.5 699.5 581.5 701.5 583.5 711.5 583.5 713.5 581.5 713.5 570.5 711.5 568.5 701.5 568.5"/>
+        <polygon class="cls-2" points="683.5 568.5 682.5 569.5 681.5 569.5 681.5 570.5 680.5 571.5 680.5 581.5 682.5 583.5 692.5 583.5 693.5 582.5 694.5 582.5 694.5 581.5 695.5 580.5 695.5 571.5 692.5 568.5 683.5 568.5"/>
+        <polygon class="cls-2" points="608.5 568.5 606.5 570.5 606.5 581.5 608.5 583.5 618.5 583.5 620.5 581.5 620.5 570.5 618.5 568.5 608.5 568.5"/>
+        <polygon class="cls-2" points="571.5 568.5 568.5 571.5 568.5 580.5 569.5 581.5 569.5 582.5 570.5 582.5 571.5 583.5 581.5 583.5 583.5 581.5 583.5 571.5 582.5 570.5 582.5 569.5 581.5 569.5 580.5 568.5 571.5 568.5"/>
+        <polygon class="cls-2" points="552.5 568.5 550.5 570.5 550.5 581.5 552.5 583.5 562.5 583.5 564.5 581.5 564.5 570.5 562.5 568.5 552.5 568.5"/>
+        <polygon class="cls-2" points="534.5 568.5 533.5 569.5 532.5 569.5 531.5 570.5 531.5 581.5 533.5 583.5 543.5 583.5 545.5 581.5 545.5 570.5 543.5 568.5 534.5 568.5"/>
+        <polygon class="cls-2" points="515.5 568.5 512.5 571.5 512.5 580.5 513.5 581.5 513.5 582.5 514.5 582.5 515.5 583.5 525.5 583.5 527.5 581.5 527.5 571.5 526.5 570.5 526.5 569.5 525.5 569.5 524.5 568.5 515.5 568.5"/>
+        <polygon class="cls-2" points="496.5 568.5 494.5 570.5 494.5 581.5 496.5 583.5 506.5 583.5 508.5 581.5 508.5 570.5 506.5 568.5 496.5 568.5"/>
+        <polygon class="cls-2" points="440.5 568.5 438.5 570.5 438.5 581.5 440.5 583.5 450.5 583.5 452.5 581.5 452.5 570.5 450.5 568.5 440.5 568.5"/>
+        <polygon class="cls-2" points="366.5 568.5 365.5 569.5 364.5 569.5 364.5 570.5 363.5 571.5 363.5 581.5 365.5 583.5 375.5 583.5 376.5 582.5 377.5 582.5 377.5 581.5 378.5 580.5 378.5 571.5 375.5 568.5 366.5 568.5"/>
+        <polygon class="cls-2" points="347.5 568.5 345.5 570.5 345.5 581.5 347.5 583.5 357.5 583.5 359.5 581.5 359.5 570.5 357.5 568.5 347.5 568.5"/>
+        <polygon class="cls-2" points="328.5 568.5 326.5 570.5 326.5 581.5 328.5 583.5 338.5 583.5 340.5 581.5 340.5 570.5 338.5 568.5 328.5 568.5"/>
+        <polygon class="cls-2" points="291.5 568.5 289.5 570.5 289.5 581.5 291.5 583.5 301.5 583.5 303.5 581.5 303.5 570.5 301.5 568.5 291.5 568.5"/>
+        <polygon class="cls-2" points="254.5 568.5 253.5 569.5 252.5 569.5 252.5 570.5 251.5 571.5 251.5 580.5 252.5 581.5 252.5 582.5 253.5 582.5 254.5 583.5 263.5 583.5 264.5 582.5 265.5 582.5 265.5 581.5 266.5 580.5 266.5 571.5 265.5 570.5 265.5 569.5 264.5 569.5 263.5 568.5 254.5 568.5"/>
+        <polygon class="cls-2" points="235.5 568.5 233.5 570.5 233.5 581.5 235.5 583.5 245.5 583.5 247.5 581.5 247.5 570.5 245.5 568.5 235.5 568.5"/>
+        <polygon class="cls-2" points="198.5 568.5 195.5 571.5 195.5 580.5 196.5 581.5 196.5 582.5 197.5 582.5 198.5 583.5 208.5 583.5 210.5 581.5 210.5 571.5 209.5 570.5 209.5 569.5 208.5 569.5 207.5 568.5 198.5 568.5"/>
+        <polygon class="cls-2" points="719.5 550.5 718.5 551.5 718.5 563.5 719.5 564.5 730.5 564.5 732.5 562.5 732.5 552.5 730.5 550.5 719.5 550.5"/>
+        <polygon class="cls-2" points="701.5 550.5 699.5 552.5 699.5 562.5 701.5 564.5 711.5 564.5 713.5 562.5 713.5 551.5 712.5 550.5 701.5 550.5"/>
+        <polygon class="cls-2" points="645.5 550.5 643.5 552.5 643.5 562.5 645.5 564.5 655.5 564.5 657.5 562.5 657.5 551.5 656.5 550.5 645.5 550.5"/>
+        <polygon class="cls-2" points="607.5 550.5 606.5 551.5 606.5 562.5 608.5 564.5 618.5 564.5 620.5 562.5 620.5 552.5 618.5 550.5 607.5 550.5"/>
+        <polygon class="cls-2" points="570.5 550.5 568.5 552.5 568.5 562.5 570.5 564.5 581.5 564.5 583.5 562.5 583.5 552.5 581.5 550.5 570.5 550.5"/>
+        <polygon class="cls-2" points="533.5 550.5 531.5 552.5 531.5 562.5 533.5 564.5 544.5 564.5 545.5 563.5 545.5 551.5 544.5 550.5 533.5 550.5"/>
+        <polygon class="cls-2" points="496.5 550.5 494.5 552.5 494.5 562.5 496.5 564.5 506.5 564.5 508.5 562.5 508.5 552.5 506.5 550.5 496.5 550.5"/>
+        <polygon class="cls-2" points="477.5 550.5 475.5 552.5 475.5 562.5 477.5 564.5 488.5 564.5 489.5 563.5 489.5 562.5 490.5 561.5 490.5 553.5 489.5 552.5 489.5 551.5 488.5 550.5 477.5 550.5"/>
+        <polygon class="cls-2" points="440.5 550.5 438.5 552.5 438.5 562.5 440.5 564.5 450.5 564.5 452.5 562.5 452.5 552.5 450.5 550.5 440.5 550.5"/>
+        <polygon class="cls-2" points="421.5 550.5 419.5 552.5 419.5 562.5 421.5 564.5 432.5 564.5 433.5 563.5 433.5 562.5 434.5 561.5 434.5 552.5 432.5 550.5 421.5 550.5"/>
+        <polygon class="cls-2" points="346.5 550.5 345.5 551.5 345.5 563.5 346.5 563.5 347.5 564.5 357.5 564.5 359.5 562.5 359.5 552.5 357.5 550.5 346.5 550.5"/>
+        <polygon class="cls-2" points="328.5 550.5 326.5 552.5 326.5 562.5 328.5 564.5 338.5 564.5 340.5 562.5 340.5 551.5 339.5 550.5 328.5 550.5"/>
+        <polygon class="cls-2" points="290.5 550.5 289.5 551.5 289.5 562.5 291.5 564.5 301.5 564.5 303.5 562.5 303.5 552.5 301.5 550.5 290.5 550.5"/>
+        <polygon class="cls-2" points="234.5 550.5 233.5 551.5 233.5 562.5 235.5 564.5 245.5 564.5 247.5 562.5 247.5 552.5 245.5 550.5 234.5 550.5"/>
+        <polygon class="cls-2" points="216.5 550.5 214.5 552.5 214.5 562.5 216.5 564.5 226.5 564.5 227.5 563.5 228.5 563.5 228.5 551.5 227.5 550.5 216.5 550.5"/>
+        <polygon class="cls-2" points="160.5 550.5 158.5 552.5 158.5 562.5 160.5 564.5 171.5 564.5 172.5 563.5 172.5 561.5 173.5 560.5 173.5 553.5 172.5 552.5 172.5 551.5 171.5 550.5 160.5 550.5"/>
+        <polygon class="cls-2" points="141.5 550.5 140.5 551.5 140.5 552.5 139.5 553.5 139.5 561.5 140.5 562.5 140.5 563.5 141.5 564.5 152.5 564.5 154.5 562.5 154.5 552.5 152.5 550.5 141.5 550.5"/>
+        <polygon class="cls-2" points="84.5 550.5 83.5 551.5 83.5 563.5 84.5 564.5 95.5 564.5 97.5 562.5 97.5 552.5 95.5 550.5 84.5 550.5"/>
+        <polygon class="cls-2" points="738.5 531.5 736.5 533.5 736.5 543.5 738.5 545.5 749.5 545.5 751.5 543.5 751.5 534.5 750.5 533.5 750.5 532.5 749.5 531.5 738.5 531.5"/>
+        <polygon class="cls-2" points="720.5 531.5 718.5 533.5 718.5 544.5 719.5 545.5 730.5 545.5 732.5 543.5 732.5 533.5 730.5 531.5 720.5 531.5"/>
+        <polygon class="cls-2" points="701.5 531.5 699.5 533.5 699.5 544.5 700.5 545.5 712.5 545.5 713.5 544.5 713.5 533.5 711.5 531.5 701.5 531.5"/>
+        <polygon class="cls-2" points="682.5 531.5 680.5 533.5 680.5 543.5 682.5 545.5 693.5 545.5 695.5 543.5 695.5 533.5 693.5 531.5 682.5 531.5"/>
+        <polygon class="cls-2" points="664.5 531.5 662.5 533.5 662.5 544.5 663.5 545.5 675.5 545.5 675.5 544.5 676.5 543.5 676.5 533.5 674.5 531.5 664.5 531.5"/>
+        <polygon class="cls-2" points="626.5 531.5 624.5 533.5 624.5 543.5 626.5 545.5 637.5 545.5 639.5 543.5 639.5 533.5 637.5 531.5 626.5 531.5"/>
+        <polygon class="cls-2" points="552.5 531.5 550.5 533.5 550.5 544.5 551.5 545.5 563.5 545.5 564.5 544.5 564.5 533.5 562.5 531.5 552.5 531.5"/>
+        <polygon class="cls-2" points="514.5 531.5 513.5 532.5 513.5 533.5 512.5 534.5 512.5 543.5 514.5 545.5 525.5 545.5 527.5 543.5 527.5 533.5 525.5 531.5 514.5 531.5"/>
+        <polygon class="cls-2" points="459.5 531.5 458.5 532.5 457.5 532.5 457.5 533.5 456.5 534.5 456.5 542.5 457.5 543.5 457.5 544.5 458.5 545.5 469.5 545.5 471.5 543.5 471.5 533.5 469.5 531.5 459.5 531.5"/>
+        <polygon class="cls-2" points="440.5 531.5 438.5 533.5 438.5 544.5 439.5 545.5 451.5 545.5 452.5 544.5 452.5 533.5 450.5 531.5 440.5 531.5"/>
+        <polygon class="cls-2" points="384.5 531.5 382.5 533.5 382.5 544.5 383.5 545.5 395.5 545.5 396.5 544.5 396.5 533.5 394.5 531.5 384.5 531.5"/>
+        <polygon class="cls-2" points="347.5 531.5 345.5 533.5 345.5 544.5 346.5 545.5 358.5 545.5 358.5 544.5 359.5 543.5 359.5 533.5 357.5 531.5 347.5 531.5"/>
+        <polygon class="cls-2" points="235.5 531.5 233.5 533.5 233.5 544.5 234.5 545.5 246.5 545.5 247.5 544.5 247.5 533.5 245.5 531.5 235.5 531.5"/>
+        <polygon class="cls-2" points="216.5 531.5 214.5 533.5 214.5 543.5 215.5 544.5 215.5 545.5 227.5 545.5 228.5 544.5 228.5 533.5 226.5 531.5 216.5 531.5"/>
+        <polygon class="cls-2" points="197.5 531.5 196.5 532.5 196.5 533.5 195.5 534.5 195.5 543.5 197.5 545.5 208.5 545.5 210.5 543.5 210.5 533.5 208.5 531.5 197.5 531.5"/>
+        <polygon class="cls-2" points="179.5 531.5 177.5 533.5 177.5 544.5 178.5 545.5 190.5 545.5 191.5 544.5 191.5 533.5 189.5 531.5 179.5 531.5"/>
+        <polygon class="cls-2" points="141.5 531.5 140.5 532.5 140.5 533.5 139.5 534.5 139.5 543.5 141.5 545.5 152.5 545.5 154.5 543.5 154.5 533.5 152.5 531.5 141.5 531.5"/>
+        <polygon class="cls-2" points="123.5 531.5 121.5 533.5 121.5 544.5 122.5 545.5 134.5 545.5 135.5 544.5 135.5 533.5 133.5 531.5 123.5 531.5"/>
+        <polygon class="cls-2" points="720.5 512.5 718.5 514.5 718.5 525.5 720.5 527.5 730.5 527.5 732.5 525.5 732.5 514.5 731.5 513.5 730.5 513.5 729.5 512.5 720.5 512.5"/>
+        <polygon class="cls-2" points="683.5 512.5 682.5 513.5 681.5 513.5 681.5 514.5 680.5 515.5 680.5 525.5 682.5 527.5 692.5 527.5 693.5 526.5 694.5 526.5 694.5 525.5 695.5 524.5 695.5 515.5 692.5 512.5 683.5 512.5"/>
+        <polygon class="cls-2" points="664.5 512.5 662.5 514.5 662.5 525.5 664.5 527.5 674.5 527.5 676.5 525.5 676.5 514.5 675.5 513.5 674.5 513.5 673.5 512.5 664.5 512.5"/>
+        <polygon class="cls-2" points="646.5 512.5 645.5 513.5 644.5 513.5 643.5 514.5 643.5 525.5 645.5 527.5 655.5 527.5 657.5 525.5 657.5 514.5 655.5 512.5 646.5 512.5"/>
+        <polygon class="cls-2" points="627.5 512.5 624.5 515.5 624.5 524.5 625.5 525.5 625.5 526.5 626.5 527.5 637.5 527.5 638.5 526.5 638.5 525.5 639.5 524.5 639.5 515.5 636.5 512.5 627.5 512.5"/>
+        <polygon class="cls-2" points="608.5 512.5 606.5 514.5 606.5 525.5 608.5 527.5 618.5 527.5 620.5 525.5 620.5 514.5 619.5 513.5 618.5 513.5 617.5 512.5 608.5 512.5"/>
+        <polygon class="cls-2" points="552.5 512.5 550.5 514.5 550.5 525.5 552.5 527.5 562.5 527.5 564.5 525.5 564.5 514.5 563.5 513.5 562.5 513.5 561.5 512.5 552.5 512.5"/>
+        <polygon class="cls-2" points="273.5 512.5 272.5 513.5 271.5 513.5 270.5 514.5 270.5 525.5 272.5 527.5 282.5 527.5 284.5 525.5 284.5 514.5 282.5 512.5 273.5 512.5"/>
+        <polygon class="cls-2" points="254.5 512.5 251.5 515.5 251.5 524.5 252.5 525.5 252.5 526.5 253.5 527.5 264.5 527.5 266.5 525.5 266.5 515.5 265.5 514.5 265.5 513.5 264.5 513.5 263.5 512.5 254.5 512.5"/>
+        <polygon class="cls-2" points="235.5 512.5 233.5 514.5 233.5 525.5 235.5 527.5 245.5 527.5 247.5 525.5 247.5 514.5 246.5 513.5 245.5 513.5 244.5 512.5 235.5 512.5"/>
+        <polygon class="cls-2" points="217.5 512.5 216.5 513.5 215.5 513.5 214.5 514.5 214.5 525.5 216.5 527.5 226.5 527.5 228.5 525.5 228.5 514.5 226.5 512.5 217.5 512.5"/>
+        <polygon class="cls-2" points="179.5 512.5 177.5 514.5 177.5 525.5 179.5 527.5 189.5 527.5 191.5 525.5 191.5 514.5 190.5 513.5 189.5 513.5 188.5 512.5 179.5 512.5"/>
+        <polygon class="cls-2" points="161.5 512.5 160.5 513.5 159.5 513.5 158.5 514.5 158.5 525.5 160.5 527.5 170.5 527.5 172.5 525.5 172.5 524.5 173.5 523.5 173.5 516.5 172.5 515.5 172.5 514.5 170.5 512.5 161.5 512.5"/>
+        <polygon class="cls-2" points="719.5 494.5 718.5 495.5 718.5 507.5 719.5 508.5 730.5 508.5 732.5 506.5 732.5 496.5 730.5 494.5 719.5 494.5"/>
+        <polygon class="cls-2" points="701.5 494.5 699.5 496.5 699.5 506.5 701.5 508.5 711.5 508.5 713.5 506.5 713.5 496.5 711.5 494.5 701.5 494.5"/>
+        <polygon class="cls-2" points="682.5 494.5 680.5 496.5 680.5 506.5 682.5 508.5 693.5 508.5 695.5 506.5 695.5 496.5 693.5 494.5 682.5 494.5"/>
+        <polygon class="cls-2" points="663.5 494.5 662.5 495.5 662.5 507.5 663.5 507.5 664.5 508.5 674.5 508.5 676.5 506.5 676.5 496.5 674.5 494.5 663.5 494.5"/>
+        <polygon class="cls-2" points="645.5 494.5 643.5 496.5 643.5 506.5 645.5 508.5 655.5 508.5 657.5 506.5 657.5 495.5 656.5 494.5 645.5 494.5"/>
+        <polygon class="cls-2" points="589.5 494.5 587.5 496.5 587.5 506.5 589.5 508.5 599.5 508.5 600.5 507.5 601.5 507.5 601.5 495.5 600.5 494.5 589.5 494.5"/>
+        <polygon class="cls-2" points="570.5 494.5 568.5 496.5 568.5 506.5 570.5 508.5 581.5 508.5 583.5 506.5 583.5 496.5 581.5 494.5 570.5 494.5"/>
+        <polygon class="cls-2" points="552.5 494.5 550.5 496.5 550.5 506.5 552.5 508.5 562.5 508.5 564.5 506.5 564.5 496.5 562.5 494.5 552.5 494.5"/>
+        <polygon class="cls-2" points="533.5 494.5 531.5 496.5 531.5 506.5 533.5 508.5 544.5 508.5 545.5 507.5 545.5 495.5 544.5 494.5 533.5 494.5"/>
+        <polygon class="cls-2" points="290.5 494.5 289.5 495.5 289.5 506.5 291.5 508.5 301.5 508.5 303.5 506.5 303.5 496.5 301.5 494.5 290.5 494.5"/>
+        <polygon class="cls-2" points="272.5 494.5 270.5 496.5 270.5 506.5 272.5 508.5 282.5 508.5 283.5 507.5 284.5 507.5 284.5 495.5 283.5 494.5 272.5 494.5"/>
+        <polygon class="cls-2" points="197.5 494.5 195.5 496.5 195.5 506.5 197.5 508.5 208.5 508.5 210.5 506.5 210.5 496.5 208.5 494.5 197.5 494.5"/>
+        <polygon class="cls-2" points="179.5 494.5 177.5 496.5 177.5 506.5 179.5 508.5 189.5 508.5 191.5 506.5 191.5 496.5 189.5 494.5 179.5 494.5"/>
+        <polygon class="cls-2" points="123.5 494.5 121.5 496.5 121.5 506.5 123.5 508.5 133.5 508.5 135.5 506.5 135.5 496.5 133.5 494.5 123.5 494.5"/>
+        <polygon class="cls-2" points="84.5 494.5 83.5 495.5 83.5 507.5 84.5 508.5 95.5 508.5 97.5 506.5 97.5 496.5 95.5 494.5 84.5 494.5"/>
+        <polygon class="cls-2" points="738.5 475.5 736.5 477.5 736.5 487.5 739.5 490.5 747.5 490.5 748.5 489.5 749.5 489.5 751.5 487.5 751.5 478.5 750.5 477.5 750.5 476.5 749.5 475.5 738.5 475.5"/>
+        <polygon class="cls-2" points="682.5 475.5 680.5 477.5 680.5 487.5 682.5 489.5 683.5 489.5 684.5 490.5 691.5 490.5 692.5 489.5 693.5 489.5 695.5 487.5 695.5 478.5 694.5 477.5 694.5 476.5 693.5 475.5 682.5 475.5"/>
+        <polygon class="cls-2" points="664.5 475.5 662.5 477.5 662.5 488.5 663.5 489.5 664.5 489.5 665.5 490.5 673.5 490.5 674.5 489.5 675.5 489.5 676.5 488.5 676.5 477.5 674.5 475.5 664.5 475.5"/>
+        <polygon class="cls-2" points="626.5 475.5 624.5 477.5 624.5 487.5 626.5 489.5 627.5 489.5 628.5 490.5 635.5 490.5 636.5 489.5 637.5 489.5 639.5 487.5 639.5 477.5 637.5 475.5 626.5 475.5"/>
+        <polygon class="cls-2" points="608.5 475.5 606.5 477.5 606.5 488.5 607.5 489.5 608.5 489.5 609.5 490.5 617.5 490.5 618.5 489.5 619.5 489.5 620.5 488.5 620.5 477.5 618.5 475.5 608.5 475.5"/>
+        <polygon class="cls-2" points="589.5 475.5 587.5 477.5 587.5 488.5 588.5 489.5 589.5 489.5 590.5 490.5 598.5 490.5 599.5 489.5 600.5 489.5 601.5 488.5 601.5 477.5 599.5 475.5 589.5 475.5"/>
+        <polygon class="cls-2" points="570.5 475.5 569.5 476.5 569.5 477.5 568.5 478.5 568.5 487.5 570.5 489.5 571.5 489.5 572.5 490.5 579.5 490.5 580.5 489.5 581.5 489.5 583.5 487.5 583.5 477.5 581.5 475.5 570.5 475.5"/>
+        <polygon class="cls-2" points="309.5 475.5 307.5 477.5 307.5 487.5 309.5 489.5 310.5 489.5 311.5 490.5 318.5 490.5 319.5 489.5 320.5 489.5 322.5 487.5 322.5 477.5 320.5 475.5 309.5 475.5"/>
+        <polygon class="cls-2" points="291.5 475.5 289.5 477.5 289.5 488.5 290.5 489.5 291.5 489.5 292.5 490.5 300.5 490.5 301.5 489.5 302.5 489.5 303.5 488.5 303.5 477.5 301.5 475.5 291.5 475.5"/>
+        <polygon class="cls-2" points="253.5 475.5 251.5 477.5 251.5 487.5 253.5 489.5 254.5 489.5 255.5 490.5 262.5 490.5 263.5 489.5 264.5 489.5 266.5 487.5 266.5 477.5 264.5 475.5 253.5 475.5"/>
+        <polygon class="cls-2" points="179.5 475.5 177.5 477.5 177.5 488.5 178.5 489.5 179.5 489.5 180.5 490.5 188.5 490.5 189.5 489.5 190.5 489.5 191.5 488.5 191.5 477.5 189.5 475.5 179.5 475.5"/>
+        <polygon class="cls-2" points="142.5 475.5 141.5 476.5 140.5 476.5 140.5 477.5 139.5 478.5 139.5 487.5 141.5 489.5 142.5 489.5 143.5 490.5 151.5 490.5 152.5 489.5 153.5 489.5 153.5 488.5 154.5 487.5 154.5 477.5 152.5 475.5 142.5 475.5"/>
+        <polygon class="cls-2" points="85.5 475.5 83.5 477.5 83.5 488.5 84.5 489.5 85.5 489.5 86.5 490.5 94.5 490.5 95.5 489.5 96.5 489.5 96.5 488.5 97.5 487.5 97.5 477.5 95.5 475.5 85.5 475.5"/>
+        <polygon class="cls-2" points="702.5 456.5 701.5 457.5 700.5 457.5 699.5 458.5 699.5 469.5 701.5 471.5 711.5 471.5 713.5 469.5 713.5 458.5 712.5 457.5 711.5 457.5 710.5 456.5 702.5 456.5"/>
+        <polygon class="cls-2" points="665.5 456.5 664.5 457.5 663.5 457.5 662.5 458.5 662.5 469.5 664.5 471.5 674.5 471.5 676.5 469.5 676.5 458.5 675.5 457.5 674.5 457.5 673.5 456.5 665.5 456.5"/>
+        <polygon class="cls-2" points="646.5 456.5 645.5 457.5 644.5 457.5 643.5 458.5 643.5 469.5 645.5 471.5 655.5 471.5 657.5 469.5 657.5 458.5 656.5 457.5 655.5 457.5 654.5 456.5 646.5 456.5"/>
+        <polygon class="cls-2" points="627.5 456.5 624.5 459.5 624.5 469.5 626.5 471.5 637.5 471.5 639.5 469.5 639.5 459.5 636.5 456.5 627.5 456.5"/>
+        <polygon class="cls-2" points="534.5 456.5 533.5 457.5 532.5 457.5 531.5 458.5 531.5 469.5 533.5 471.5 543.5 471.5 545.5 469.5 545.5 458.5 544.5 457.5 543.5 457.5 542.5 456.5 534.5 456.5"/>
+        <polygon class="cls-2" points="310.5 456.5 307.5 459.5 307.5 469.5 309.5 471.5 320.5 471.5 321.5 470.5 321.5 469.5 322.5 468.5 322.5 459.5 319.5 456.5 310.5 456.5"/>
+        <polygon class="cls-2" points="236.5 456.5 235.5 457.5 234.5 457.5 233.5 458.5 233.5 469.5 235.5 471.5 245.5 471.5 247.5 469.5 247.5 458.5 246.5 457.5 245.5 457.5 244.5 456.5 236.5 456.5"/>
+        <polygon class="cls-2" points="217.5 456.5 216.5 457.5 215.5 457.5 214.5 458.5 214.5 469.5 216.5 471.5 226.5 471.5 228.5 469.5 228.5 458.5 227.5 457.5 226.5 457.5 225.5 456.5 217.5 456.5"/>
+        <polygon class="cls-2" points="198.5 456.5 195.5 459.5 195.5 468.5 196.5 469.5 196.5 470.5 197.5 471.5 208.5 471.5 210.5 469.5 210.5 459.5 207.5 456.5 198.5 456.5"/>
+        <polygon class="cls-2" points="86.5 456.5 85.5 457.5 84.5 457.5 83.5 458.5 83.5 469.5 85.5 471.5 95.5 471.5 97.5 469.5 97.5 458.5 96.5 457.5 95.5 457.5 94.5 456.5 86.5 456.5"/>
+        <polygon class="cls-2" points="738.5 438.5 736.5 440.5 736.5 450.5 738.5 452.5 749.5 452.5 751.5 450.5 751.5 440.5 749.5 438.5 738.5 438.5"/>
+        <polygon class="cls-2" points="719.5 438.5 718.5 439.5 718.5 451.5 719.5 452.5 730.5 452.5 732.5 450.5 732.5 440.5 730.5 438.5 719.5 438.5"/>
+        <polygon class="cls-2" points="701.5 438.5 699.5 440.5 699.5 450.5 701.5 452.5 711.5 452.5 713.5 450.5 713.5 440.5 711.5 438.5 701.5 438.5"/>
+        <polygon class="cls-2" points="645.5 438.5 643.5 440.5 643.5 450.5 645.5 452.5 655.5 452.5 656.5 451.5 657.5 451.5 657.5 440.5 655.5 438.5 645.5 438.5"/>
+        <polygon class="cls-2" points="626.5 438.5 624.5 440.5 624.5 450.5 626.5 452.5 637.5 452.5 639.5 450.5 639.5 440.5 637.5 438.5 626.5 438.5"/>
+        <polygon class="cls-2" points="608.5 438.5 606.5 440.5 606.5 451.5 607.5 451.5 608.5 452.5 618.5 452.5 620.5 450.5 620.5 440.5 618.5 438.5 608.5 438.5"/>
+        <polygon class="cls-2" points="589.5 438.5 587.5 440.5 587.5 450.5 589.5 452.5 600.5 452.5 601.5 451.5 601.5 439.5 600.5 438.5 589.5 438.5"/>
+        <polygon class="cls-2" points="570.5 438.5 568.5 440.5 568.5 450.5 570.5 452.5 581.5 452.5 583.5 450.5 583.5 440.5 581.5 438.5 570.5 438.5"/>
+        <polygon class="cls-2" points="533.5 438.5 531.5 440.5 531.5 450.5 533.5 452.5 544.5 452.5 545.5 451.5 545.5 439.5 544.5 438.5 533.5 438.5"/>
+        <polygon class="cls-2" points="309.5 438.5 307.5 440.5 307.5 450.5 309.5 452.5 320.5 452.5 322.5 450.5 322.5 440.5 320.5 438.5 309.5 438.5"/>
+        <polygon class="cls-2" points="291.5 438.5 290.5 439.5 289.5 439.5 289.5 451.5 290.5 451.5 291.5 452.5 301.5 452.5 303.5 450.5 303.5 440.5 301.5 438.5 291.5 438.5"/>
+        <polygon class="cls-2" points="253.5 438.5 251.5 440.5 251.5 450.5 253.5 452.5 264.5 452.5 266.5 450.5 266.5 440.5 264.5 438.5 253.5 438.5"/>
+        <polygon class="cls-2" points="216.5 438.5 214.5 440.5 214.5 450.5 216.5 452.5 227.5 452.5 228.5 451.5 228.5 439.5 227.5 438.5 216.5 438.5"/>
+        <polygon class="cls-2" points="179.5 438.5 177.5 440.5 177.5 450.5 179.5 452.5 189.5 452.5 191.5 450.5 191.5 440.5 189.5 438.5 179.5 438.5"/>
+        <polygon class="cls-2" points="160.5 438.5 158.5 440.5 158.5 450.5 160.5 452.5 171.5 452.5 172.5 451.5 172.5 450.5 173.5 449.5 173.5 441.5 172.5 440.5 172.5 439.5 171.5 438.5 160.5 438.5"/>
+        <polygon class="cls-2" points="141.5 438.5 140.5 439.5 140.5 440.5 139.5 441.5 139.5 449.5 140.5 450.5 140.5 451.5 141.5 452.5 152.5 452.5 154.5 450.5 154.5 440.5 152.5 438.5 141.5 438.5"/>
+        <polygon class="cls-2" points="104.5 438.5 102.5 440.5 102.5 450.5 104.5 452.5 115.5 452.5 116.5 451.5 116.5 450.5 117.5 449.5 117.5 441.5 116.5 440.5 116.5 439.5 115.5 438.5 104.5 438.5"/>
+        <polygon class="cls-2" points="720.5 419.5 718.5 421.5 718.5 432.5 720.5 434.5 729.5 434.5 730.5 433.5 731.5 433.5 732.5 432.5 732.5 421.5 730.5 419.5 720.5 419.5"/>
+        <polygon class="cls-2" points="664.5 419.5 662.5 421.5 662.5 432.5 664.5 434.5 673.5 434.5 674.5 433.5 675.5 433.5 676.5 432.5 676.5 421.5 674.5 419.5 664.5 419.5"/>
+        <polygon class="cls-2" points="645.5 419.5 643.5 421.5 643.5 432.5 644.5 433.5 645.5 433.5 646.5 434.5 655.5 434.5 657.5 432.5 657.5 421.5 655.5 419.5 645.5 419.5"/>
+        <polygon class="cls-2" points="589.5 419.5 587.5 421.5 587.5 432.5 588.5 433.5 589.5 433.5 590.5 434.5 599.5 434.5 601.5 432.5 601.5 421.5 599.5 419.5 589.5 419.5"/>
+        <polygon class="cls-2" points="552.5 419.5 550.5 421.5 550.5 432.5 551.5 433.5 552.5 433.5 553.5 434.5 561.5 434.5 562.5 433.5 563.5 433.5 564.5 432.5 564.5 421.5 562.5 419.5 552.5 419.5"/>
+        <polygon class="cls-2" points="291.5 419.5 289.5 421.5 289.5 432.5 291.5 434.5 300.5 434.5 301.5 433.5 302.5 433.5 303.5 432.5 303.5 421.5 301.5 419.5 291.5 419.5"/>
+        <polygon class="cls-2" points="272.5 419.5 270.5 421.5 270.5 432.5 271.5 433.5 272.5 433.5 273.5 434.5 282.5 434.5 284.5 432.5 284.5 421.5 282.5 419.5 272.5 419.5"/>
+        <polygon class="cls-2" points="253.5 419.5 252.5 420.5 252.5 421.5 251.5 422.5 251.5 431.5 254.5 434.5 263.5 434.5 266.5 431.5 266.5 421.5 264.5 419.5 253.5 419.5"/>
+        <polygon class="cls-2" points="235.5 419.5 233.5 421.5 233.5 432.5 234.5 433.5 235.5 433.5 236.5 434.5 244.5 434.5 245.5 433.5 246.5 433.5 247.5 432.5 247.5 421.5 245.5 419.5 235.5 419.5"/>
+        <polygon class="cls-2" points="216.5 419.5 214.5 421.5 214.5 432.5 215.5 433.5 216.5 433.5 217.5 434.5 226.5 434.5 228.5 432.5 228.5 421.5 226.5 419.5 216.5 419.5"/>
+        <polygon class="cls-2" points="198.5 419.5 197.5 420.5 196.5 420.5 196.5 421.5 195.5 422.5 195.5 431.5 198.5 434.5 207.5 434.5 208.5 433.5 209.5 433.5 209.5 432.5 210.5 431.5 210.5 421.5 208.5 419.5 198.5 419.5"/>
+        <polygon class="cls-2" points="179.5 419.5 177.5 421.5 177.5 432.5 178.5 433.5 179.5 433.5 180.5 434.5 188.5 434.5 189.5 433.5 190.5 433.5 191.5 432.5 191.5 421.5 189.5 419.5 179.5 419.5"/>
+        <polygon class="cls-2" points="123.5 419.5 121.5 421.5 121.5 432.5 122.5 433.5 123.5 433.5 124.5 434.5 132.5 434.5 133.5 433.5 134.5 433.5 135.5 432.5 135.5 421.5 133.5 419.5 123.5 419.5"/>
+        <polygon class="cls-2" points="104.5 419.5 102.5 421.5 102.5 431.5 103.5 432.5 103.5 433.5 104.5 433.5 105.5 434.5 114.5 434.5 117.5 431.5 117.5 422.5 116.5 421.5 116.5 420.5 115.5 420.5 114.5 419.5 104.5 419.5"/>
+        <polygon class="cls-2" points="85.5 419.5 83.5 421.5 83.5 432.5 85.5 434.5 94.5 434.5 95.5 433.5 96.5 433.5 97.5 432.5 97.5 421.5 95.5 419.5 85.5 419.5"/>
+        <polygon class="cls-2" points="740.5 400.5 739.5 401.5 738.5 401.5 736.5 403.5 736.5 413.5 738.5 415.5 749.5 415.5 750.5 414.5 750.5 413.5 751.5 412.5 751.5 403.5 749.5 401.5 748.5 401.5 747.5 400.5 740.5 400.5"/>
+        <polygon class="cls-2" points="684.5 400.5 683.5 401.5 682.5 401.5 680.5 403.5 680.5 413.5 682.5 415.5 693.5 415.5 694.5 414.5 694.5 413.5 695.5 412.5 695.5 403.5 693.5 401.5 692.5 401.5 691.5 400.5 684.5 400.5"/>
+        <polygon class="cls-2" points="666.5 400.5 665.5 401.5 663.5 401.5 662.5 402.5 662.5 413.5 664.5 415.5 674.5 415.5 676.5 413.5 676.5 403.5 675.5 402.5 675.5 401.5 673.5 401.5 672.5 400.5 666.5 400.5"/>
+        <polygon class="cls-2" points="647.5 400.5 646.5 401.5 644.5 401.5 643.5 402.5 643.5 413.5 645.5 415.5 655.5 415.5 657.5 413.5 657.5 402.5 656.5 401.5 654.5 401.5 653.5 400.5 647.5 400.5"/>
+        <polygon class="cls-2" points="628.5 400.5 627.5 401.5 626.5 401.5 624.5 403.5 624.5 413.5 626.5 415.5 637.5 415.5 639.5 413.5 639.5 403.5 637.5 401.5 636.5 401.5 635.5 400.5 628.5 400.5"/>
+        <polygon class="cls-2" points="554.5 400.5 553.5 401.5 551.5 401.5 550.5 402.5 550.5 413.5 552.5 415.5 562.5 415.5 564.5 413.5 564.5 402.5 563.5 401.5 561.5 401.5 560.5 400.5 554.5 400.5"/>
+        <polygon class="cls-2" points="293.5 400.5 292.5 401.5 290.5 401.5 289.5 402.5 289.5 413.5 291.5 415.5 301.5 415.5 303.5 413.5 303.5 402.5 302.5 401.5 300.5 401.5 299.5 400.5 293.5 400.5"/>
+        <polygon class="cls-2" points="237.5 400.5 236.5 401.5 234.5 401.5 233.5 402.5 233.5 413.5 235.5 415.5 245.5 415.5 247.5 413.5 247.5 402.5 246.5 401.5 244.5 401.5 243.5 400.5 237.5 400.5"/>
+        <polygon class="cls-2" points="218.5 400.5 217.5 401.5 215.5 401.5 215.5 402.5 214.5 403.5 214.5 413.5 216.5 415.5 226.5 415.5 228.5 413.5 228.5 402.5 227.5 401.5 225.5 401.5 224.5 400.5 218.5 400.5"/>
+        <polygon class="cls-2" points="86.5 400.5 85.5 401.5 84.5 401.5 83.5 402.5 83.5 413.5 85.5 415.5 95.5 415.5 97.5 413.5 97.5 403.5 96.5 402.5 96.5 401.5 94.5 401.5 93.5 400.5 86.5 400.5"/>
+        <polygon class="cls-2" points="757.5 382.5 755.5 384.5 755.5 394.5 757.5 396.5 767.5 396.5 769.5 394.5 769.5 384.5 767.5 382.5 757.5 382.5"/>
+        <polygon class="cls-2" points="738.5 382.5 736.5 384.5 736.5 394.5 738.5 396.5 749.5 396.5 751.5 394.5 751.5 384.5 749.5 382.5 738.5 382.5"/>
+        <polygon class="cls-2" points="719.5 382.5 718.5 383.5 718.5 395.5 719.5 396.5 730.5 396.5 732.5 394.5 732.5 384.5 730.5 382.5 719.5 382.5"/>
+        <polygon class="cls-2" points="701.5 382.5 699.5 384.5 699.5 394.5 701.5 396.5 711.5 396.5 713.5 394.5 713.5 384.5 711.5 382.5 701.5 382.5"/>
+        <polygon class="cls-2" points="682.5 382.5 680.5 384.5 680.5 394.5 682.5 396.5 693.5 396.5 695.5 394.5 695.5 384.5 693.5 382.5 682.5 382.5"/>
+        <polygon class="cls-2" points="645.5 382.5 643.5 384.5 643.5 394.5 645.5 396.5 656.5 396.5 657.5 395.5 657.5 384.5 655.5 382.5 645.5 382.5"/>
+        <polygon class="cls-2" points="608.5 382.5 606.5 384.5 606.5 395.5 607.5 396.5 618.5 396.5 620.5 394.5 620.5 384.5 618.5 382.5 608.5 382.5"/>
+        <polygon class="cls-2" points="589.5 382.5 587.5 384.5 587.5 394.5 589.5 396.5 600.5 396.5 601.5 395.5 601.5 383.5 600.5 383.5 599.5 382.5 589.5 382.5"/>
+        <polygon class="cls-2" points="570.5 382.5 568.5 384.5 568.5 394.5 570.5 396.5 581.5 396.5 583.5 394.5 583.5 384.5 581.5 382.5 570.5 382.5"/>
+        <polygon class="cls-2" points="552.5 382.5 550.5 384.5 550.5 394.5 552.5 396.5 562.5 396.5 564.5 394.5 564.5 384.5 562.5 382.5 552.5 382.5"/>
+        <polygon class="cls-2" points="533.5 382.5 531.5 384.5 531.5 394.5 533.5 396.5 544.5 396.5 545.5 395.5 545.5 383.5 544.5 382.5 533.5 382.5"/>
+        <polygon class="cls-2" points="272.5 382.5 270.5 384.5 270.5 394.5 272.5 396.5 283.5 396.5 284.5 395.5 284.5 384.5 282.5 382.5 272.5 382.5"/>
+        <polygon class="cls-2" points="253.5 382.5 251.5 384.5 251.5 394.5 253.5 396.5 264.5 396.5 266.5 394.5 266.5 384.5 264.5 382.5 253.5 382.5"/>
+        <polygon class="cls-2" points="235.5 382.5 233.5 384.5 233.5 395.5 234.5 396.5 245.5 396.5 247.5 394.5 247.5 384.5 245.5 382.5 235.5 382.5"/>
+        <polygon class="cls-2" points="197.5 382.5 195.5 384.5 195.5 394.5 197.5 396.5 208.5 396.5 210.5 394.5 210.5 384.5 208.5 382.5 197.5 382.5"/>
+        <polygon class="cls-2" points="123.5 382.5 121.5 384.5 121.5 394.5 123.5 396.5 133.5 396.5 135.5 394.5 135.5 384.5 133.5 382.5 123.5 382.5"/>
+        <polygon class="cls-2" points="104.5 382.5 102.5 384.5 102.5 394.5 104.5 396.5 115.5 396.5 116.5 395.5 116.5 394.5 117.5 393.5 117.5 385.5 116.5 384.5 116.5 383.5 115.5 382.5 104.5 382.5"/>
+        <polygon class="cls-2" points="757.5 363.5 755.5 365.5 755.5 376.5 757.5 378.5 767.5 378.5 769.5 376.5 769.5 365.5 767.5 363.5 757.5 363.5"/>
+        <polygon class="cls-2" points="720.5 363.5 718.5 365.5 718.5 376.5 720.5 378.5 729.5 378.5 730.5 377.5 731.5 377.5 732.5 376.5 732.5 365.5 730.5 363.5 720.5 363.5"/>
+        <polygon class="cls-2" points="682.5 363.5 680.5 365.5 680.5 375.5 681.5 376.5 681.5 377.5 682.5 377.5 683.5 378.5 692.5 378.5 695.5 375.5 695.5 366.5 694.5 365.5 694.5 364.5 693.5 364.5 692.5 363.5 682.5 363.5"/>
+        <polygon class="cls-2" points="664.5 363.5 662.5 365.5 662.5 376.5 664.5 378.5 673.5 378.5 674.5 377.5 675.5 377.5 676.5 376.5 676.5 365.5 674.5 363.5 664.5 363.5"/>
+        <polygon class="cls-2" points="608.5 363.5 606.5 365.5 606.5 376.5 608.5 378.5 618.5 378.5 620.5 376.5 620.5 365.5 618.5 363.5 608.5 363.5"/>
+        <polygon class="cls-2" points="589.5 363.5 587.5 365.5 587.5 376.5 588.5 377.5 589.5 377.5 590.5 378.5 599.5 378.5 601.5 376.5 601.5 365.5 599.5 363.5 589.5 363.5"/>
+        <polygon class="cls-2" points="571.5 363.5 570.5 364.5 569.5 364.5 569.5 365.5 568.5 366.5 568.5 375.5 571.5 378.5 580.5 378.5 581.5 377.5 582.5 377.5 582.5 376.5 583.5 375.5 583.5 365.5 581.5 363.5 571.5 363.5"/>
+        <polygon class="cls-2" points="309.5 363.5 307.5 365.5 307.5 375.5 308.5 376.5 308.5 377.5 309.5 377.5 310.5 378.5 319.5 378.5 322.5 375.5 322.5 366.5 321.5 365.5 321.5 364.5 320.5 364.5 319.5 363.5 309.5 363.5"/>
+        <polygon class="cls-2" points="291.5 363.5 289.5 365.5 289.5 376.5 291.5 378.5 300.5 378.5 301.5 377.5 302.5 377.5 303.5 376.5 303.5 365.5 301.5 363.5 291.5 363.5"/>
+        <polygon class="cls-2" points="235.5 363.5 233.5 365.5 233.5 376.5 235.5 378.5 245.5 378.5 247.5 376.5 247.5 365.5 245.5 363.5 235.5 363.5"/>
+        <polygon class="cls-2" points="216.5 363.5 214.5 365.5 214.5 376.5 215.5 377.5 216.5 377.5 217.5 378.5 226.5 378.5 228.5 376.5 228.5 365.5 226.5 363.5 216.5 363.5"/>
+        <polygon class="cls-2" points="179.5 363.5 177.5 365.5 177.5 376.5 179.5 378.5 189.5 378.5 191.5 376.5 191.5 365.5 189.5 363.5 179.5 363.5"/>
+        <polygon class="cls-2" points="160.5 363.5 158.5 365.5 158.5 376.5 159.5 377.5 160.5 377.5 161.5 378.5 170.5 378.5 172.5 376.5 172.5 375.5 173.5 374.5 173.5 367.5 172.5 366.5 172.5 365.5 170.5 363.5 160.5 363.5"/>
+        <polygon class="cls-2" points="142.5 363.5 141.5 364.5 140.5 364.5 140.5 365.5 139.5 366.5 139.5 375.5 142.5 378.5 151.5 378.5 152.5 377.5 153.5 377.5 153.5 376.5 154.5 375.5 154.5 365.5 152.5 363.5 142.5 363.5"/>
+        <polygon class="cls-2" points="123.5 363.5 121.5 365.5 121.5 376.5 123.5 378.5 133.5 378.5 135.5 376.5 135.5 365.5 133.5 363.5 123.5 363.5"/>
+        <polygon class="cls-2" points="738.5 345.5 736.5 347.5 736.5 357.5 738.5 359.5 749.5 359.5 750.5 358.5 750.5 357.5 751.5 356.5 751.5 347.5 749.5 345.5 738.5 345.5"/>
+        <polygon class="cls-2" points="719.5 345.5 718.5 346.5 718.5 358.5 719.5 358.5 720.5 359.5 730.5 359.5 732.5 357.5 732.5 347.5 730.5 345.5 719.5 345.5"/>
+        <polygon class="cls-2" points="700.5 345.5 700.5 346.5 699.5 347.5 699.5 357.5 701.5 359.5 711.5 359.5 713.5 357.5 713.5 346.5 712.5 345.5 700.5 345.5"/>
+        <polygon class="cls-2" points="682.5 345.5 680.5 347.5 680.5 357.5 682.5 359.5 693.5 359.5 695.5 357.5 695.5 347.5 693.5 345.5 682.5 345.5"/>
+        <polygon class="cls-2" points="663.5 345.5 662.5 346.5 662.5 357.5 664.5 359.5 674.5 359.5 676.5 357.5 676.5 347.5 674.5 345.5 663.5 345.5"/>
+        <polygon class="cls-2" points="626.5 345.5 624.5 347.5 624.5 357.5 626.5 359.5 637.5 359.5 639.5 357.5 639.5 347.5 637.5 345.5 626.5 345.5"/>
+        <polygon class="cls-2" points="607.5 345.5 606.5 346.5 606.5 357.5 608.5 359.5 618.5 359.5 620.5 357.5 620.5 347.5 619.5 346.5 619.5 345.5 607.5 345.5"/>
+        <polygon class="cls-2" points="589.5 345.5 587.5 347.5 587.5 357.5 589.5 359.5 599.5 359.5 601.5 357.5 601.5 346.5 600.5 345.5 589.5 345.5"/>
+        <polygon class="cls-2" points="533.5 345.5 531.5 347.5 531.5 357.5 533.5 359.5 543.5 359.5 544.5 358.5 545.5 358.5 545.5 346.5 544.5 345.5 533.5 345.5"/>
+        <polygon class="cls-2" points="309.5 345.5 307.5 347.5 307.5 357.5 309.5 359.5 320.5 359.5 322.5 357.5 322.5 347.5 320.5 345.5 309.5 345.5"/>
+        <polygon class="cls-2" points="290.5 345.5 289.5 346.5 289.5 357.5 291.5 359.5 301.5 359.5 303.5 357.5 303.5 347.5 302.5 346.5 302.5 345.5 290.5 345.5"/>
+        <polygon class="cls-2" points="253.5 345.5 251.5 347.5 251.5 357.5 253.5 359.5 264.5 359.5 266.5 357.5 266.5 347.5 264.5 345.5 253.5 345.5"/>
+        <polygon class="cls-2" points="197.5 345.5 195.5 347.5 195.5 356.5 196.5 357.5 196.5 358.5 197.5 359.5 208.5 359.5 210.5 357.5 210.5 347.5 208.5 345.5 197.5 345.5"/>
+        <polygon class="cls-2" points="160.5 345.5 158.5 347.5 158.5 357.5 160.5 359.5 170.5 359.5 171.5 358.5 172.5 358.5 172.5 356.5 173.5 355.5 173.5 348.5 172.5 347.5 172.5 346.5 171.5 345.5 160.5 345.5"/>
+        <polygon class="cls-2" points="84.5 345.5 83.5 346.5 83.5 357.5 85.5 359.5 95.5 359.5 97.5 357.5 97.5 347.5 95.5 345.5 84.5 345.5"/>
+        <polygon class="cls-2" points="757.5 326.5 755.5 328.5 755.5 338.5 757.5 340.5 767.5 340.5 769.5 338.5 769.5 328.5 767.5 326.5 757.5 326.5"/>
+        <polygon class="cls-2" points="701.5 326.5 699.5 328.5 699.5 338.5 701.5 340.5 712.5 340.5 713.5 339.5 713.5 328.5 711.5 326.5 701.5 326.5"/>
+        <polygon class="cls-2" points="682.5 326.5 680.5 328.5 680.5 338.5 682.5 340.5 693.5 340.5 695.5 338.5 695.5 328.5 693.5 326.5 682.5 326.5"/>
+        <polygon class="cls-2" points="608.5 326.5 606.5 328.5 606.5 339.5 607.5 340.5 618.5 340.5 620.5 338.5 620.5 328.5 618.5 326.5 608.5 326.5"/>
+        <polygon class="cls-2" points="589.5 326.5 587.5 328.5 587.5 338.5 589.5 340.5 600.5 340.5 601.5 339.5 601.5 328.5 599.5 326.5 589.5 326.5"/>
+        <polygon class="cls-2" points="570.5 326.5 568.5 328.5 568.5 338.5 570.5 340.5 581.5 340.5 583.5 338.5 583.5 328.5 581.5 326.5 570.5 326.5"/>
+        <polygon class="cls-2" points="552.5 326.5 550.5 328.5 550.5 339.5 551.5 340.5 562.5 340.5 564.5 338.5 564.5 328.5 562.5 326.5 552.5 326.5"/>
+        <polygon class="cls-2" points="533.5 326.5 531.5 328.5 531.5 338.5 533.5 340.5 544.5 340.5 545.5 339.5 545.5 327.5 544.5 326.5 533.5 326.5"/>
+        <polygon class="cls-2" points="309.5 326.5 307.5 328.5 307.5 338.5 309.5 340.5 320.5 340.5 322.5 338.5 322.5 328.5 320.5 326.5 309.5 326.5"/>
+        <polygon class="cls-2" points="253.5 326.5 251.5 328.5 251.5 338.5 253.5 340.5 264.5 340.5 266.5 338.5 266.5 328.5 264.5 326.5 253.5 326.5"/>
+        <polygon class="cls-2" points="141.5 326.5 140.5 327.5 140.5 328.5 139.5 329.5 139.5 338.5 141.5 340.5 152.5 340.5 154.5 338.5 154.5 328.5 152.5 326.5 141.5 326.5"/>
+        <polygon class="cls-2" points="85.5 326.5 84.5 327.5 83.5 327.5 83.5 339.5 84.5 340.5 95.5 340.5 97.5 338.5 97.5 328.5 95.5 326.5 85.5 326.5"/>
+        <polygon class="cls-2" points="757.5 307.5 755.5 309.5 755.5 320.5 757.5 322.5 767.5 322.5 769.5 320.5 769.5 309.5 767.5 307.5 757.5 307.5"/>
+        <polygon class="cls-2" points="738.5 307.5 736.5 309.5 736.5 320.5 737.5 321.5 738.5 321.5 739.5 322.5 748.5 322.5 751.5 319.5 751.5 310.5 750.5 309.5 750.5 308.5 749.5 308.5 748.5 307.5 738.5 307.5"/>
+        <polygon class="cls-2" points="645.5 307.5 643.5 309.5 643.5 320.5 645.5 322.5 655.5 322.5 657.5 320.5 657.5 309.5 655.5 307.5 645.5 307.5"/>
+        <polygon class="cls-2" points="589.5 307.5 587.5 309.5 587.5 320.5 589.5 322.5 599.5 322.5 601.5 320.5 601.5 309.5 599.5 307.5 589.5 307.5"/>
+        <polygon class="cls-2" points="496.5 307.5 494.5 309.5 494.5 320.5 496.5 322.5 506.5 322.5 508.5 320.5 508.5 309.5 506.5 307.5 496.5 307.5"/>
+        <polygon class="cls-2" points="477.5 307.5 475.5 309.5 475.5 320.5 476.5 321.5 477.5 321.5 478.5 322.5 487.5 322.5 489.5 320.5 489.5 319.5 490.5 318.5 490.5 310.5 487.5 307.5 477.5 307.5"/>
+        <polygon class="cls-2" points="403.5 307.5 401.5 309.5 401.5 310.5 400.5 311.5 400.5 318.5 401.5 319.5 401.5 320.5 403.5 322.5 413.5 322.5 415.5 320.5 415.5 309.5 413.5 307.5 403.5 307.5"/>
+        <polygon class="cls-2" points="384.5 307.5 382.5 309.5 382.5 320.5 384.5 322.5 394.5 322.5 396.5 320.5 396.5 309.5 394.5 307.5 384.5 307.5"/>
+        <polygon class="cls-2" points="272.5 307.5 270.5 309.5 270.5 320.5 272.5 322.5 282.5 322.5 284.5 320.5 284.5 309.5 282.5 307.5 272.5 307.5"/>
+        <polygon class="cls-2" points="235.5 307.5 233.5 309.5 233.5 320.5 235.5 322.5 245.5 322.5 247.5 320.5 247.5 309.5 245.5 307.5 235.5 307.5"/>
+        <polygon class="cls-2" points="216.5 307.5 214.5 309.5 214.5 320.5 216.5 322.5 226.5 322.5 228.5 320.5 228.5 309.5 226.5 307.5 216.5 307.5"/>
+        <polygon class="cls-2" points="198.5 307.5 197.5 308.5 196.5 308.5 196.5 309.5 195.5 310.5 195.5 319.5 198.5 322.5 207.5 322.5 208.5 321.5 209.5 321.5 209.5 320.5 210.5 319.5 210.5 309.5 209.5 308.5 208.5 308.5 207.5 307.5 198.5 307.5"/>
+        <polygon class="cls-2" points="179.5 307.5 177.5 309.5 177.5 320.5 179.5 322.5 189.5 322.5 191.5 320.5 191.5 309.5 189.5 307.5 179.5 307.5"/>
+        <polygon class="cls-2" points="160.5 307.5 158.5 309.5 158.5 320.5 160.5 322.5 170.5 322.5 172.5 320.5 172.5 319.5 173.5 318.5 173.5 311.5 172.5 310.5 172.5 309.5 170.5 307.5 160.5 307.5"/>
+        <polygon class="cls-2" points="142.5 307.5 139.5 310.5 139.5 319.5 142.5 322.5 151.5 322.5 152.5 321.5 153.5 321.5 154.5 320.5 154.5 309.5 152.5 307.5 142.5 307.5"/>
+        <polygon class="cls-2" points="85.5 307.5 83.5 309.5 83.5 320.5 85.5 322.5 95.5 322.5 97.5 320.5 97.5 309.5 95.5 307.5 85.5 307.5"/>
+        <polygon class="cls-2" points="738.5 289.5 736.5 291.5 736.5 301.5 738.5 303.5 749.5 303.5 750.5 302.5 750.5 301.5 751.5 300.5 751.5 291.5 749.5 289.5 738.5 289.5"/>
+        <polygon class="cls-2" points="682.5 289.5 680.5 291.5 680.5 301.5 682.5 303.5 693.5 303.5 695.5 301.5 695.5 291.5 693.5 289.5 682.5 289.5"/>
+        <polygon class="cls-2" points="663.5 289.5 662.5 290.5 662.5 301.5 664.5 303.5 674.5 303.5 676.5 301.5 676.5 291.5 674.5 289.5 663.5 289.5"/>
+        <polygon class="cls-2" points="514.5 289.5 512.5 291.5 512.5 300.5 513.5 301.5 513.5 302.5 514.5 303.5 525.5 303.5 527.5 301.5 527.5 291.5 525.5 289.5 514.5 289.5"/>
+        <polygon class="cls-2" points="495.5 289.5 494.5 290.5 494.5 301.5 496.5 303.5 506.5 303.5 508.5 301.5 508.5 291.5 506.5 289.5 495.5 289.5"/>
+        <polygon class="cls-2" points="477.5 289.5 475.5 291.5 475.5 301.5 477.5 303.5 488.5 303.5 489.5 302.5 489.5 301.5 490.5 300.5 490.5 292.5 489.5 291.5 489.5 290.5 488.5 289.5 477.5 289.5"/>
+        <polygon class="cls-2" points="458.5 289.5 457.5 290.5 457.5 291.5 456.5 292.5 456.5 300.5 457.5 301.5 457.5 302.5 458.5 303.5 469.5 303.5 471.5 301.5 471.5 291.5 469.5 289.5 458.5 289.5"/>
+        <polygon class="cls-2" points="439.5 289.5 439.5 290.5 438.5 291.5 438.5 301.5 440.5 303.5 450.5 303.5 452.5 301.5 452.5 290.5 451.5 289.5 439.5 289.5"/>
+        <polygon class="cls-2" points="402.5 289.5 401.5 290.5 401.5 291.5 400.5 292.5 400.5 299.5 401.5 300.5 401.5 302.5 402.5 302.5 403.5 303.5 413.5 303.5 415.5 301.5 415.5 291.5 413.5 289.5 402.5 289.5"/>
+        <polygon class="cls-2" points="384.5 289.5 382.5 291.5 382.5 301.5 384.5 303.5 394.5 303.5 396.5 301.5 396.5 290.5 395.5 289.5 384.5 289.5"/>
+        <polygon class="cls-2" points="365.5 289.5 363.5 291.5 363.5 301.5 365.5 303.5 376.5 303.5 378.5 301.5 378.5 291.5 376.5 289.5 365.5 289.5"/>
+        <polygon class="cls-2" points="290.5 289.5 289.5 290.5 289.5 301.5 291.5 303.5 301.5 303.5 303.5 301.5 303.5 291.5 301.5 289.5 290.5 289.5"/>
+        <polygon class="cls-2" points="234.5 289.5 233.5 290.5 233.5 301.5 235.5 303.5 245.5 303.5 247.5 301.5 247.5 291.5 245.5 289.5 234.5 289.5"/>
+        <polygon class="cls-2" points="216.5 289.5 214.5 291.5 214.5 301.5 216.5 303.5 226.5 303.5 227.5 302.5 228.5 302.5 228.5 290.5 227.5 289.5 216.5 289.5"/>
+        <polygon class="cls-2" points="178.5 289.5 177.5 290.5 177.5 301.5 179.5 303.5 189.5 303.5 191.5 301.5 191.5 291.5 189.5 289.5 178.5 289.5"/>
+        <polygon class="cls-2" points="104.5 289.5 102.5 291.5 102.5 301.5 104.5 303.5 115.5 303.5 116.5 302.5 116.5 301.5 117.5 300.5 117.5 292.5 116.5 291.5 116.5 290.5 115.5 289.5 104.5 289.5"/>
+        <polygon class="cls-2" points="84.5 289.5 83.5 290.5 83.5 302.5 84.5 302.5 85.5 303.5 95.5 303.5 97.5 301.5 97.5 291.5 95.5 289.5 84.5 289.5"/>
+        <polygon class="cls-2" points="701.5 270.5 699.5 272.5 699.5 282.5 701.5 284.5 712.5 284.5 713.5 283.5 713.5 272.5 711.5 270.5 701.5 270.5"/>
+        <polygon class="cls-2" points="682.5 270.5 680.5 272.5 680.5 282.5 682.5 284.5 693.5 284.5 695.5 282.5 695.5 272.5 693.5 270.5 682.5 270.5"/>
+        <polygon class="cls-2" points="608.5 270.5 606.5 272.5 606.5 283.5 607.5 284.5 618.5 284.5 620.5 282.5 620.5 272.5 618.5 270.5 608.5 270.5"/>
+        <polygon class="cls-2" points="570.5 270.5 568.5 272.5 568.5 282.5 570.5 284.5 581.5 284.5 583.5 282.5 583.5 272.5 581.5 270.5 570.5 270.5"/>
+        <polygon class="cls-2" points="552.5 270.5 550.5 272.5 550.5 283.5 551.5 284.5 562.5 284.5 564.5 282.5 564.5 272.5 562.5 270.5 552.5 270.5"/>
+        <polygon class="cls-2" points="533.5 270.5 531.5 272.5 531.5 282.5 533.5 284.5 544.5 284.5 545.5 283.5 545.5 271.5 544.5 271.5 543.5 270.5 533.5 270.5"/>
+        <polygon class="cls-2" points="514.5 270.5 513.5 271.5 513.5 272.5 512.5 273.5 512.5 282.5 514.5 284.5 525.5 284.5 527.5 282.5 527.5 272.5 525.5 270.5 514.5 270.5"/>
+        <polygon class="cls-2" points="496.5 270.5 494.5 272.5 494.5 283.5 495.5 284.5 506.5 284.5 508.5 282.5 508.5 272.5 506.5 270.5 496.5 270.5"/>
+        <polygon class="cls-2" points="477.5 270.5 475.5 272.5 475.5 282.5 477.5 284.5 488.5 284.5 489.5 283.5 489.5 282.5 490.5 281.5 490.5 273.5 489.5 272.5 489.5 271.5 488.5 270.5 477.5 270.5"/>
+        <polygon class="cls-2" points="440.5 270.5 438.5 272.5 438.5 282.5 439.5 283.5 439.5 284.5 451.5 284.5 452.5 283.5 452.5 272.5 450.5 270.5 440.5 270.5"/>
+        <polygon class="cls-2" points="421.5 270.5 419.5 272.5 419.5 282.5 421.5 284.5 432.5 284.5 434.5 282.5 434.5 273.5 433.5 272.5 433.5 271.5 432.5 270.5 421.5 270.5"/>
+        <polygon class="cls-2" points="365.5 270.5 363.5 272.5 363.5 282.5 365.5 284.5 376.5 284.5 378.5 282.5 378.5 272.5 376.5 270.5 365.5 270.5"/>
+        <polygon class="cls-2" points="309.5 270.5 307.5 272.5 307.5 282.5 309.5 284.5 320.5 284.5 322.5 282.5 322.5 272.5 320.5 270.5 309.5 270.5"/>
+        <polygon class="cls-2" points="291.5 270.5 289.5 272.5 289.5 283.5 290.5 284.5 301.5 284.5 303.5 282.5 303.5 272.5 301.5 270.5 291.5 270.5"/>
+        <polygon class="cls-2" points="272.5 270.5 270.5 272.5 270.5 282.5 272.5 284.5 283.5 284.5 284.5 283.5 284.5 272.5 282.5 270.5 272.5 270.5"/>
+        <polygon class="cls-2" points="253.5 270.5 251.5 272.5 251.5 282.5 253.5 284.5 264.5 284.5 266.5 282.5 266.5 272.5 264.5 270.5 253.5 270.5"/>
+        <polygon class="cls-2" points="235.5 270.5 233.5 272.5 233.5 283.5 234.5 284.5 245.5 284.5 247.5 282.5 247.5 272.5 245.5 270.5 235.5 270.5"/>
+        <polygon class="cls-2" points="216.5 270.5 214.5 272.5 214.5 282.5 216.5 284.5 227.5 284.5 228.5 283.5 228.5 271.5 227.5 271.5 226.5 270.5 216.5 270.5"/>
+        <polygon class="cls-2" points="197.5 270.5 196.5 271.5 196.5 272.5 195.5 273.5 195.5 282.5 197.5 284.5 208.5 284.5 210.5 282.5 210.5 272.5 208.5 270.5 197.5 270.5"/>
+        <polygon class="cls-2" points="160.5 270.5 158.5 272.5 158.5 282.5 160.5 284.5 171.5 284.5 172.5 283.5 172.5 282.5 173.5 281.5 173.5 274.5 172.5 273.5 172.5 271.5 171.5 270.5 160.5 270.5"/>
+        <polygon class="cls-2" points="141.5 270.5 140.5 271.5 140.5 272.5 139.5 273.5 139.5 282.5 141.5 284.5 152.5 284.5 154.5 282.5 154.5 272.5 152.5 270.5 141.5 270.5"/>
+        <polygon class="cls-2" points="123.5 270.5 121.5 272.5 121.5 282.5 122.5 283.5 122.5 284.5 134.5 284.5 134.5 283.5 135.5 282.5 135.5 272.5 133.5 270.5 123.5 270.5"/>
+        <polygon class="cls-2" points="85.5 270.5 84.5 271.5 83.5 271.5 83.5 283.5 84.5 284.5 95.5 284.5 97.5 282.5 97.5 272.5 95.5 270.5 85.5 270.5"/>
+        <polygon class="cls-2" points="739.5 251.5 738.5 252.5 737.5 252.5 736.5 253.5 736.5 264.5 738.5 266.5 748.5 266.5 749.5 265.5 750.5 265.5 750.5 264.5 751.5 263.5 751.5 254.5 748.5 251.5 739.5 251.5"/>
+        <polygon class="cls-2" points="720.5 251.5 718.5 253.5 718.5 264.5 720.5 266.5 730.5 266.5 732.5 264.5 732.5 253.5 730.5 251.5 720.5 251.5"/>
+        <polygon class="cls-2" points="701.5 251.5 699.5 253.5 699.5 264.5 701.5 266.5 711.5 266.5 713.5 264.5 713.5 253.5 711.5 251.5 701.5 251.5"/>
+        <polygon class="cls-2" points="645.5 251.5 643.5 253.5 643.5 264.5 645.5 266.5 655.5 266.5 657.5 264.5 657.5 253.5 655.5 251.5 645.5 251.5"/>
+        <polygon class="cls-2" points="608.5 251.5 606.5 253.5 606.5 264.5 608.5 266.5 618.5 266.5 620.5 264.5 620.5 253.5 618.5 251.5 608.5 251.5"/>
+        <polygon class="cls-2" points="571.5 251.5 570.5 252.5 569.5 252.5 569.5 253.5 568.5 254.5 568.5 263.5 569.5 264.5 569.5 265.5 570.5 265.5 571.5 266.5 580.5 266.5 581.5 265.5 582.5 265.5 582.5 264.5 583.5 263.5 583.5 254.5 582.5 253.5 582.5 252.5 581.5 252.5 580.5 251.5 571.5 251.5"/>
+        <polygon class="cls-2" points="533.5 251.5 531.5 253.5 531.5 264.5 533.5 266.5 543.5 266.5 545.5 264.5 545.5 253.5 543.5 251.5 533.5 251.5"/>
+        <polygon class="cls-2" points="496.5 251.5 494.5 253.5 494.5 264.5 496.5 266.5 506.5 266.5 508.5 264.5 508.5 253.5 506.5 251.5 496.5 251.5"/>
+        <polygon class="cls-2" points="478.5 251.5 477.5 252.5 476.5 252.5 475.5 253.5 475.5 264.5 477.5 266.5 487.5 266.5 490.5 263.5 490.5 255.5 489.5 254.5 489.5 253.5 487.5 251.5 478.5 251.5"/>
+        <polygon class="cls-2" points="440.5 251.5 438.5 253.5 438.5 264.5 440.5 266.5 450.5 266.5 452.5 264.5 452.5 253.5 450.5 251.5 440.5 251.5"/>
+        <polygon class="cls-2" points="422.5 251.5 421.5 252.5 420.5 252.5 419.5 253.5 419.5 264.5 421.5 266.5 431.5 266.5 434.5 263.5 434.5 254.5 431.5 251.5 422.5 251.5"/>
+        <polygon class="cls-2" points="347.5 251.5 345.5 253.5 345.5 264.5 347.5 266.5 357.5 266.5 359.5 264.5 359.5 253.5 357.5 251.5 347.5 251.5"/>
+        <polygon class="cls-2" points="310.5 251.5 309.5 252.5 308.5 252.5 308.5 253.5 307.5 254.5 307.5 263.5 308.5 264.5 308.5 265.5 309.5 265.5 310.5 266.5 319.5 266.5 320.5 265.5 321.5 265.5 321.5 264.5 322.5 263.5 322.5 254.5 321.5 253.5 321.5 252.5 320.5 252.5 319.5 251.5 310.5 251.5"/>
+        <polygon class="cls-2" points="254.5 251.5 253.5 252.5 252.5 252.5 252.5 253.5 251.5 254.5 251.5 263.5 252.5 264.5 252.5 265.5 253.5 265.5 254.5 266.5 263.5 266.5 264.5 265.5 265.5 265.5 265.5 264.5 266.5 263.5 266.5 254.5 265.5 253.5 265.5 252.5 264.5 252.5 263.5 251.5 254.5 251.5"/>
+        <polygon class="cls-2" points="235.5 251.5 233.5 253.5 233.5 264.5 235.5 266.5 245.5 266.5 247.5 264.5 247.5 253.5 245.5 251.5 235.5 251.5"/>
+        <polygon class="cls-2" points="216.5 251.5 214.5 253.5 214.5 264.5 216.5 266.5 226.5 266.5 228.5 264.5 228.5 253.5 226.5 251.5 216.5 251.5"/>
+        <polygon class="cls-2" points="160.5 251.5 158.5 253.5 158.5 264.5 160.5 266.5 170.5 266.5 172.5 264.5 172.5 263.5 173.5 262.5 173.5 255.5 172.5 254.5 172.5 253.5 170.5 251.5 160.5 251.5"/>
+        <polygon class="cls-2" points="123.5 251.5 121.5 253.5 121.5 264.5 123.5 266.5 133.5 266.5 135.5 264.5 135.5 253.5 133.5 251.5 123.5 251.5"/>
+        <polygon class="cls-2" points="85.5 251.5 83.5 253.5 83.5 264.5 85.5 266.5 95.5 266.5 97.5 264.5 97.5 253.5 95.5 251.5 85.5 251.5"/>
+        <polygon class="cls-2" points="757.5 233.5 755.5 235.5 755.5 245.5 757.5 247.5 767.5 247.5 769.5 245.5 769.5 235.5 767.5 233.5 757.5 233.5"/>
+        <polygon class="cls-2" points="701.5 233.5 699.5 235.5 699.5 245.5 701.5 247.5 711.5 247.5 713.5 245.5 713.5 234.5 712.5 233.5 701.5 233.5"/>
+        <polygon class="cls-2" points="682.5 233.5 680.5 235.5 680.5 245.5 682.5 247.5 693.5 247.5 695.5 245.5 695.5 235.5 693.5 233.5 682.5 233.5"/>
+        <polygon class="cls-2" points="663.5 233.5 662.5 234.5 662.5 245.5 664.5 247.5 674.5 247.5 676.5 245.5 676.5 235.5 674.5 233.5 663.5 233.5"/>
+        <polygon class="cls-2" points="645.5 233.5 643.5 235.5 643.5 245.5 645.5 247.5 655.5 247.5 657.5 245.5 657.5 234.5 656.5 233.5 645.5 233.5"/>
+        <polygon class="cls-2" points="626.5 233.5 624.5 235.5 624.5 245.5 626.5 247.5 637.5 247.5 639.5 245.5 639.5 235.5 637.5 233.5 626.5 233.5"/>
+        <polygon class="cls-2" points="551.5 233.5 550.5 234.5 550.5 245.5 552.5 247.5 562.5 247.5 564.5 245.5 564.5 235.5 562.5 233.5 551.5 233.5"/>
+        <polygon class="cls-2" points="458.5 233.5 457.5 234.5 457.5 235.5 456.5 236.5 456.5 244.5 457.5 245.5 457.5 246.5 458.5 247.5 469.5 247.5 471.5 245.5 471.5 235.5 469.5 233.5 458.5 233.5"/>
+        <polygon class="cls-2" points="440.5 233.5 438.5 235.5 438.5 245.5 440.5 247.5 450.5 247.5 452.5 245.5 452.5 235.5 450.5 233.5 440.5 233.5"/>
+        <polygon class="cls-2" points="384.5 233.5 382.5 235.5 382.5 245.5 384.5 247.5 394.5 247.5 396.5 245.5 396.5 234.5 395.5 233.5 384.5 233.5"/>
+        <polygon class="cls-2" points="365.5 233.5 363.5 235.5 363.5 245.5 365.5 247.5 376.5 247.5 378.5 245.5 378.5 235.5 376.5 233.5 365.5 233.5"/>
+        <polygon class="cls-2" points="309.5 233.5 307.5 235.5 307.5 245.5 309.5 247.5 320.5 247.5 322.5 245.5 322.5 235.5 320.5 233.5 309.5 233.5"/>
+        <polygon class="cls-2" points="272.5 233.5 270.5 235.5 270.5 245.5 272.5 247.5 282.5 247.5 284.5 245.5 284.5 234.5 283.5 233.5 272.5 233.5"/>
+        <polygon class="cls-2" points="253.5 233.5 251.5 235.5 251.5 245.5 253.5 247.5 264.5 247.5 266.5 245.5 266.5 235.5 264.5 233.5 253.5 233.5"/>
+        <polygon class="cls-2" points="234.5 233.5 233.5 234.5 233.5 245.5 235.5 247.5 245.5 247.5 247.5 245.5 247.5 235.5 245.5 233.5 234.5 233.5"/>
+        <polygon class="cls-2" points="216.5 233.5 214.5 235.5 214.5 245.5 216.5 247.5 226.5 247.5 227.5 246.5 228.5 246.5 228.5 234.5 227.5 233.5 216.5 233.5"/>
+        <polygon class="cls-2" points="197.5 233.5 195.5 235.5 195.5 245.5 197.5 247.5 208.5 247.5 210.5 245.5 210.5 235.5 208.5 233.5 197.5 233.5"/>
+        <polygon class="cls-2" points="160.5 233.5 158.5 235.5 158.5 245.5 160.5 247.5 171.5 247.5 172.5 246.5 172.5 244.5 173.5 243.5 173.5 236.5 172.5 235.5 172.5 234.5 171.5 233.5 160.5 233.5"/>
+        <polygon class="cls-2" points="84.5 233.5 83.5 234.5 83.5 246.5 84.5 246.5 85.5 247.5 95.5 247.5 97.5 245.5 97.5 235.5 95.5 233.5 84.5 233.5"/>
+        <polygon class="cls-2" points="608.5 214.5 606.5 216.5 606.5 227.5 607.5 228.5 619.5 228.5 619.5 227.5 620.5 226.5 620.5 216.5 618.5 214.5 608.5 214.5"/>
+        <polygon class="cls-2" points="589.5 214.5 587.5 216.5 587.5 226.5 589.5 228.5 600.5 228.5 601.5 227.5 601.5 216.5 599.5 214.5 589.5 214.5"/>
+        <polygon class="cls-2" points="552.5 214.5 550.5 216.5 550.5 227.5 551.5 228.5 563.5 228.5 564.5 227.5 564.5 216.5 562.5 214.5 552.5 214.5"/>
+        <polygon class="cls-2" points="514.5 214.5 513.5 215.5 513.5 216.5 512.5 217.5 512.5 226.5 514.5 228.5 525.5 228.5 527.5 226.5 527.5 216.5 525.5 214.5 514.5 214.5"/>
+        <polygon class="cls-2" points="477.5 214.5 475.5 216.5 475.5 226.5 477.5 228.5 488.5 228.5 489.5 227.5 489.5 226.5 490.5 225.5 490.5 217.5 489.5 216.5 489.5 215.5 488.5 215.5 487.5 214.5 477.5 214.5"/>
+        <polygon class="cls-2" points="458.5 214.5 457.5 215.5 457.5 216.5 456.5 217.5 456.5 225.5 457.5 226.5 457.5 227.5 458.5 228.5 469.5 228.5 471.5 226.5 471.5 216.5 469.5 214.5 458.5 214.5"/>
+        <polygon class="cls-2" points="440.5 214.5 438.5 216.5 438.5 227.5 439.5 228.5 451.5 228.5 452.5 227.5 452.5 216.5 450.5 214.5 440.5 214.5"/>
+        <polygon class="cls-2" points="328.5 214.5 326.5 216.5 326.5 226.5 327.5 227.5 327.5 228.5 339.5 228.5 340.5 227.5 340.5 216.5 338.5 214.5 328.5 214.5"/>
+        <polygon class="cls-2" points="309.5 214.5 307.5 216.5 307.5 226.5 309.5 228.5 320.5 228.5 322.5 226.5 322.5 216.5 320.5 214.5 309.5 214.5"/>
+        <polygon class="cls-2" points="253.5 214.5 251.5 216.5 251.5 226.5 253.5 228.5 264.5 228.5 266.5 226.5 266.5 216.5 264.5 214.5 253.5 214.5"/>
+        <polygon class="cls-2" points="235.5 214.5 233.5 216.5 233.5 227.5 234.5 228.5 246.5 228.5 246.5 227.5 247.5 226.5 247.5 216.5 245.5 214.5 235.5 214.5"/>
+        <polygon class="cls-2" points="608.5 195.5 606.5 197.5 606.5 208.5 608.5 210.5 618.5 210.5 620.5 208.5 620.5 197.5 618.5 195.5 608.5 195.5"/>
+        <polygon class="cls-2" points="571.5 195.5 568.5 198.5 568.5 207.5 569.5 208.5 569.5 209.5 570.5 209.5 571.5 210.5 581.5 210.5 583.5 208.5 583.5 198.5 582.5 197.5 582.5 196.5 581.5 196.5 580.5 195.5 571.5 195.5"/>
+        <polygon class="cls-2" points="534.5 195.5 533.5 196.5 532.5 196.5 531.5 197.5 531.5 208.5 533.5 210.5 543.5 210.5 545.5 208.5 545.5 197.5 543.5 195.5 534.5 195.5"/>
+        <polygon class="cls-2" points="496.5 195.5 494.5 197.5 494.5 208.5 496.5 210.5 506.5 210.5 508.5 208.5 508.5 197.5 506.5 195.5 496.5 195.5"/>
+        <polygon class="cls-2" points="459.5 195.5 456.5 198.5 456.5 207.5 459.5 210.5 469.5 210.5 471.5 208.5 471.5 197.5 470.5 196.5 469.5 196.5 468.5 195.5 459.5 195.5"/>
+        <polygon class="cls-2" points="422.5 195.5 421.5 196.5 420.5 196.5 420.5 197.5 419.5 198.5 419.5 208.5 421.5 210.5 431.5 210.5 432.5 209.5 433.5 209.5 433.5 208.5 434.5 207.5 434.5 198.5 431.5 195.5 422.5 195.5"/>
+        <polygon class="cls-2" points="384.5 195.5 382.5 197.5 382.5 208.5 384.5 210.5 394.5 210.5 396.5 208.5 396.5 197.5 394.5 195.5 384.5 195.5"/>
+        <polygon class="cls-2" points="347.5 195.5 345.5 197.5 345.5 208.5 347.5 210.5 357.5 210.5 359.5 208.5 359.5 197.5 358.5 196.5 357.5 196.5 356.5 195.5 347.5 195.5"/>
+        <polygon class="cls-2" points="310.5 195.5 309.5 196.5 308.5 196.5 308.5 197.5 307.5 198.5 307.5 207.5 308.5 208.5 308.5 209.5 309.5 210.5 319.5 210.5 320.5 209.5 321.5 209.5 321.5 208.5 322.5 207.5 322.5 198.5 319.5 195.5 310.5 195.5"/>
+        <polygon class="cls-2" points="273.5 195.5 272.5 196.5 271.5 196.5 270.5 197.5 270.5 208.5 272.5 210.5 282.5 210.5 284.5 208.5 284.5 197.5 282.5 195.5 273.5 195.5"/>
+        <polygon class="cls-2" points="235.5 195.5 233.5 197.5 233.5 208.5 235.5 210.5 245.5 210.5 247.5 208.5 247.5 197.5 245.5 195.5 235.5 195.5"/>
+        <polygon class="cls-2" points="607.5 177.5 606.5 178.5 606.5 189.5 608.5 191.5 618.5 191.5 620.5 189.5 620.5 179.5 618.5 177.5 607.5 177.5"/>
+        <polygon class="cls-2" points="533.5 177.5 531.5 179.5 531.5 189.5 533.5 191.5 544.5 191.5 545.5 190.5 545.5 178.5 544.5 177.5 533.5 177.5"/>
+        <polygon class="cls-2" points="440.5 177.5 438.5 179.5 438.5 189.5 440.5 191.5 450.5 191.5 452.5 189.5 452.5 179.5 450.5 177.5 440.5 177.5"/>
+        <polygon class="cls-2" points="402.5 177.5 401.5 178.5 401.5 179.5 400.5 180.5 400.5 188.5 401.5 189.5 401.5 190.5 402.5 191.5 413.5 191.5 415.5 189.5 415.5 179.5 413.5 177.5 402.5 177.5"/>
+        <polygon class="cls-2" points="365.5 177.5 363.5 179.5 363.5 189.5 365.5 191.5 376.5 191.5 378.5 189.5 378.5 179.5 376.5 177.5 365.5 177.5"/>
+        <polygon class="cls-2" points="309.5 177.5 307.5 179.5 307.5 189.5 309.5 191.5 320.5 191.5 322.5 189.5 322.5 179.5 320.5 177.5 309.5 177.5"/>
+        <polygon class="cls-2" points="253.5 177.5 251.5 179.5 251.5 189.5 253.5 191.5 264.5 191.5 266.5 189.5 266.5 179.5 264.5 177.5 253.5 177.5"/>
+        <polygon class="cls-2" points="235.5 177.5 234.5 178.5 233.5 178.5 233.5 189.5 235.5 191.5 245.5 191.5 247.5 189.5 247.5 179.5 245.5 177.5 235.5 177.5"/>
+        <polygon class="cls-2" points="608.5 158.5 606.5 160.5 606.5 171.5 607.5 172.5 609.5 172.5 610.5 173.5 616.5 173.5 617.5 172.5 619.5 172.5 620.5 171.5 620.5 160.5 618.5 158.5 608.5 158.5"/>
+        <polygon class="cls-2" points="589.5 158.5 587.5 160.5 587.5 170.5 588.5 171.5 588.5 172.5 590.5 172.5 591.5 173.5 597.5 173.5 598.5 172.5 600.5 172.5 601.5 171.5 601.5 160.5 599.5 158.5 589.5 158.5"/>
+        <polygon class="cls-2" points="570.5 158.5 569.5 159.5 569.5 160.5 568.5 161.5 568.5 170.5 570.5 172.5 571.5 172.5 572.5 173.5 579.5 173.5 580.5 172.5 581.5 172.5 583.5 170.5 583.5 160.5 581.5 158.5 570.5 158.5"/>
+        <polygon class="cls-2" points="514.5 158.5 513.5 159.5 513.5 160.5 512.5 161.5 512.5 170.5 514.5 172.5 515.5 172.5 516.5 173.5 523.5 173.5 524.5 172.5 525.5 172.5 527.5 170.5 527.5 160.5 525.5 158.5 514.5 158.5"/>
+        <polygon class="cls-2" points="440.5 158.5 438.5 160.5 438.5 171.5 439.5 172.5 441.5 172.5 442.5 173.5 448.5 173.5 449.5 172.5 451.5 172.5 452.5 171.5 452.5 160.5 450.5 158.5 440.5 158.5"/>
+        <polygon class="cls-2" points="421.5 158.5 419.5 160.5 419.5 170.5 421.5 172.5 422.5 172.5 423.5 173.5 430.5 173.5 431.5 172.5 432.5 172.5 434.5 170.5 434.5 161.5 433.5 160.5 433.5 159.5 432.5 158.5 421.5 158.5"/>
+        <polygon class="cls-2" points="403.5 158.5 402.5 159.5 401.5 159.5 401.5 161.5 400.5 162.5 400.5 169.5 401.5 170.5 401.5 171.5 402.5 172.5 403.5 172.5 404.5 173.5 411.5 173.5 412.5 172.5 414.5 172.5 414.5 171.5 415.5 170.5 415.5 160.5 413.5 158.5 403.5 158.5"/>
+        <polygon class="cls-2" points="347.5 158.5 345.5 160.5 345.5 171.5 346.5 172.5 348.5 172.5 349.5 173.5 355.5 173.5 356.5 172.5 358.5 172.5 358.5 171.5 359.5 170.5 359.5 160.5 357.5 158.5 347.5 158.5"/>
+        <polygon class="cls-2" points="309.5 158.5 307.5 160.5 307.5 170.5 309.5 172.5 310.5 172.5 311.5 173.5 318.5 173.5 319.5 172.5 320.5 172.5 322.5 170.5 322.5 160.5 320.5 158.5 309.5 158.5"/>
+        <polygon class="cls-2" points="272.5 158.5 270.5 160.5 270.5 171.5 271.5 172.5 273.5 172.5 274.5 173.5 280.5 173.5 281.5 172.5 283.5 172.5 284.5 171.5 284.5 160.5 282.5 158.5 272.5 158.5"/>
+        <polygon class="cls-2" points="235.5 158.5 233.5 160.5 233.5 171.5 234.5 172.5 236.5 172.5 237.5 173.5 243.5 173.5 244.5 172.5 246.5 172.5 247.5 171.5 247.5 160.5 245.5 158.5 235.5 158.5"/>
+        <polygon class="cls-2" points="590.5 139.5 589.5 140.5 588.5 140.5 587.5 141.5 587.5 152.5 589.5 154.5 599.5 154.5 601.5 152.5 601.5 141.5 599.5 139.5 590.5 139.5"/>
+        <polygon class="cls-2" points="553.5 139.5 552.5 140.5 551.5 140.5 550.5 141.5 550.5 152.5 552.5 154.5 562.5 154.5 564.5 152.5 564.5 141.5 563.5 140.5 562.5 140.5 561.5 139.5 553.5 139.5"/>
+        <polygon class="cls-2" points="534.5 139.5 533.5 140.5 532.5 140.5 531.5 141.5 531.5 152.5 533.5 154.5 543.5 154.5 545.5 152.5 545.5 141.5 543.5 139.5 534.5 139.5"/>
+        <polygon class="cls-2" points="478.5 139.5 477.5 140.5 476.5 140.5 476.5 141.5 475.5 142.5 475.5 152.5 477.5 154.5 487.5 154.5 488.5 153.5 489.5 153.5 489.5 152.5 490.5 151.5 490.5 143.5 489.5 142.5 489.5 141.5 487.5 139.5 478.5 139.5"/>
+        <polygon class="cls-2" points="459.5 139.5 456.5 142.5 456.5 151.5 457.5 152.5 457.5 153.5 458.5 153.5 459.5 154.5 469.5 154.5 471.5 152.5 471.5 142.5 470.5 141.5 470.5 140.5 469.5 140.5 468.5 139.5 459.5 139.5"/>
+        <polygon class="cls-2" points="422.5 139.5 421.5 140.5 420.5 140.5 420.5 141.5 419.5 142.5 419.5 152.5 421.5 154.5 431.5 154.5 432.5 153.5 433.5 153.5 433.5 152.5 434.5 151.5 434.5 142.5 431.5 139.5 422.5 139.5"/>
+        <polygon class="cls-2" points="403.5 139.5 401.5 141.5 401.5 142.5 400.5 143.5 400.5 150.5 401.5 151.5 401.5 152.5 403.5 154.5 413.5 154.5 415.5 152.5 415.5 141.5 414.5 140.5 413.5 140.5 412.5 139.5 403.5 139.5"/>
+        <polygon class="cls-2" points="385.5 139.5 384.5 140.5 383.5 140.5 382.5 141.5 382.5 152.5 384.5 154.5 394.5 154.5 396.5 152.5 396.5 141.5 395.5 140.5 394.5 140.5 393.5 139.5 385.5 139.5"/>
+        <polygon class="cls-2" points="366.5 139.5 365.5 140.5 364.5 140.5 364.5 141.5 363.5 142.5 363.5 152.5 365.5 154.5 375.5 154.5 376.5 153.5 377.5 153.5 377.5 152.5 378.5 151.5 378.5 142.5 375.5 139.5 366.5 139.5"/>
+        <polygon class="cls-2" points="347.5 139.5 345.5 141.5 345.5 152.5 347.5 154.5 357.5 154.5 359.5 152.5 359.5 141.5 358.5 140.5 357.5 140.5 356.5 139.5 347.5 139.5"/>
+        <polygon class="cls-2" points="329.5 139.5 328.5 140.5 327.5 140.5 326.5 141.5 326.5 152.5 328.5 154.5 338.5 154.5 340.5 152.5 340.5 141.5 338.5 139.5 329.5 139.5"/>
+        <polygon class="cls-2" points="273.5 139.5 272.5 140.5 271.5 140.5 270.5 141.5 270.5 152.5 272.5 154.5 282.5 154.5 284.5 152.5 284.5 141.5 282.5 139.5 273.5 139.5"/>
+        <polygon class="cls-2" points="254.5 139.5 251.5 142.5 251.5 151.5 252.5 152.5 252.5 153.5 253.5 154.5 264.5 154.5 266.5 152.5 266.5 142.5 263.5 139.5 254.5 139.5"/>
+        <polygon class="cls-2" points="236.5 139.5 235.5 140.5 234.5 140.5 233.5 141.5 233.5 152.5 235.5 154.5 245.5 154.5 247.5 152.5 247.5 141.5 246.5 140.5 245.5 140.5 244.5 139.5 236.5 139.5"/>
+        <polygon class="cls-2" points="608.5 121.5 607.5 122.5 606.5 122.5 606.5 133.5 608.5 135.5 618.5 135.5 620.5 133.5 620.5 123.5 618.5 121.5 608.5 121.5"/>
+        <polygon class="cls-2" points="589.5 121.5 587.5 123.5 587.5 133.5 589.5 135.5 600.5 135.5 601.5 134.5 601.5 122.5 600.5 121.5 589.5 121.5"/>
+        <polygon class="cls-2" points="533.5 121.5 531.5 123.5 531.5 133.5 533.5 135.5 544.5 135.5 545.5 134.5 545.5 122.5 544.5 121.5 533.5 121.5"/>
+        <polygon class="cls-2" points="496.5 121.5 494.5 123.5 494.5 133.5 496.5 135.5 506.5 135.5 508.5 133.5 508.5 123.5 506.5 121.5 496.5 121.5"/>
+        <polygon class="cls-2" points="477.5 121.5 475.5 123.5 475.5 133.5 477.5 135.5 488.5 135.5 489.5 134.5 489.5 133.5 490.5 132.5 490.5 124.5 489.5 123.5 489.5 122.5 488.5 121.5 477.5 121.5"/>
+        <polygon class="cls-2" points="402.5 121.5 401.5 122.5 401.5 123.5 400.5 124.5 400.5 132.5 401.5 133.5 401.5 134.5 402.5 135.5 413.5 135.5 415.5 133.5 415.5 123.5 413.5 121.5 402.5 121.5"/>
+        <polygon class="cls-2" points="384.5 121.5 382.5 123.5 382.5 133.5 384.5 135.5 394.5 135.5 396.5 133.5 396.5 123.5 394.5 121.5 384.5 121.5"/>
+        <polygon class="cls-2" points="365.5 121.5 363.5 123.5 363.5 133.5 365.5 135.5 376.5 135.5 378.5 133.5 378.5 123.5 376.5 121.5 365.5 121.5"/>
+        <polygon class="cls-2" points="346.5 121.5 345.5 122.5 345.5 134.5 346.5 135.5 357.5 135.5 359.5 133.5 359.5 123.5 357.5 121.5 346.5 121.5"/>
+        <polygon class="cls-2" points="291.5 121.5 290.5 122.5 289.5 122.5 289.5 134.5 290.5 134.5 291.5 135.5 301.5 135.5 303.5 133.5 303.5 123.5 301.5 121.5 291.5 121.5"/>
+        <polygon class="cls-2" points="272.5 121.5 270.5 123.5 270.5 133.5 272.5 135.5 282.5 135.5 283.5 134.5 284.5 134.5 284.5 122.5 283.5 122.5 282.5 121.5 272.5 121.5"/>
+        <polygon class="cls-2" points="253.5 121.5 251.5 123.5 251.5 133.5 253.5 135.5 264.5 135.5 266.5 133.5 266.5 123.5 264.5 121.5 253.5 121.5"/>
+        <polygon class="cls-2" points="608.5 102.5 606.5 104.5 606.5 115.5 607.5 116.5 608.5 116.5 609.5 117.5 617.5 117.5 618.5 116.5 619.5 116.5 620.5 115.5 620.5 104.5 618.5 102.5 608.5 102.5"/>
+        <polygon class="cls-2" points="552.5 102.5 550.5 104.5 550.5 115.5 551.5 116.5 552.5 116.5 553.5 117.5 561.5 117.5 562.5 116.5 563.5 116.5 564.5 115.5 564.5 104.5 562.5 102.5 552.5 102.5"/>
+        <polygon class="cls-2" points="533.5 102.5 531.5 104.5 531.5 115.5 532.5 116.5 533.5 116.5 534.5 117.5 542.5 117.5 543.5 116.5 544.5 116.5 545.5 115.5 545.5 104.5 543.5 102.5 533.5 102.5"/>
+        <polygon class="cls-2" points="515.5 102.5 514.5 103.5 513.5 103.5 513.5 104.5 512.5 105.5 512.5 114.5 515.5 117.5 524.5 117.5 525.5 116.5 526.5 116.5 526.5 115.5 527.5 114.5 527.5 104.5 525.5 102.5 515.5 102.5"/>
+        <polygon class="cls-2" points="496.5 102.5 494.5 104.5 494.5 115.5 495.5 116.5 496.5 116.5 497.5 117.5 505.5 117.5 506.5 116.5 507.5 116.5 508.5 115.5 508.5 104.5 506.5 102.5 496.5 102.5"/>
+        <polygon class="cls-2" points="477.5 102.5 475.5 104.5 475.5 114.5 476.5 115.5 476.5 116.5 477.5 116.5 478.5 117.5 486.5 117.5 487.5 116.5 488.5 116.5 489.5 115.5 489.5 114.5 490.5 113.5 490.5 105.5 489.5 104.5 489.5 103.5 488.5 103.5 487.5 102.5 477.5 102.5"/>
+        <polygon class="cls-2" points="440.5 102.5 438.5 104.5 438.5 115.5 439.5 116.5 440.5 116.5 441.5 117.5 449.5 117.5 450.5 116.5 451.5 116.5 452.5 115.5 452.5 104.5 450.5 102.5 440.5 102.5"/>
+        <polygon class="cls-2" points="421.5 102.5 419.5 104.5 419.5 114.5 420.5 115.5 420.5 116.5 421.5 116.5 422.5 117.5 431.5 117.5 434.5 114.5 434.5 105.5 433.5 104.5 433.5 103.5 432.5 103.5 431.5 102.5 421.5 102.5"/>
+        <polygon class="cls-2" points="253.5 102.5 252.5 103.5 252.5 104.5 251.5 105.5 251.5 114.5 254.5 117.5 263.5 117.5 266.5 114.5 266.5 104.5 264.5 102.5 253.5 102.5"/>
+        <polygon class="cls-2" points="551.5 83.5 550.5 84.5 550.5 95.5 552.5 97.5 562.5 97.5 564.5 95.5 564.5 84.5 563.5 83.5 551.5 83.5"/>
+        <polygon class="cls-2" points="458.5 83.5 457.5 84.5 457.5 85.5 456.5 86.5 456.5 94.5 457.5 95.5 457.5 96.5 458.5 97.5 469.5 97.5 471.5 95.5 471.5 85.5 469.5 83.5 458.5 83.5"/>
+        <polygon class="cls-2" points="439.5 83.5 438.5 84.5 438.5 95.5 440.5 97.5 450.5 97.5 452.5 95.5 452.5 84.5 451.5 83.5 439.5 83.5"/>
+        <polygon class="cls-2" points="402.5 83.5 401.5 84.5 401.5 85.5 400.5 86.5 400.5 93.5 401.5 94.5 401.5 96.5 402.5 96.5 403.5 97.5 413.5 97.5 415.5 95.5 415.5 85.5 413.5 83.5 402.5 83.5"/>
+        <polygon class="cls-2" points="309.5 83.5 307.5 85.5 307.5 95.5 309.5 97.5 320.5 97.5 322.5 95.5 322.5 85.5 320.5 83.5 309.5 83.5"/>
+        <polygon class="cls-2" points="253.5 83.5 251.5 85.5 251.5 95.5 253.5 97.5 264.5 97.5 266.5 95.5 266.5 85.5 264.5 83.5 253.5 83.5"/>
+        <polygon class="cls-2" points="234.5 83.5 233.5 84.5 233.5 95.5 235.5 97.5 245.5 97.5 247.5 95.5 247.5 85.5 246.5 84.5 246.5 83.5 234.5 83.5"/>
+        <g>
+          <rect class="cls-1" x="343.5" y="341.5" width="167" height="167" rx="17.8" ry="17.8"/>
+          <g>
+            <path class="cls-4" d="M440.7,409.1c3.7-.8,7.5-.8,11.4-.7-1.8-7.9-5.8-14.2-11.8-19.2-10-8.2-21.5-11.3-34.2-9.7-10.9,1.4-20.2,5.9-27.5,14.2-5.9,6.7-8.8,14.5-7.7,23.6,1.2,10.1,6.6,17.7,14.6,23.6,1.1.8,1.2,1.4.8,2.7-1.2,3.3-2.3,6.7-3.5,10.3,4.4-2.4,8.5-4.5,12.5-6.7.8-.5,1.5-.5,2.5-.3,4.7,1.4,9.5,2.1,14.3,2.1,1.3,0,1.4-.2,1.1-1.5-1.6-5.3-1.7-10.8.2-16,4.6-13,14.3-19.7,27.3-22.5ZM425.6,396.1c3.2,0,5.8,2.5,5.8,5.8,0,3.1-2.6,5.7-5.8,5.8-3,0-5.5-2.5-5.5-5.6,0-3.4,2.3-5.9,5.6-5.9ZM397.4,407.6c-3,0-5.5-2.5-5.6-5.6,0-3.3,2.4-5.9,5.6-6,3.1,0,5.9,2.7,5.9,5.8,0,3.2-2.6,5.8-5.8,5.8Z"/>
+            <path class="cls-4" d="M471.8,418.2c-13.4-10.5-33.7-10.3-46.8.5-6.4,5.3-10.7,11.9-10.8,20.4-.2,9.9,4.5,17.4,12.3,23,10,7.2,21.1,8.2,32.8,5.4,1.8-.4,3.3-.3,4.8.6,2.8,1.6,5.6,3.1,8.7,4.7-.4-1.4-.7-2.4-1.1-3.4-.3-1-.6-2-1-3q-1.1-3.3,1.6-5.6c14.3-12,14.1-31.1-.5-42.6ZM438.1,434.9c-2.5,0-4.6-2.1-4.5-4.6,0-2.6,2.1-4.7,4.5-4.7,2.4,0,4.7,2.3,4.7,4.7,0,2.4-2.2,4.5-4.7,4.5ZM460.8,434.9c-2.4,0-4.8-2.3-4.9-4.6,0-2.2,2.6-4.7,4.9-4.6,2.3,0,4.5,2.4,4.5,4.8,0,2.4-2.1,4.4-4.5,4.5Z"/>
+          </g>
+        </g>
+        <g>
+          <rect class="cls-1" x="80.5" y="80.5" width="130" height="130" rx="10.6" ry="10.6"/>
+          <rect class="cls-3" x="98.5" y="98.5" width="94" height="94" rx="7.2" ry="7.2"/>
+          <rect class="cls-1" x="117.5" y="117.5" width="56" height="56" rx="4.2" ry="4.2"/>
+        </g>
+        <g>
+          <rect class="cls-1" x="639.5" y="80.5" width="130" height="130" rx="10.6" ry="10.6"/>
+          <rect class="cls-3" x="657.5" y="98.5" width="94" height="94" rx="7.2" ry="7.2"/>
+          <rect class="cls-1" x="676.5" y="117.5" width="56" height="56" rx="4.2" ry="4.2"/>
+        </g>
+        <g>
+          <rect class="cls-1" x="80.5" y="639.5" width="130" height="130" rx="10.6" ry="10.6"/>
+          <rect class="cls-3" x="98.5" y="657.5" width="94" height="94" rx="7.2" ry="7.2"/>
+          <rect class="cls-1" x="117.5" y="676.5" width="56" height="56" rx="4.2" ry="4.2"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
+      </div>
+      <div class="wid">ID: SeoulShield</div>
+      <div class="whint">Open WeChat, tap Scan,<br>and point at this code.</div>
+    </div>
+  </div>
+
+
+  <!-- Share modal -->
+  <div class="modal-overlay" id="shareModal" role="dialog" aria-modal="true" aria-labelledby="shareTitle">
+    <div class="share-card">
+      <button class="close" id="shareClose" aria-label="Close">&times;</button>
+      <div class="share-top">
+        <div class="mini-logo">SEOUL<span class="s2">SHIELD</span></div>
+        <div class="share-url" id="shareUrl">seoulshield.com/link</div>
+        <button class="copy-btn" id="copyBtn">
+          <svg viewBox="0 0 24 24"><path d="M16 1H4a2 2 0 0 0-2 2v14h2V3h12zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2m0 16H8V7h11z"/></svg>
+          <span id="copyLabel">Copy link</span>
+        </button>
+      </div>
+      <div class="share-qr-wrap">
+        <div class="share-qr" id="shareQr"></div>
+      </div>
+    </div>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script>
+  // Channel click tracking (GA4 event)
+  document.querySelectorAll('[data-ch]').forEach(function(el){
+    el.addEventListener('click', function(){
+      var ch = el.getAttribute('data-ch');
+      if (typeof gtag === 'function'){
+        gtag('event', 'channel_click', { channel: ch });
+      }
+    });
+  });
+
+  // WeChat modal
+  var modal = document.getElementById('wechatModal');
+  var openBtn = document.getElementById('wechatBtn');
+  var closeBtn = document.getElementById('wechatClose');
+  function openModal(){ modal.classList.add('open'); }
+  function closeModal(){ modal.classList.remove('open'); }
+  openBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModal(); });
+
+  // ---- Share modal ----
+  var PAGE_URL = 'https://seoulshield.com/link';
+  var shareModal = document.getElementById('shareModal');
+  var shareBtn = document.getElementById('shareBtn');
+  var shareClose = document.getElementById('shareClose');
+  var copyBtn = document.getElementById('copyBtn');
+  var copyLabel = document.getElementById('copyLabel');
+  var qrBuilt = false;
+
+  function openShare(){
+    shareModal.classList.add('open');
+    if(!qrBuilt && window.QRCode){
+      new QRCode(document.getElementById('shareQr'), {
+        text: PAGE_URL, width: 152, height: 152,
+        colorDark: '#0a0a0a', colorLight: '#ffffff',
+        correctLevel: QRCode.CorrectLevel.M
+      });
+      qrBuilt = true;
+    }
+  }
+  function closeShare(){ shareModal.classList.remove('open'); }
+  shareBtn.addEventListener('click', openShare);
+  shareClose.addEventListener('click', closeShare);
+  shareModal.addEventListener('click', function(e){ if(e.target === shareModal) closeShare(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeShare(); });
+
+  copyBtn.addEventListener('click', function(){
+    navigator.clipboard.writeText(PAGE_URL).then(function(){
+      copyBtn.classList.add('copied');
+      copyLabel.textContent = 'Copied!';
+      setTimeout(function(){
+        copyBtn.classList.remove('copied');
+        copyLabel.textContent = 'Copy link';
+      }, 1800);
+    });
+  });
+</script>
+</body>
+</html>
