@@ -15,8 +15,11 @@
   gtag('config', 'G-EGMFSVX6PT');
 </script>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Outfit:wght@300;400;500;600;700&display=swap');
 
   :root{
     --bg:#0a0a0a;
@@ -52,7 +55,7 @@
     position:relative;
     width:100%;
     max-width:468px;
-    padding:130px 22px 40px;
+    padding:150px 22px 40px;
     display:flex;
     flex-direction:column;
     min-height:calc(100vh - 22px);
@@ -102,7 +105,7 @@
     background:var(--card);
     border-radius:999px;
     padding:8px 18px;
-    margin-bottom:38px;
+    margin-bottom:58px;
   }
   .badge .sep{
     width:1px;
@@ -356,12 +359,12 @@
       </button>
 
       <!-- Promo placeholder card -->
-      <a class="promo" href="#" data-ch="promo" aria-label="Featured (coming soon)">
+      <section class="promo" aria-label="Featured promotions">
         <span class="ph">
           <span class="lbl">FEATURED</span>
           <span class="lbl2">Banner slot — coming soon</span>
         </span>
-      </a>
+      </section>
 
       <!-- LINE (modal) -->
       <button class="link" type="button" data-ch="line" id="lineBtn">
@@ -1012,7 +1015,7 @@
       <div class="wid">ID: SeoulShield</div>
       <button class="copy-btn wid-copy" id="wechatCopy">
         <svg viewBox="0 0 24 24"><path d="M16 1H4a2 2 0 0 0-2 2v14h2V3h12zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2m0 16H8V7h11z"/></svg>
-        <span id="wechatCopyLabel">Copy ID</span>
+        <span id="wechatCopyLabel" aria-live="polite">Copy ID</span>
       </button>
       <div class="whint">Open WeChat, tap Scan,<br>or search the ID to add us.</div>
       </div>
@@ -1050,7 +1053,7 @@
         <div class="wid">@seoulshield</div>
         <button class="copy-btn wid-copy" id="lineCopy">
           <svg viewBox="0 0 24 24"><path d="M16 1H4a2 2 0 0 0-2 2v14h2V3h12zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2m0 16H8V7h11z"/></svg>
-          <span id="lineCopyLabel">Copy ID</span>
+          <span id="lineCopyLabel" aria-live="polite">Copy ID</span>
         </button>
         <div class="whint">Open LINE, tap Add friends,<br>or search the ID to add us.</div>
       </div>
@@ -1062,11 +1065,11 @@
     <div class="share-card">
       <button class="close" id="shareClose" aria-label="Close">&times;</button>
       <div class="share-top">
-        <div class="mini-logo">SEOUL<span class="s2">SHIELD</span></div>
+        <div class="mini-logo" id="shareTitle">SEOUL<span class="s2">SHIELD</span></div>
         <div class="share-url" id="shareUrl">seoulshield.com/link</div>
         <button class="copy-btn" id="copyBtn">
           <svg viewBox="0 0 24 24"><path d="M16 1H4a2 2 0 0 0-2 2v14h2V3h12zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2m0 16H8V7h11z"/></svg>
-          <span id="copyLabel">Copy link</span>
+          <span id="copyLabel" aria-live="polite">Copy link</span>
         </button>
       </div>
       <div class="share-qr-wrap">
@@ -1087,16 +1090,78 @@
     });
   });
 
+  // Shared modal behavior: focus management, scroll lock and Escape handling.
+  var activeModal = null;
+  var modalTrigger = null;
+  var pageMain = document.querySelector('main');
+
+  function showModal(target, trigger){
+    activeModal = target;
+    modalTrigger = trigger;
+    target.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    if (pageMain) pageMain.setAttribute('inert', '');
+    var firstControl = target.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    if (firstControl) firstControl.focus();
+  }
+
+  function hideModal(target){
+    if (!target || !target.classList.contains('open')) return;
+    target.classList.remove('open');
+    document.body.style.overflow = '';
+    if (pageMain) pageMain.removeAttribute('inert');
+    activeModal = null;
+    if (modalTrigger) modalTrigger.focus();
+    modalTrigger = null;
+  }
+
+  document.addEventListener('keydown', function(e){
+    if (!activeModal) return;
+    if (e.key === 'Escape') hideModal(activeModal);
+    if (e.key !== 'Tab') return;
+    var controls = activeModal.querySelectorAll('button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])');
+    if (!controls.length) return;
+    var first = controls[0];
+    var last = controls[controls.length - 1];
+    if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+  });
+
+  function copyText(text, onSuccess, onFailure){
+    if (navigator.clipboard && window.isSecureContext){
+      navigator.clipboard.writeText(text).then(onSuccess).catch(onFailure);
+      return;
+    }
+    var input = document.createElement('textarea');
+    input.value = text;
+    input.setAttribute('readonly', '');
+    input.style.position = 'fixed';
+    input.style.opacity = '0';
+    document.body.appendChild(input);
+    input.select();
+    try { document.execCommand('copy') ? onSuccess() : onFailure(); }
+    catch (err) { onFailure(); }
+    input.remove();
+  }
+
+  function setCopyStatus(button, label, successText, defaultText){
+    button.classList.add('copied');
+    label.textContent = successText;
+    setTimeout(function(){
+      button.classList.remove('copied');
+      label.textContent = defaultText;
+    }, 1800);
+  }
+
   // WeChat modal
   var modal = document.getElementById('wechatModal');
   var openBtn = document.getElementById('wechatBtn');
   var closeBtn = document.getElementById('wechatClose');
-  function openModal(){ modal.classList.add('open'); }
-  function closeModal(){ modal.classList.remove('open'); }
+  function openModal(){ showModal(modal, openBtn); }
+  function closeModal(){ hideModal(modal); }
   openBtn.addEventListener('click', openModal);
   closeBtn.addEventListener('click', closeModal);
   modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
-  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModal(); });
 
   // ---- Share modal ----
   var PAGE_URL = 'https://seoulshield.com/link';
@@ -1108,7 +1173,7 @@
   var qrBuilt = false;
 
   function openShare(){
-    shareModal.classList.add('open');
+    showModal(shareModal, shareBtn);
     if(!qrBuilt && window.QRCode){
       new QRCode(document.getElementById('shareQr'), {
         text: PAGE_URL, width: 152, height: 152,
@@ -1118,20 +1183,16 @@
       qrBuilt = true;
     }
   }
-  function closeShare(){ shareModal.classList.remove('open'); }
+  function closeShare(){ hideModal(shareModal); }
   shareBtn.addEventListener('click', openShare);
   shareClose.addEventListener('click', closeShare);
   shareModal.addEventListener('click', function(e){ if(e.target === shareModal) closeShare(); });
-  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeShare(); });
 
   copyBtn.addEventListener('click', function(){
-    navigator.clipboard.writeText(PAGE_URL).then(function(){
-      copyBtn.classList.add('copied');
-      copyLabel.textContent = 'Copied!';
-      setTimeout(function(){
-        copyBtn.classList.remove('copied');
-        copyLabel.textContent = 'Copy link';
-      }, 1800);
+    copyText(PAGE_URL, function(){
+      setCopyStatus(copyBtn, copyLabel, 'Copied!', 'Copy link');
+    }, function(){
+      setCopyStatus(copyBtn, copyLabel, 'Copy failed', 'Copy link');
     });
   });
 
@@ -1140,13 +1201,10 @@
   var wechatCopyLabel = document.getElementById('wechatCopyLabel');
   if (wechatCopy){
     wechatCopy.addEventListener('click', function(){
-      navigator.clipboard.writeText('SeoulShield').then(function(){
-        wechatCopy.classList.add('copied');
-        wechatCopyLabel.textContent = 'Copied!';
-        setTimeout(function(){
-          wechatCopy.classList.remove('copied');
-          wechatCopyLabel.textContent = 'Copy ID';
-        }, 1800);
+      copyText('SeoulShield', function(){
+        setCopyStatus(wechatCopy, wechatCopyLabel, 'Copied!', 'Copy ID');
+      }, function(){
+        setCopyStatus(wechatCopy, wechatCopyLabel, 'Copy failed', 'Copy ID');
       });
     });
   }
@@ -1155,43 +1213,25 @@
   var lineModal = document.getElementById('lineModal');
   var lineBtn = document.getElementById('lineBtn');
   var lineClose = document.getElementById('lineClose');
-  function openLine(){ lineModal.classList.add('open'); }
-  function closeLine(){ lineModal.classList.remove('open'); }
+  function openLine(){ showModal(lineModal, lineBtn); }
+  function closeLine(){ hideModal(lineModal); }
   lineBtn.addEventListener('click', openLine);
   lineClose.addEventListener('click', closeLine);
   lineModal.addEventListener('click', function(e){ if(e.target === lineModal) closeLine(); });
-  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLine(); });
 
   var lineCopy = document.getElementById('lineCopy');
   var lineCopyLabel = document.getElementById('lineCopyLabel');
   if (lineCopy){
     lineCopy.addEventListener('click', function(){
-      navigator.clipboard.writeText('@seoulshield').then(function(){
-        lineCopy.classList.add('copied');
-        lineCopyLabel.textContent = 'Copied!';
-        setTimeout(function(){
-          lineCopy.classList.remove('copied');
-          lineCopyLabel.textContent = 'Copy ID';
-        }, 1800);
+      copyText('@seoulshield', function(){
+        setCopyStatus(lineCopy, lineCopyLabel, 'Copied!', 'Copy ID');
+      }, function(){
+        setCopyStatus(lineCopy, lineCopyLabel, 'Copy failed', 'Copy ID');
       });
     });
   }
 
-  // ---- Email: copy on desktop, mailto on mobile ----
-  var emailLink = document.getElementById('emailLink');
-  var emailName = document.getElementById('emailName');
-  var isTouch = window.matchMedia('(hover:none)').matches;
-  if (emailLink && !isTouch){
-    emailLink.addEventListener('click', function(e){
-      e.preventDefault();
-      var addr = emailLink.getAttribute('data-email');
-      navigator.clipboard.writeText(addr).then(function(){
-        var original = emailName.textContent;
-        emailName.innerHTML = '<span class="cp-pre">Copied</span> <span class="cp-val">' + addr + '</span>';
-        setTimeout(function(){ emailName.textContent = original; }, 1800);
-      });
-    });
-  }
+  // Email keeps its native mail-app behavior on every device.
 </script>
 </body>
 </html>
