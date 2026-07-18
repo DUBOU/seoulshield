@@ -186,7 +186,7 @@
   /* ---- Footer ---- */
   .foot{margin-top:auto;padding-top:34px;text-align:center;}
   .foot .site{font-size:12px;color:var(--gray);letter-spacing:1px;margin-bottom:6px;font-weight:600;}
-  .foot .copy{font-size:10px;color:var(--dgray);}
+  .foot .copy{font-size:11.5px;color:var(--gray);letter-spacing:.3px;}
 
   /* ---- WeChat modal ---- */
   .modal-overlay{
@@ -217,7 +217,8 @@
     display:flex;align-items:center;justify-content:center;
   }
   .modal .qr img,.modal .qr svg{width:100%;height:100%;object-fit:contain;display:block;}
-  .modal .wid{font-size:14px;font-weight:600;color:var(--white);margin-bottom:4px;}
+  .modal .wid{font-size:14px;font-weight:600;color:var(--white);margin-bottom:12px;}
+  .modal .wid-copy{margin:0 auto 14px;}
   .modal .whint{font-size:11px;color:var(--dgray);line-height:1.5;}
   .modal .close{
     position:absolute;top:14px;right:16px;
@@ -265,7 +266,7 @@
   .share-card .close:hover{background:rgba(0,0,0,.55);}
   .share-card .close:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .share-top{
-    padding:34px 24px 22px;
+    padding:58px 24px 22px;
     text-align:center;
     background:
       radial-gradient(120% 100% at 50% 0%, rgba(200,255,0,0.10), transparent 70%),
@@ -310,7 +311,7 @@
     </button>
     <div class="logo">SEOUL<span class="s2">SHIELD</span></div>
     <span class="badge">DEALER &amp; DISTRIBUTOR</span>
-    <p class="tagline">Premium paint protection film.<br><strong>Pick a channel to start a conversation.</strong></p>
+    <p class="tagline"><strong>Pick a channel to start a conversation.</strong></p>
 
     <nav class="links">
 
@@ -358,12 +359,12 @@
       </a>
 
       <!-- Email -->
-      <a class="link" href="mailto:info@seoulshield.com?subject=Dealer%20Inquiry%20%E2%80%94%20SeoulShield"
-         data-ch="email">
+      <a class="link" id="emailLink" href="mailto:info@seoulshield.com?subject=Dealer%20Inquiry%20%E2%80%94%20SeoulShield"
+         data-ch="email" data-email="info@seoulshield.com">
         <span class="ico" aria-hidden="true">
           <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2m0 4-8 5-8-5V6l8 5 8-5z"/></svg>
         </span>
-        <span class="name">Email</span>
+        <span class="name" id="emailName">Email</span>
       </a>
 
       <!-- Website -->
@@ -986,7 +987,11 @@
 </svg>
       </div>
       <div class="wid">ID: SeoulShield</div>
-      <div class="whint">Open WeChat, tap Scan,<br>and point at this code.</div>
+      <button class="copy-btn wid-copy" id="wechatCopy">
+        <svg viewBox="0 0 24 24"><path d="M16 1H4a2 2 0 0 0-2 2v14h2V3h12zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2m0 16H8V7h11z"/></svg>
+        <span id="wechatCopyLabel">Copy ID</span>
+      </button>
+      <div class="whint">Open WeChat, tap Scan,<br>or search the ID to add us.</div>
     </div>
   </div>
 
@@ -1068,6 +1073,38 @@
       }, 1800);
     });
   });
+
+  // ---- WeChat ID copy ----
+  var wechatCopy = document.getElementById('wechatCopy');
+  var wechatCopyLabel = document.getElementById('wechatCopyLabel');
+  if (wechatCopy){
+    wechatCopy.addEventListener('click', function(){
+      navigator.clipboard.writeText('SeoulShield').then(function(){
+        wechatCopy.classList.add('copied');
+        wechatCopyLabel.textContent = 'Copied!';
+        setTimeout(function(){
+          wechatCopy.classList.remove('copied');
+          wechatCopyLabel.textContent = 'Copy ID';
+        }, 1800);
+      });
+    });
+  }
+
+  // ---- Email: copy on desktop, mailto on mobile ----
+  var emailLink = document.getElementById('emailLink');
+  var emailName = document.getElementById('emailName');
+  var isTouch = window.matchMedia('(hover:none)').matches;
+  if (emailLink && !isTouch){
+    emailLink.addEventListener('click', function(e){
+      e.preventDefault();
+      var addr = emailLink.getAttribute('data-email');
+      navigator.clipboard.writeText(addr).then(function(){
+        var original = emailName.textContent;
+        emailName.textContent = 'Copied: ' + addr;
+        setTimeout(function(){ emailName.textContent = original; }, 1800);
+      });
+    });
+  }
 </script>
 </body>
 </html>
