@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SeoulShield — Connect</title>
+<title>SeoulShield │ Connect</title>
 <meta name="description" content="SeoulShield premium paint protection film. Dealer & distributor inquiries via WhatsApp, Instagram, WeChat, LINE, KakaoTalk, email.">
 
 <!-- Google Analytics (GA4) -->
@@ -188,25 +188,32 @@
     background:#0a0a0a;
     aspect-ratio:16/7;
     isolation:isolate;
+    touch-action:pan-y;
+    cursor:grab;
+    user-select:none;
+    -webkit-user-select:none;
   }
+
+  .promo-carousel.is-dragging{cursor:grabbing;}
 
   .promo-track{
     position:absolute;
     inset:0;
+    display:flex;
+    width:100%;
+    height:100%;
+    transform:translate3d(-100%,0,0);
+    transition:transform .46s cubic-bezier(.22,.61,.36,1);
+    will-change:transform;
   }
+
+  .promo-track.is-dragging{transition:none;}
 
   .promo-slide{
-    position:absolute;
-    inset:0;
-    opacity:0;
-    visibility:hidden;
-    transition:opacity .65s ease, visibility .65s ease;
-  }
-
-  .promo-slide.is-active{
-    opacity:1;
-    visibility:visible;
-    z-index:1;
+    position:relative;
+    flex:0 0 100%;
+    width:100%;
+    height:100%;
   }
 
   .promo-slide img{
@@ -215,6 +222,7 @@
     display:block;
     object-fit:cover;
     object-position:center;
+    pointer-events:none;
     user-select:none;
     -webkit-user-drag:none;
   }
@@ -411,7 +419,7 @@
       </button>
 
       <!-- Featured image carousel -->
-      <section class="promo-carousel" id="promoCarousel" aria-label="SeoulShield featured products" aria-roledescription="carousel">
+      <section class="promo-carousel" id="promoCarousel" aria-label="SeoulShield featured products" aria-roledescription="carousel" tabindex="0">
         <div class="promo-track" aria-live="off">
           <div class="promo-slide is-active" role="group" aria-roledescription="slide" aria-label="1 of 2">
             <img src="https://github.com/DUBOU/seoulshield/blob/main/link/AD_IMAGE_1.png?raw=true"
@@ -1299,17 +1307,32 @@
     var carousel = document.getElementById('promoCarousel');
     if (!carousel) return;
 
-    var slides = Array.prototype.slice.call(carousel.querySelectorAll('.promo-slide'));
+    var track = carousel.querySelector('.promo-track');
+    var slides = Array.prototype.slice.call(track.querySelectorAll('.promo-slide'));
     var dots = Array.prototype.slice.call(carousel.querySelectorAll('.promo-dot'));
+    if (!slides.length) return;
+
     var current = 0;
+    var position = 1;
     var timer = null;
     var ROTATION_MS = 5000;
+    var dragging = false;
+    var pointerId = null;
     var startX = 0;
     var deltaX = 0;
+    var slideWidth = 0;
 
-    function showSlide(index){
-      current = (index + slides.length) % slides.length;
+    // Clones make swiping seamless in both directions, including at the ends.
+    var firstClone = slides[0].cloneNode(true);
+    var lastClone = slides[slides.length - 1].cloneNode(true);
+    firstClone.classList.add('promo-clone');
+    lastClone.classList.add('promo-clone');
+    firstClone.setAttribute('aria-hidden', 'true');
+    lastClone.setAttribute('aria-hidden', 'true');
+    track.insertBefore(lastClone, slides[0]);
+    track.appendChild(firstClone);
 
+    function updateA11yAndDots(){
       slides.forEach(function(slide, i){
         var active = i === current;
         slide.classList.toggle('is-active', active);
@@ -1324,6 +1347,27 @@
       });
     }
 
+    function setTrack(offsetPx, animate){
+      slideWidth = carousel.clientWidth || slideWidth || 1;
+      track.classList.toggle('is-dragging', !animate);
+      track.style.transform = 'translate3d(' + ((-position * slideWidth) + offsetPx) + 'px,0,0)';
+    }
+
+    function moveBy(step){
+      if (slides.length < 2) return;
+      current = (current + step + slides.length) % slides.length;
+      position += step;
+      updateA11yAndDots();
+      setTrack(0, true);
+    }
+
+    function goTo(index){
+      current = (index + slides.length) % slides.length;
+      position = current + 1;
+      updateA11yAndDots();
+      setTrack(0, true);
+    }
+
     function stopAuto(){
       if (timer){
         clearInterval(timer);
@@ -1333,45 +1377,106 @@
 
     function startAuto(){
       stopAuto();
-      if (slides.length < 2) return;
-      timer = setInterval(function(){ showSlide(current + 1); }, ROTATION_MS);
+      if (slides.length < 2 || document.hidden) return;
+      timer = setInterval(function(){ moveBy(1); }, ROTATION_MS);
     }
 
+    track.addEventListener('transitionend', function(e){
+      if (e.propertyName !== 'transform') return;
+      if (position === 0){
+        position = slides.length;
+        setTrack(0, false);
+      } else if (position === slides.length + 1){
+        position = 1;
+        setTrack(0, false);
+      }
+    });
+
     dots.forEach(function(dot, index){
-      dot.addEventListener('click', function(){
-        showSlide(index);
+      dot.addEventListener('click', function(e){
+        e.stopPropagation();
+        goTo(index);
         startAuto();
       });
     });
 
+    function finishDrag(cancelled){
+      if (!dragging) return;
+      dragging = false;
+      carousel.classList.remove('is-dragging');
+
+      var threshold = Math.max(36, slideWidth * 0.14);
+      if (!cancelled && Math.abs(deltaX) >= threshold){
+        moveBy(deltaX < 0 ? 1 : -1);
+      } else {
+        setTrack(0, true);
+      }
+
+      deltaX = 0;
+      pointerId = null;
+      startAuto();
+    }
+
+    carousel.addEventListener('pointerdown', function(e){
+      if (slides.length < 2 || e.button > 0 || e.target.closest('.promo-dots')) return;
+      dragging = true;
+      pointerId = e.pointerId;
+      startX = e.clientX;
+      deltaX = 0;
+      slideWidth = carousel.clientWidth;
+      carousel.classList.add('is-dragging');
+      track.classList.add('is-dragging');
+      stopAuto();
+      carousel.setPointerCapture(e.pointerId);
+    });
+
+    carousel.addEventListener('pointermove', function(e){
+      if (!dragging || e.pointerId !== pointerId) return;
+      deltaX = e.clientX - startX;
+      setTrack(deltaX, false);
+    });
+
+    carousel.addEventListener('pointerup', function(e){
+      if (e.pointerId !== pointerId) return;
+      finishDrag(false);
+    });
+
+    carousel.addEventListener('pointercancel', function(e){
+      if (e.pointerId !== pointerId) return;
+      finishDrag(true);
+    });
+
+    carousel.addEventListener('lostpointercapture', function(){
+      if (dragging) finishDrag(true);
+    });
+
     carousel.addEventListener('mouseenter', stopAuto);
-    carousel.addEventListener('mouseleave', startAuto);
+    carousel.addEventListener('mouseleave', function(){ if (!dragging) startAuto(); });
     carousel.addEventListener('focusin', stopAuto);
     carousel.addEventListener('focusout', function(e){
-      if (!carousel.contains(e.relatedTarget)) startAuto();
+      if (!carousel.contains(e.relatedTarget) && !dragging) startAuto();
     });
 
-    carousel.addEventListener('touchstart', function(e){
-      startX = e.touches[0].clientX;
-      deltaX = 0;
-      stopAuto();
-    }, { passive:true });
-
-    carousel.addEventListener('touchmove', function(e){
-      deltaX = e.touches[0].clientX - startX;
-    }, { passive:true });
-
-    carousel.addEventListener('touchend', function(){
-      if (Math.abs(deltaX) > 45){
-        showSlide(current + (deltaX < 0 ? 1 : -1));
+    carousel.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowLeft'){
+        e.preventDefault();
+        moveBy(-1);
+        startAuto();
+      } else if (e.key === 'ArrowRight'){
+        e.preventDefault();
+        moveBy(1);
+        startAuto();
       }
-      startAuto();
     });
 
+    window.addEventListener('resize', function(){ setTrack(0, false); });
     document.addEventListener('visibilitychange', function(){
       document.hidden ? stopAuto() : startAuto();
     });
 
+    updateA11yAndDots();
+    setTrack(0, false);
+    requestAnimationFrame(function(){ track.classList.remove('is-dragging'); });
     startAuto();
   })();
 
