@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SeoulShield | Connect</title>
+<title>SeoulShield — Connect</title>
 <meta name="description" content="SeoulShield premium paint protection film. Dealer & distributor inquiries via WhatsApp, Instagram, WeChat, LINE, KakaoTalk, email.">
 
 <!-- Google Analytics (GA4) -->
@@ -177,27 +177,79 @@
   .link .name .cp-pre{font-weight:400;color:var(--gray);}
   .link .name .cp-val{font-weight:700;color:var(--accent);}
 
-  /* ---- Promo image card (placeholder) ---- */
-  .promo{
+  /* ---- Featured image carousel ---- */
+  .promo-carousel{
+    position:relative;
     display:block;
     margin:4px 0;
     border-radius:24px;
     overflow:hidden;
-    border:1px dashed var(--line);
-    background:
-      repeating-linear-gradient(115deg,
-        transparent 0 14px, rgba(200,255,0,0.02) 14px 16px);
+    border:1px solid var(--line);
+    background:#0a0a0a;
     aspect-ratio:16/7;
-    position:relative;
-    text-decoration:none;
+    isolation:isolate;
   }
-  .promo .ph{
-    position:absolute;inset:0;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
-    gap:6px;color:var(--dgray);
+
+  .promo-track{
+    position:absolute;
+    inset:0;
   }
-  .promo .ph .lbl{font-size:11px;letter-spacing:2px;font-weight:700;color:var(--dgray);}
-  .promo .ph .lbl2{font-size:10px;color:var(--dgray);opacity:.7;}
+
+  .promo-slide{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .65s ease, visibility .65s ease;
+  }
+
+  .promo-slide.is-active{
+    opacity:1;
+    visibility:visible;
+    z-index:1;
+  }
+
+  .promo-slide img{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+    object-position:center;
+    user-select:none;
+    -webkit-user-drag:none;
+  }
+
+  .promo-dots{
+    position:absolute;
+    left:50%;
+    bottom:10px;
+    transform:translateX(-50%);
+    display:flex;
+    align-items:center;
+    gap:7px;
+    z-index:3;
+  }
+
+  .promo-dot{
+    width:6px;
+    height:6px;
+    padding:0;
+    border:0;
+    border-radius:999px;
+    background:rgba(255,255,255,.42);
+    cursor:pointer;
+    transition:width .2s ease, background .2s ease;
+  }
+
+  .promo-dot.is-active{
+    width:18px;
+    background:var(--accent);
+  }
+
+  .promo-dot:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+  }
 
   /* ---- Footer ---- */
   .foot{margin-top:auto;padding-top:34px;text-align:center;}
@@ -358,12 +410,22 @@
         <span class="name">WeChat</span>
       </button>
 
-      <!-- Promo placeholder card -->
-      <section class="promo" aria-label="Featured promotions">
-        <span class="ph">
-          <span class="lbl">FEATURED</span>
-          <span class="lbl2">Banner slot — coming soon</span>
-        </span>
+      <!-- Featured image carousel -->
+      <section class="promo-carousel" id="promoCarousel" aria-label="SeoulShield featured products" aria-roledescription="carousel">
+        <div class="promo-track" aria-live="off">
+          <div class="promo-slide is-active" role="group" aria-roledescription="slide" aria-label="1 of 2">
+            <img src="https://github.com/DUBOU/seoulshield/blob/main/link/AD_IMAGE_1.png?raw=true"
+                 alt="SeoulShield premium PPF made in Korea" loading="eager" decoding="async">
+          </div>
+          <div class="promo-slide" role="group" aria-roledescription="slide" aria-label="2 of 2" aria-hidden="true">
+            <img src="https://github.com/DUBOU/seoulshield/blob/main/link/AD_IMAGE_2.png?raw=true"
+                 alt="SeoulShield Apex flagship paint protection film" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <div class="promo-dots" aria-label="Choose featured image">
+          <button class="promo-dot is-active" type="button" aria-label="Show image 1" aria-current="true"></button>
+          <button class="promo-dot" type="button" aria-label="Show image 2"></button>
+        </div>
       </section>
 
       <!-- LINE (modal) -->
@@ -1230,6 +1292,88 @@
       });
     });
   }
+
+
+  // ---- Featured carousel ----
+  (function(){
+    var carousel = document.getElementById('promoCarousel');
+    if (!carousel) return;
+
+    var slides = Array.prototype.slice.call(carousel.querySelectorAll('.promo-slide'));
+    var dots = Array.prototype.slice.call(carousel.querySelectorAll('.promo-dot'));
+    var current = 0;
+    var timer = null;
+    var ROTATION_MS = 5000;
+    var startX = 0;
+    var deltaX = 0;
+
+    function showSlide(index){
+      current = (index + slides.length) % slides.length;
+
+      slides.forEach(function(slide, i){
+        var active = i === current;
+        slide.classList.toggle('is-active', active);
+        slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+      });
+
+      dots.forEach(function(dot, i){
+        var active = i === current;
+        dot.classList.toggle('is-active', active);
+        if (active) dot.setAttribute('aria-current', 'true');
+        else dot.removeAttribute('aria-current');
+      });
+    }
+
+    function stopAuto(){
+      if (timer){
+        clearInterval(timer);
+        timer = null;
+      }
+    }
+
+    function startAuto(){
+      stopAuto();
+      if (slides.length < 2) return;
+      timer = setInterval(function(){ showSlide(current + 1); }, ROTATION_MS);
+    }
+
+    dots.forEach(function(dot, index){
+      dot.addEventListener('click', function(){
+        showSlide(index);
+        startAuto();
+      });
+    });
+
+    carousel.addEventListener('mouseenter', stopAuto);
+    carousel.addEventListener('mouseleave', startAuto);
+    carousel.addEventListener('focusin', stopAuto);
+    carousel.addEventListener('focusout', function(e){
+      if (!carousel.contains(e.relatedTarget)) startAuto();
+    });
+
+    carousel.addEventListener('touchstart', function(e){
+      startX = e.touches[0].clientX;
+      deltaX = 0;
+      stopAuto();
+    }, { passive:true });
+
+    carousel.addEventListener('touchmove', function(e){
+      deltaX = e.touches[0].clientX - startX;
+    }, { passive:true });
+
+    carousel.addEventListener('touchend', function(){
+      if (Math.abs(deltaX) > 45){
+        showSlide(current + (deltaX < 0 ? 1 : -1));
+      }
+      startAuto();
+    });
+
+    document.addEventListener('visibilitychange', function(){
+      document.hidden ? stopAuto() : startAuto();
+    });
+
+    startAuto();
+  })();
 
   // Email keeps its native mail-app behavior on every device.
 </script>
